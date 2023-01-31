@@ -1,0 +1,16 @@
+{
+  "name": "press",
+  "version": "press",
+  "description": "press",
+  "main": "press",
+  "repository": "http://localhost:8080",
+  "author": "guozixin",
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.9.8"
+  },
+  "scripts":{
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  }
+}
