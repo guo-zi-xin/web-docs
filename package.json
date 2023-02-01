@@ -1,8 +1,8 @@
 {
-  "name": "press",
-  "version": "press",
-  "description": "press",
-  "main": "press",
+  "name": "note-docs",
+  "version": "v1.0.0",
+  "description": "Some accumulation of notes",
+  "main": "web",
   "repository": "http://localhost:8080",
   "author": "guozixin",
   "license": "MIT",
