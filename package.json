@@ -9,8 +9,12 @@
   "devDependencies": {
     "vuepress": "^1.9.8"
   },
-  "scripts":{
+  "scripts": {
     "dev": "vuepress dev docs",
     "build": "vuepress build docs"
+  },
+  "dependencies": {
+    "@vuepress/plugin-last-updated": "^1.9.8",
+    "moment": "^2.29.4"
   }
 }

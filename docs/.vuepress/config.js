@@ -14,7 +14,7 @@ module.exports = {
   },
   themeConfig: {
     sidebarDepth: 2,  // e'b 将同时提取markdown中的h2和h3标题， 显示在侧边栏上
-    lastUpdated: 'Last Updated', // 文档更新时间：每个文件git最后提交的时间
+    lastUpdated: '最后更新时间', // 文档更新时间：每个文件git最后提交的时间
     /** 导航栏配置 */
     // 如果不想用导航栏, 可以设置themeConfig的 navbar 属性 设置为false后就不会出现导航栏了
     // navbar: false,
@@ -47,25 +47,49 @@ module.exports = {
     ],
     /** 侧边栏配置 */
     sidebar: {
+      '/guide/': [
+        '/guide/',
+        {
+          title: '先前导言',
+          children: [
+            '/gudie/README.md',
+          ]
+        }
+      ],
       // 侧边栏使用的是docs文件夹下accumulate文件夹文档中的md文件 书写的位置
       '/accumulate/': [
         '/accumulate/',
         {
-          title: 'test测试',
+          title: '前端积累',
           children: [
-            '/accumulate/JS/test',
+            '/accumulate/JS/README.md',
           ]
         }
       ],
       '/algorithm/': [
         '/algorithm/',
         {
-          title: '算法测试',
+          title: '前端算法',
           children: [
             '/algorithm/README.md',
           ]
         }
       ]
     }
-  }
+  },
+  /** 一些插件 */
+  plugins: [
+    // 自定义时间插件
+    [
+      '@vuepress/last-updated',
+      {
+        transformer: (timestamp, lang) => {
+          // 需要安装moment
+          const moment = require('moment')
+          moment.locale(lang)
+          return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
+        }
+      }
+    ]
+  ]
 }
