@@ -1,6 +1,8 @@
 module.exports = {
   // 网站的一些基本配置
-  // base:配置部署站点的基础路径，后续再介绍
+  host: 'localhost', // ip
+  port: '1119', //端口号
+  // base:配置部署站点的基础路径
   title: '个人的积累记录', // 网站的标题
   description: `If you don't keep moving, you'll quickly fall behind.`,  // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中。
   head: [
