@@ -7,11 +7,13 @@
   "author": "guozixin",
   "license": "MIT",
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "vuepress": "^1.9.8"
   },
   "scripts": {
     "dev": "vuepress dev docs",
-    "build": "vuepress build docs"
+    "build": "vuepress build docs",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@vuepress/plugin-last-updated": "^1.9.8",

@@ -1,10 +1,16 @@
+const codeBlack = require('./config/codeBlack')
+const accumulate = require('./config/accumulate')
+const algorithm = require('./config/algorithm')
+
 module.exports = {
   // 网站的一些基本配置
   host: 'localhost', // ip
   port: '1119', //端口号
   // base:配置部署站点的基础路径
+  base: '/docs/',
   title: '个人的积累记录', // 网站的标题
-  description: `If you don't keep moving, you'll quickly fall behind.`,  // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中。
+  description: '生活不可能像你想象得那么好，但也不会像你想象得那么糟。我觉得人的脆弱和坚强都超乎自己的想象。有时，我可能脆弱得一句话就泪流满面，有时，也发现自己咬着牙走了很长的路。',
+  // description: `If you don't keep moving, you'll quickly fall behind.`,  // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中。
   head: [
     ['link', { rel: 'icon', href: '/logo.jpg' }] // 需要被注入到当前页面的 HTML <head> 中的标签
   ],
@@ -47,34 +53,39 @@ module.exports = {
     ],
     /** 侧边栏配置 */
     sidebar: {
-      '/guide/': [
-        '/guide/',
-        {
-          title: '先前导言',
-          children: [
-            '/gudie/README.md',
-          ]
-        }
-      ],
-      // 侧边栏使用的是docs文件夹下accumulate文件夹文档中的md文件 书写的位置
-      '/accumulate/': [
-        '/accumulate/',
-        {
-          title: '前端积累',
-          children: [
-            '/accumulate/JS/README.md',
-          ]
-        }
-      ],
+      '/accumulate/': accumulate,
+      '/codeBlack/': codeBlack,
       '/algorithm/': [
-        '/algorithm/',
         {
-          title: '前端算法',
-          children: [
-            '/algorithm/README.md',
-          ]
+          title: '简单',
+          collapsable: false,
+          children: algorithm.simple
+        },
+        {
+          title: '中等',
+          collapsable: false,
+          children: algorithm.medium
         }
       ]
+      // 侧边栏使用的是docs文件夹下accumulate文件夹文档中的md文件 书写的位置
+      // '/accumulate/': [
+      //   '/accumulate/',
+      //   {
+      //     title: '前端积累',
+      //     children: [
+      //       '/accumulate/JS/README.md',
+      //     ]
+      //   }
+      // ],
+      // '/algorithm/': [
+      //   '/algorithm/',
+      //   {
+      //     title: '前端算法',
+      //     children: [
+      //       '/algorithm/README.md',
+      //     ]
+      //   }
+      // ]
     }
   },
   /** 一些插件 */
