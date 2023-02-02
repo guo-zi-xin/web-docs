@@ -17,6 +17,8 @@
   },
   "dependencies": {
     "@vuepress/plugin-last-updated": "^1.9.8",
-    "moment": "^2.29.4"
+    "moment": "^2.29.4",
+    "vuepress-theme-reco": "^1.6.16",
+    "vuepress-theme-vdoing": "^1.12.8"
   }
 }

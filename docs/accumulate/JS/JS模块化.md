@@ -1,3 +1,13 @@
+---
+title: JS模块化
+date: 2023-02-02 16:43:29
+permalink: /pages/9fede3/
+categories:
+  - accumulate
+  - JS
+tags:
+  - 
+---
 # JS模块化
 **JavaScript的 ESM AMD UMD CJS**
 	**ESM**: 

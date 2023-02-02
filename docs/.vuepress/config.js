@@ -18,6 +18,9 @@ module.exports = {
   markdown: {
     lineNumbers: true  // 代码块显示符号
   },
+  /** 设置主题 */
+  theme: 'reco',
+  // theme: 'vdoing',
   themeConfig: {
     sidebarDepth: 2,  // e'b 将同时提取markdown中的h2和h3标题， 显示在侧边栏上
     lastUpdated: '最后更新时间', // 文档更新时间：每个文件git最后提交的时间
@@ -33,10 +36,10 @@ module.exports = {
         text: '前端算法', 
         link: '/algorithm/'
       },
-      {
-        text: '博客', 
-        link: 'https://www.baidu.com/'
-      },
+      // {
+      //   text: '博客', 
+      //   link: 'https://www.baidu.com/'
+      // },
       {
         text: 'GitHub', 
         items: [
@@ -52,42 +55,65 @@ module.exports = {
       }
     ],
     /** 侧边栏配置 */
-    sidebar: {
-      '/accumulate/': accumulate,
-      '/codeBlack/': codeBlack,
-      '/algorithm/': [
-        {
-          title: '简单',
-          collapsable: false,
-          children: algorithm.simple
-        },
-        {
-          title: '中等',
-          collapsable: false,
-          children: algorithm.medium
-        }
-      ]
-      // 侧边栏使用的是docs文件夹下accumulate文件夹文档中的md文件 书写的位置
-      // '/accumulate/': [
-      //   '/accumulate/',
-      //   {
-      //     title: '前端积累',
-      //     children: [
-      //       '/accumulate/JS/README.md',
-      //     ]
-      //   }
-      // ],
-      // '/algorithm/': [
-      //   '/algorithm/',
-      //   {
-      //     title: '前端算法',
-      //     children: [
-      //       '/algorithm/README.md',
-      //     ]
-      //   }
-      // ]
-    }
+    sidebar: [
+      {
+        title: '欢迎学习',
+        path: '/guide/',
+        collapsable: false,  // 是否折叠
+        children: [
+          {title: '先前导言', path: '/guide/'}
+        ]
+      },
+      {
+        title: '前端积累',
+        path: '/accumulate/JS/',
+        collapsable: false,
+        children: [
+          {
+            title: 'JS', 
+            path: '/accumulate/JS/JS模块化',
+            collapsable: false,
+            children: [
+              {
+                title: 'JS模块化',
+                path: '/accumulate/JS/JS模块化',
+              }
+            ]
+          }
+        ]
+      },
+      {
+        title: '前端算法',
+        path: '/algorithm/寻找首位不重复字符索引',
+        collapsable: false,
+        children: [
+          {
+            title: '寻找首位不重复字符索引', 
+            path: '/algorithm/寻找首位不重复字符索引',
+          }
+        ]
+      },
+      {
+        title: '代码块',
+        path: '/codeBlack/',
+        collapsable: false,
+        children: [
+          {
+            title: 'index', 
+            path: '/codeBlack/index',
+          }
+        ]
+      }
+    ],
+    /** 侧边栏的子标题 移到右侧 */
+    subSidebar: 'auto',
   },
+  /** 多语言 */
+   locales: {
+    '/': {
+      lang: 'zh-CN',
+    },
+   },
   /** 一些插件 */
   plugins: [
     // 自定义时间插件

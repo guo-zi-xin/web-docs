@@ -2,7 +2,7 @@
 home: true
 heroImage: /image/note-logo.webp
 actionText: 点击阅读 →
-actionLink: /accumulate/
+actionLink: /guide/
 features:
 - title: 积累
   details: 平时的一些积累， 一些上手即用的东西/知识点等内容的记录。
