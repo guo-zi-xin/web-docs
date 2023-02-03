@@ -5,7 +5,7 @@ module.exports = {
   host: 'localhost', // ip
   port: '1119', //端口号
   // base:配置部署站点的基础路径
-  base: '/docs/',
+  base: '/web-docs/',
   title: '个人的积累记录', // 网站的标题
   description: '生活不可能像你想象得那么好，但也不会像你想象得那么糟。我觉得人的脆弱和坚强都超乎自己的想象。有时，我可能脆弱得一句话就泪流满面，有时，也发现自己咬着牙走了很长的路。',
   // description: `If you don't keep moving, you'll quickly fall behind.`,  // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中。
