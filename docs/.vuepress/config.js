@@ -47,7 +47,7 @@ module.exports = {
           },
           // {
           //   text: '算法仓库', 
-          //   link: 'https://github.com/guo-zi-xin/docs/'
+          //   link: 'https://github.com/guo-zi-xin/web-docs/'
           // }
         ]
       }
