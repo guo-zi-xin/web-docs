@@ -8,12 +8,13 @@
   "license": "MIT",
   "devDependencies": {
     "cross-env": "^7.0.3",
+    "markdown-it-disable-url-encode": "^1.0.1",
     "vuepress": "^1.9.8"
   },
   "scripts": {
-    "docs:dev": "vuepress dev docs",
-    "docs:build": "vuepress build docs",
-    "docs:deploy": "bash deploy.sh"
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "deploy": "bash deploy.sh"
   },
   "dependencies": {
     "@vuepress/plugin-last-updated": "^1.9.8",

@@ -11,11 +11,8 @@
 # 确保脚本抛出遇到的错误
 set -e
 
-# 下载yarn
-# npm install yarn
-
 # 生成静态文件
-yarn docs:build
+yarn build
 
 # 进入生成的静态文件夹dist
 cd docs/.vuepress/dist
