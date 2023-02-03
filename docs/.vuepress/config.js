@@ -1,6 +1,4 @@
-const codeBlack = require('./config/codeBlack')
-const accumulate = require('./config/accumulate')
-const algorithm = require('./config/algorithm')
+const moment = require('moment')
 
 module.exports = {
   // 网站的一些基本配置
@@ -59,10 +57,6 @@ module.exports = {
       {
         title: '欢迎学习',
         path: '/guide/',
-        collapsable: false,  // 是否折叠
-        children: [
-          {title: '先前导言', path: '/guide/'}
-        ]
       },
       {
         title: '前端积累',
@@ -71,12 +65,23 @@ module.exports = {
         children: [
           {
             title: 'JS', 
-            path: '/accumulate/JS/JS模块化',
+            path: '/accumulate/JS/JS-module',
             collapsable: false,
             children: [
               {
                 title: 'JS模块化',
-                path: '/accumulate/JS/JS模块化',
+                path: '/accumulate/JS/JS-module',
+              }
+            ]
+          },
+          {
+            title: 'CSS', 
+            path: '/accumulate/CSS/CSS-weight',
+            collapsable: false,
+            children: [
+              {
+                title: 'CSS权重规则',
+                path: '/accumulate/CSS/CSS-weight',
               }
             ]
           }
@@ -84,12 +89,12 @@ module.exports = {
       },
       {
         title: '前端算法',
-        path: '/algorithm/寻找首位不重复字符索引',
+        path: '/algorithm/find-last-index',
         collapsable: false,
         children: [
           {
             title: '寻找首位不重复字符索引', 
-            path: '/algorithm/寻找首位不重复字符索引',
+            path: '/algorithm/find-last-index',
           }
         ]
       },
@@ -99,15 +104,18 @@ module.exports = {
         collapsable: false,
         children: [
           {
-            title: 'index', 
-            path: '/codeBlack/index',
+            title: '测试', 
+            path: '/codeBlack/test',
           }
         ]
       }
     ],
+
     /** 侧边栏的子标题 移到右侧 */
     subSidebar: 'auto',
+
   },
+
   /** 多语言 */
    locales: {
     '/': {
@@ -122,7 +130,6 @@ module.exports = {
       {
         transformer: (timestamp, lang) => {
           // 需要安装moment
-          const moment = require('moment')
           moment.locale(lang)
           return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
         }

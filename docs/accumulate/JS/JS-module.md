@@ -10,7 +10,7 @@ tags:
 ---
 # JS模块化
 **JavaScript的 ESM AMD UMD CJS**
-	**ESM**: 
+## ESM 
 
 ​	ESM代表ES模块，是Javascript提出的实现一个标准模块的系统方案。类似
 
@@ -50,9 +50,9 @@ export const function2() {...}
 
   
 
-  **CJS**
+## CJS
 
-    CJS是CommonJS的缩写，经常是这么使用
+* CJS是CommonJS的缩写，经常是这么使用
 
   ```javascript
   // importing(导入)
@@ -80,7 +80,7 @@ export const function2() {...}
 
   * CJS不能在浏览器中工作，他必须经过转换和打包
 
-  **AMD**
+## AMD
 
   ​	AMD代表异步模块定义，例如
 
@@ -105,7 +105,8 @@ export const function2() {...}
   - 一开始被提议的时候，AMD是为前端而做的（而CJS是后端）
   - AMD语法不如CJS直观
 
-  **UMD**（Universal Module Definition）通用模块定义
+## UMD（Universal Module Definition）
+* 通用模块定义
 
   - 在前端和后端都适用（“通用”因此而得名）
   - 与CJS或AMD不同， UMD更像是一种配置多个模块系统的模式
