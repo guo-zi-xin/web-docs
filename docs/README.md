@@ -1,5 +1,10 @@
 ---
 home: true
+modules: # 指定首页展示模块
+  - Banner
+  - Blog
+  - MdContent
+  - Footer
 heroImage: /image/note-logo.webp
 actionText: 点击阅读 →
 actionLink: /guide/

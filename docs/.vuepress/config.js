@@ -11,8 +11,23 @@ module.exports = {
   description: '生活不可能像你想象得那么好，但也不会像你想象得那么糟。我觉得人的脆弱和坚强都超乎自己的想象。有时，我可能脆弱得一句话就泪流满面，有时，也发现自己咬着牙走了很长的路。',
   // description: `If you don't keep moving, you'll quickly fall behind.`,  // 网站的描述，它将会以 <meta> 标签渲染到当前页面的 HTML 中。
   head: [
-    ['link', { rel: 'icon', href: '/logo.jpg' }] // 需要被注入到当前页面的 HTML <head> 中的标签
+    [
+      'link',
+      { rel: 'icon', href: '/logo.jpg' },
+    ] // 需要被注入到当前页面的 HTML <head> 中的标签
   ],
+  // head:[
+  //   [
+  //     'script', {},
+  //     `var _hmt = _hmt || [];
+  //     (function() {
+  //       var hm = document.createElement("script");
+  //       hm.src = "https://hm.baidu.com/hm.js?b5afd4dccd8e1b7a1cad4dae456e3b18";
+  //       var s = document.getElementsByTagName("script")[0]; 
+  //       s.parentNode.insertBefore(hm, s);
+  //     })()`
+  //   ]
+  // ],
   // base: '/web_accumulate/',  // 部署到GitHub相关的配置
   markdown: {
     lineNumbers: true  // 代码块显示符号

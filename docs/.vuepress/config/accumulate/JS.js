@@ -18,5 +18,9 @@ module.exports = [
   {
     title: 'momentJS 使用',
     path: '/accumulate/JS/moment',
-  }
+  },
+  {
+    title: 'JS中call apply bind 的区分',
+    path: '/accumulate/JS/JS中call apply bind 的区分',
+  },
 ]
