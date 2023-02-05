@@ -26,13 +26,13 @@ module.exports = {
     /** 导航栏配置 */
     // 如果不想用导航栏, 可以设置themeConfig的 navbar 属性 设置为false后就不会出现导航栏了
     // navbar: false,
-    nav: [  
+    nav: [
       {
-        text: '前端积累', 
+        text: '前端积累',
         link: '/accumulate/JS/'  //内部链接 以docs为根目录
       },
       {
-        text: '前端算法', 
+        text: '前端算法',
         link: '/algorithm/'
       },
       // {
@@ -40,10 +40,10 @@ module.exports = {
       //   link: 'https://www.baidu.com/'
       // },
       {
-        text: 'GitHub', 
+        text: 'GitHub',
         items: [
           {
-            text: 'GitHub地址', 
+            text: 'GitHub地址',
             link: 'https://github.com/guo-zi-xin/'
           },
 
@@ -60,11 +60,11 @@ module.exports = {
   },
 
   /** 多语言 */
-   locales: {
+  locales: {
     '/': {
       lang: 'zh-CN',
     },
-   },
+  },
   /** 一些插件 */
   plugins: [
     // 自定义时间插件
@@ -77,13 +77,20 @@ module.exports = {
           return moment(timestamp).format('YYYY-MM-DD HH:mm:ss')
         }
       }
+    ],
+    // 谷歌统计数据插件
+    [
+      "@vuepress/google-analytics",
+      {
+        'ga': 'UA-256326336-1'
+      }
     ]
   ],
-     // 处理路径问题
-     markdown: {
-      extendMarkdown: md => {
-          md.set({breaks: true})
-          md.use(require("markdown-it-disable-url-encode"), "./")
-      }
-  }
+  // 处理路径问题
+  markdown: {
+    extendMarkdown: md => {
+      md.set({ breaks: true })
+      md.use(require("markdown-it-disable-url-encode"), "./")
+    }
+  },
 }

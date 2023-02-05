@@ -7,6 +7,7 @@
   "author": "guozixin",
   "license": "MIT",
   "devDependencies": {
+    "@vuepress/plugin-google-analytics": "^1.9.8",
     "cross-env": "^7.0.3",
     "markdown-it-disable-url-encode": "^1.0.1",
     "vuepress": "^1.9.8"
