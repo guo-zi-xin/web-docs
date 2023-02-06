@@ -1,11 +1,11 @@
 module.exports = [
   {
     title: 'JS模块化',
-    path: '/accumulate/JS/JS-module',
+    path: '/accumulate/JS/JS模块化',
   },
   {
-    title: 'JS回流和重绘',
-    path: '/accumulate/JS/RefluxAndRedraw',
+    title: '回流和重绘',
+    path: '/accumulate/JS/回流和重绘',
   },
   {
     title: 'JS中的offsetWidth、clientWidth',
@@ -13,7 +13,7 @@ module.exports = [
   },
   {
     title: 'JS中的变量的提升',
-    path: '/accumulate/JS/ElevationOfVariable',
+    path: '/accumulate/JS/JS中变量的提升',
   },
   {
     title: 'momentJS 使用',
