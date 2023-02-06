@@ -1,7 +1,7 @@
 module.exports = [
   {
-    title: 'git pull 与 git fetch的区别',
-    path: '/accumulate/Git/git pull and git fetch',
+    title: 'git pull和git fetch的区别',
+    path: '/accumulate/Git/git pull和git fetch区别',
   },
   {
     title: 'git rebase 使用',

@@ -1,5 +1,5 @@
 const JSChildren = require('./files/javascript')
-const GitChildren = require('./files/git')
+const GitChildren = require('./files/gits')
 const CSSChildren = require('./files/css')
 const ES6Children = require('./files/es6')
 const VueChildren = require('./files/Vue')
@@ -78,6 +78,6 @@ module.exports = [
   // VueRouter,
   // ReactRouter,
   // JestRouter,
-  NodeRouter,
-  YearRouter
+  // NodeRouter,
+  // YearRouter
 ]

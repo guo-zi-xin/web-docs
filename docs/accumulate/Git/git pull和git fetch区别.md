@@ -27,14 +27,14 @@ A----C----E（master）
 
 它们的head指针分别指向E和F，对上述做如下操作：
 
-```
+```shell
 git checkout master  //选择or切换到master分支
 git merge dev        //将dev分支合并到当前分支(master)中
 ```
 
 合并完成后：
 
-```
+```javascript
 A---C---E---G(master)
  \         /
   B---D---F（dev）
@@ -52,7 +52,7 @@ A---C---E---G---H(master)
 
 分支（branch）的基本操作：
 
-```
+```shell
 git branch //查看本地所有分支 
 
 git branch -r //查看远程所有分支

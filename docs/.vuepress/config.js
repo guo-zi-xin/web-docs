@@ -16,19 +16,6 @@ module.exports = {
       { rel: 'icon', href: '/logo.jpg' },
     ] // 需要被注入到当前页面的 HTML <head> 中的标签
   ],
-  // head:[
-  //   [
-  //     'script', {},
-  //     `var _hmt = _hmt || [];
-  //     (function() {
-  //       var hm = document.createElement("script");
-  //       hm.src = "https://hm.baidu.com/hm.js?b5afd4dccd8e1b7a1cad4dae456e3b18";
-  //       var s = document.getElementsByTagName("script")[0]; 
-  //       s.parentNode.insertBefore(hm, s);
-  //     })()`
-  //   ]
-  // ],
-  // base: '/web_accumulate/',  // 部署到GitHub相关的配置
   markdown: {
     lineNumbers: true  // 代码块显示符号
   },
@@ -46,10 +33,10 @@ module.exports = {
         text: '前端积累',
         link: '/accumulate/JS/'  //内部链接 以docs为根目录
       },
-      {
-        text: '前端算法',
-        link: '/algorithm/'
-      },
+      // {
+      //   text: '前端算法',
+      //   link: '/algorithm/'
+      // },
       // {
       //   text: '博客', 
       //   link: 'https://www.baidu.com/'
@@ -71,6 +58,19 @@ module.exports = {
 
     /** 侧边栏的子标题 移到右侧 */
     subSidebar: 'auto',
+
+    /** vssue评论插件 
+     * 官网地址：https://vssue.js.org/zh/
+    */
+    // vssueConfig: {
+    //   platform: 'github',
+    //   owner: '郭子鑫',
+    //   // repo: 'https://github.com/guo-zi-xin/web-docs',
+    //   repo:'web-docs',
+    //   clientId: '74ec7b8081637f985a6d',
+    //   // clientSecret: 'f8e9cdc6f32b5b66136d15b9ac274c619ce6d557',
+    //   clientSecret: '6fe69b479214334a598cd0ea250a71340f377cb6',
+    // }
 
   },
 
