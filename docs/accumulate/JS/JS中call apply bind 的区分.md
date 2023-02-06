@@ -75,7 +75,7 @@ function count (x,y) {
 }
 console.log(count.bind(obj))//此时打印的是 函数体,没有被调用
 ```
-![bind.png](/docs/.vuepress/public/image/console.png)
+![bind.png](/image/console.png)
 
 ```
 console.log(count.bind(obj)(5,2))//打印出来的是'7张三'

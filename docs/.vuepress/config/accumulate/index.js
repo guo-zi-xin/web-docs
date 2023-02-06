@@ -1,12 +1,12 @@
-const JSChildren = require('./JS')
-const GitChildren = require('./Git')
-const CSSChildren = require('./CSS')
-const ES6Children = require('./Es6')
-const VueChildren = require('./Vue')
-const ReactChildren = require('./React')
-const YearChildren = require('./Year')
-const JestChildren = require('./Jest')
-const NodeChildren = require('./Node')
+const JSChildren = require('./files/javascript')
+const GitChildren = require('./files/git')
+const CSSChildren = require('./files/css')
+const ES6Children = require('./files/es6')
+const VueChildren = require('./files/Vue')
+const ReactChildren = require('./files/React')
+const YearChildren = require('./files/Year')
+const JestChildren = require('./files/jest')
+const NodeChildren = require('./files/nodeJS')
 
 const JSRouter = {
     title: 'JS', 
