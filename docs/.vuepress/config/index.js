@@ -15,17 +15,17 @@ module.exports = [
     children: accumulateChildren
   },
 
-  // {
-  //   title: '前端算法',
-  //   path: '/algorithm/',
-  //   collapsable: true,
-  //   children: algorithmChildren
-  // },
+  {
+    title: '前端算法',
+    path: '/algorithm/',
+    collapsable: true,
+    children: algorithmChildren
+  },
 
-  // {
-  //   title: '代码块',
-  //   path: '/codeBlack/',
-  //   collapsable: true,
-  //   children: codeBlackChildren
-  // }
+  {
+    title: '代码块',
+    path: '/codeBlack/',
+    collapsable: true,
+    children: codeBlackChildren
+  }
 ]
