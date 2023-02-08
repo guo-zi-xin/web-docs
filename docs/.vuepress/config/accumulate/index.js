@@ -7,6 +7,8 @@ const ReactChildren = require('./files/React')
 const YearChildren = require('./files/Year')
 const JestChildren = require('./files/jest')
 const NodeChildren = require('./files/nodeJS')
+const AngularChildren = require('./files/Angular')
+
 
 const JSRouter = {
     title: 'JS', 
@@ -70,6 +72,13 @@ const NodeRouter = {
   children: NodeChildren
 }
 
+const AngularRouter = {
+  title: 'Angular', 
+  path: '/accumulate/Angular/',
+  collapsable: true,
+  children: AngularChildren
+}
+
 module.exports = [
   JSRouter,
   CSSRouter,
@@ -79,5 +88,6 @@ module.exports = [
   // ReactRouter,
   // JestRouter,
   // NodeRouter,
-  // YearRouter
+  // YearRouter,
+  // AngularRouter
 ]
