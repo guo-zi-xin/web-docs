@@ -14,12 +14,12 @@ module.exports = [
     collapsable: true,
     children: accumulateChildren
   },
-  {
-    title: 'Angular',
-    path: '/accumulate/Angular',
-    collapsable: true,
-    children: AngularChildren
-  }
+  // {
+  //   title: 'Angular',
+  //   path: '/accumulate/Angular',
+  //   collapsable: true,
+  //   children: AngularChildren
+  // }
 
   // {
   //   title: '前端算法',
