@@ -30,8 +30,8 @@ features:
 
 <style>
 /*爱的魔力转圈圈*/
-..m-home-layout .image-src {
-  border-radius: 100%
+.m-home-layout .image-src {
+  border-radius: 50%
 }
 .m-home-layout .image-src:hover {
   transform: translate(-50%, -50%) rotate(666turn);

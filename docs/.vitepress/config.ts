@@ -43,11 +43,11 @@ export default defineConfig({
       label: '本页目录'
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/maomao1996' }],
+    socialLinks: [{ icon: 'github', link: 'https://github.com/guo-zi-xin' }],
 
     footer: {
-      message: '',
-      copyright: 'Copyright © 2019-present maomao'
+      message: '人生没有捷径，就像到二仙桥要走成华大道。',
+      copyright: 'Copyright © 2019-present guozixin'
     },
 
     darkModeSwitchLabel: '外观',
