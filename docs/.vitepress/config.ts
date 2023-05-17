@@ -32,7 +32,7 @@ export default defineConfig({
   /* 主题配置 */
   themeConfig: {
     i18nRouting: false,
-
+    siteTitle: '我的胃来食',
     logo: '/logo.jpg',
 
     // nav,
@@ -46,7 +46,7 @@ export default defineConfig({
     socialLinks: [{ icon: 'github', link: 'https://github.com/guo-zi-xin' }],
 
     footer: {
-      message: '人生没有捷径，就像到二仙桥要走成华大道。',
+      message: '人生没有捷径，就像到二仙桥必须要走成华大道。',
       copyright: 'Copyright © 2019-present guozixin'
     },
 
