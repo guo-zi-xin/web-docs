@@ -5,7 +5,7 @@ import { defineConfig, PageData } from 'vitepress'
 
 import { 
   head, 
-  // nav, 
+  nav, 
   // sidebar, 
   // algolia 
 } from './configs'
@@ -35,7 +35,7 @@ export default defineConfig({
     siteTitle: '我的胃来食',
     logo: '/logo.jpg',
 
-    // nav,
+    nav,
     // sidebar,
     /* 右侧大纲配置 */
     outline: {

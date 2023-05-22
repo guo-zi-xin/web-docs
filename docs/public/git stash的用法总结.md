@@ -51,8 +51,6 @@ stash@{0}: WIP on master: e695606 which version checked in?
 >
 > ![git stash 不保存新建文件](git-stash-1.jpg "git stash 不保存新文件")
 
-
-
 这个文件还在，说明没有被存起来。说白了就是没有在git 版本控制中的文件，是不能被 `git stash`存起来的。
 
 那要怎么办呢，这个文件我也想存起来，很明显，先执行下 `git add` 加到git版本控制中，然后再 `git stash`就可以了，如下：
