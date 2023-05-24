@@ -18,6 +18,19 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     collapsed: false
   },
   {
+    text: 'JS相关',
+    link: '/page/javascript/index',
+    items: [
+      { text: '变量的提升', link: '/pages/javascript/变量的提升' },
+      { text: '回流与重绘', link: '/pages/javascript/回流与重绘' },
+      { text: 'call bind apply的区别', link: '/pages/javascript/call apply bind 区别' },
+      { text: 'offsetSize', link: '/pages/javascript/js-size' },
+      { text: '模块化', link: '/pages/javascript/js模块化' },
+      { text: 'moment使用', link: '/pages/javascript/moment使用' },
+    ],
+    collapsed: false
+  },
+  {
     text: 'CSS',
     link: '/page/css/index',
     items: [
