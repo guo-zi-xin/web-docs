@@ -4,6 +4,7 @@
 /**/**/.cache
 /**/**/.vitepress/cache
 /**/**/.temp
+.dist
 
 
 

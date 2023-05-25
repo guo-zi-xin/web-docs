@@ -43,6 +43,13 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     collapsed: false
   },
   {
+    text: 'Node',
+    link: '/page/node/index',
+    items: [
+      { text: 'Node简介', link: '/pages/node/node简介' },
+    ]
+  },
+  {
     text: '微信小程序相关',
     link: '/page/weapp/index',
     items: [
@@ -50,4 +57,11 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     ],
     collapsed: false
   },
+  {
+    text: '前端算法相关',
+    link: '/page/algorithm/index',
+    items: [
+      { text: '寻找首位不重复字符索引', link: '/pages/algorithm/find-last-index' }
+    ],
+  }
 ]
