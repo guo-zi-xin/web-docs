@@ -55,6 +55,7 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     text: 'Typescript',
     link: '/page/typescript/index',
     items: [
+      { text: 'TypeScript推荐文档', link: '/pages/typescript/推荐文档' },
     ],
     collapsed: false
   },
