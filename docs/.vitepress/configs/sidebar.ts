@@ -2,7 +2,7 @@ import type { DefaultTheme } from 'vitepress'
 
 export const sidebar: DefaultTheme.Config['sidebar'] = [
   {
-    text: '先前导言', 
+    text: '先前导言',
     link: '/guide/home',
   },
   {
@@ -27,6 +27,8 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
       { text: 'offsetSize', link: '/pages/javascript/js-size' },
       { text: '模块化', link: '/pages/javascript/js模块化' },
       { text: 'moment使用', link: '/pages/javascript/moment使用' },
+      { text: '获取当前页面地址路径', link: '/pages/javascript/获取当前页面地址路径' },
+      { text: 'eslint常见配置', link: '/pages/javascript/eslint常见配置' },      
     ],
     collapsed: false
   },
@@ -48,6 +50,13 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     items: [
       { text: 'Node简介', link: '/pages/node/node简介' },
     ]
+  },
+  {
+    text: 'Typescript',
+    link: '/page/typescript/index',
+    items: [
+    ],
+    collapsed: false
   },
   {
     text: '微信小程序相关',
