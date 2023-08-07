@@ -25,5 +25,6 @@
   "MD028": {"name": "example", "values": ["one", "two"]},
   "MD029": true,
   "MD030": {"ul_single": 3, "ol_single": 2, "ul_multi": 2, "ol_multi": 2},
-  "MD036": false
+  "MD036": false,
+  "MD033": {"allowed_elements": ["script", "html", "style","head", "body"]}
 }
