@@ -30,7 +30,9 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
       { text: '模块化', link: '/pages/javascript/js模块化' },
       { text: 'moment使用', link: '/pages/javascript/moment使用' },
       { text: '获取当前页面地址路径', link: '/pages/javascript/获取当前页面地址路径' },
-      { text: 'eslint常见配置', link: '/pages/javascript/eslint常见配置' },      
+      { text: 'eslint常见配置', link: '/pages/javascript/eslint常见配置' },
+      { text: 'JS解析URL参数', link: '/pages/javascript/JS解析URL参数' },
+      { text: 'JS跨域下载文件', link: '/pages/javascript/JS跨域下载文件' },
     ],
     collapsed: false
   },
@@ -40,9 +42,6 @@ export const sidebar: DefaultTheme.Config['sidebar'] = [
     items: [
       { text: 'CSS权重规则', link: '/pages/css/css权重规则' },
       { text: 'css一些加载样式', link: '/pages/css/css一些加载样式' },
-
-      
-
     ],
     collapsed: false
   },
