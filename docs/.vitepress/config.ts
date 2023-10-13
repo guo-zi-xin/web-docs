@@ -1,7 +1,7 @@
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'
-import { defineConfig, PageData } from 'vitepress'
+import { defineConfig, type DefaultTheme, PageData } from 'vitepress'
 
 import { 
   head, 

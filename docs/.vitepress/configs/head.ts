@@ -3,10 +3,7 @@ import type { HeadConfig } from 'vitepress'
 const isDevelopment = process.env.NODE_ENV === 'development'
 
 export const head: HeadConfig[] = [
-  [
-    'link',
-    { rel: 'icon', href: '/logo.jpg', color: '#3eaf7c' },
-  ], // 需要被注入到当前页面的 HTML <head> 中的标签
+  ['link',{ rel: 'icon', href: '/image/logo.jpg', color: '#3eaf7c' }], // 需要被注入到当前页面的 HTML <head> 中的标签
   ['meta', { name: 'theme-color', content: '#3eaf7c' }],
   ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
   ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
