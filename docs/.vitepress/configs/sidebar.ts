@@ -7,7 +7,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
   },
   {
     text: "git相关",
-    link: "/page/git/index",
+    link: "/pages/git/index",
     items: [
       { text: "git初始化", link: "/pages/git/git-init" },
       { text: "git stash常用命令", link: "/pages/git/git stash的用法总结" },
@@ -25,7 +25,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
   },
   {
     text: "JS相关",
-    link: "/page/javascript/index",
+    link: "/pages/javascript/index",
     items: [
       { text: "变量的提升", link: "/pages/javascript/变量的提升" },
       { text: "回流与重绘", link: "/pages/javascript/回流与重绘" },
@@ -48,7 +48,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
   },
   {
     text: "CSS",
-    link: "/page/css/index",
+    link: "/pages/css/index",
     items: [
       { text: "CSS权重规则", link: "/pages/css/css权重规则" },
       { text: "css一些加载样式", link: "/pages/css/css一些加载样式" },
@@ -57,18 +57,18 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
   },
   {
     text: "Node",
-    link: "/page/node/index",
+    link: "/pages/node/index",
     items: [{ text: "Node简介", link: "/pages/node/node简介" }],
   },
   {
     text: "Typescript",
-    link: "/page/typescript/index",
+    link: "/pages/typescript/index",
     items: [{ text: "TypeScript推荐文档", link: "/pages/typescript/推荐文档" }],
     collapsed: false,
   },
   {
     text: "微信小程序相关",
-    link: "/page/weapp/index",
+    link: "/pages/weapp/index",
     items: [
       {
         text: "微信小程序人脸识别问题",
@@ -79,7 +79,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
   },
   {
     text: "前端算法相关",
-    link: "/page/algorithm/index",
+    link: "/pages/algorithm/index",
     items: [
       {
         text: "寻找首位不重复字符索引",
@@ -89,7 +89,10 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
   },
   {
     text: "面试相关",
-    link: "/page/interview/index",
-    items: [{ text: "231012", link: "/pages/interview/231012" }],
+    link: "/pages/interview/index",
+    items: [
+      { text: "231012", link: "/pages/interview/231012" },
+      { text: "练习", link: "/pages/interview/html/231012.html" },
+    ],
   },
 ];

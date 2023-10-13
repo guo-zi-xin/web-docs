@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+</body>
+</html>
+
+<script>
+// 1. 数组转树
+  const source = [      
+      { id: 1, pid: 0, name: 'body', },
+      { id: 2, pid: 1, name: 'title', },
+      { id: 3, pid: 2, name: 'div', },
+      { id: 4, pid: 0, name: 'html', },
+      { id: 5, pid: 4, name: 'div', },
+      { id: 6, pid: 5, name: 'span', },
+      { id: 7, pid: 5, name: 'img', },
+    ]
+  // 需要转换成下面的格式
+  const  treeMap = [
+    {
+        id: 1,
+        pid: 0,
+        name: 'body',
+        children: [
+            {
+                id: 2,
+                pid: 1,
+                name: 'title',
+                children: [
+                    {id: 3, pid: 2, name: 'div'}
+                ]
+            }
+        ]
+    },
+    {
+        id: 4,
+        pid: 0,
+        name: 'html',
+        children: [
+            {
+                id: 5,
+                pid: 4,
+                name: 'div',
+                children: [
+                    { id: 7, pid: 5, name: 'img'}
+                ]
+            }
+        ]
+    }
+];
+
+// 分析 id为主键 pid表示children的主键 需要做的是 通过遍历先去匹配pid与id相等的项，然后将其push到children中
+
+const convertTree = (arr)  => {
+  console.log(arr)
+  const sourceArr = [...arr]
+  const targetArr = []
+  arr.forEach((item, index) => {
+    sourceArr.forEach((cItem, cIndex) => {
+      if (item.id === cItem.pid){
+        if (!item.children) {
+          item.children = []
+        }
+        item.children.push(cItem)
+        sourceArr.splice(cIndex, 1)
+      }
+    })
+  })
+  console.log(sourceArr)
+}
+convertTree(source)
+
+const deepConvertTree = (arr, pid= 0) => {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].pid === pid) {
+      const node = {
+        ...arr[i],
+        children: deepConvertTreeq(arr, arr[i].id)
+      };
+      result.push(node);
+    }
+  }
+  return result;
+}
+const deepTarget = deepConvertTree(source)
+console.log(deepTarget)
+</script>
