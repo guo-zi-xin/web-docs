@@ -88,11 +88,21 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
     ],
   },
   {
-    text: "面试相关",
-    link: "/pages/interview/index",
+    text: "打包构建",
+    link: "/pages/build/index",
     items: [
-      { text: "231012", link: "/pages/interview/231012" },
-      { text: "练习", link: "/pages/interview/html/231012.html" },
+      {
+        text: "什么是SourceMap",
+        link: "/pages/build/什么是SourceMap",
+      },
     ],
   },
+  // {
+  //   text: "面试相关",
+  //   link: "/pages/interview/index",
+  //   items: [
+  //     { text: "231012", link: "/pages/interview/231012" },
+  //     { text: "练习", link: "/pages/interview/html/231012.html" },
+  //   ],
+  // },
 ];
