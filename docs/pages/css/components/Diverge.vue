@@ -1,14 +1,14 @@
 <template>
   <div class="loading">
     <div class="loading-center">
-      <div class="circle" id="circle_animation" v-for="item in animationList" :style="item"></div>
+      <div class="circle" id="circle_animation" v-for="item in animationList" :key="item" :style="item"></div>
       <div class="circle" id="circle_big"></div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-const animationList = [
+const animationList:string[] = [
   '--delay: 0.2s; --translateX: -65px; --translateY: -65px;',
   '--delay: 0.3s; --translateX: 0px; --translateY: -65px;',
   '--delay: 0.4s; --translateX: 65px; --translateY: -65px;',

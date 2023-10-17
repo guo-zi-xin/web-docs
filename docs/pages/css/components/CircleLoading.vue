@@ -41,7 +41,7 @@ defineComponent({
 .container1 > div, .container2 > div, .container3 > div {
   width: 6px;
   height: 6px;
-  background-color: #333;
+  background-color: #465EFB;
  
   border-radius: 100%;
   position: absolute;

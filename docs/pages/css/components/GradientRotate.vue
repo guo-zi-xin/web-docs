@@ -16,8 +16,7 @@ defineComponent({
   width: 40px;
   height: 40px;
   margin: 100px auto;
-  background-color: #333;
- 
+  background-color: #465EFB;
   border-radius: 100%; 
   -webkit-animation: scaleout 1.0s infinite ease-in-out;
   animation: scaleout 1.0s infinite ease-in-out;

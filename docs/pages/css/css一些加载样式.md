@@ -10,7 +10,13 @@ import {
   ScaleLoading,
   GradientRotate,
   CircleLoading,
-  Diverge
+  Diverge,
+  RotationContraction,
+  Contraction,
+  Moving,
+  RiceRotate,
+  MusicDance,
+  TriangleBloom,
   } from './components'
 </script>
 
@@ -18,7 +24,7 @@ import {
 
 <Spinner/>
 
-### HTML
+- HTML
 
 ```html
 <div class="spinner">
@@ -30,7 +36,7 @@ import {
 </div>
 ```
 
-### CSS
+- CSS
 
 ```css
 .spinner {
@@ -104,13 +110,13 @@ import {
 
 <TurnOverCSS/>
 
-### HTML
+- HTML
 
 ```html
   <div class="turn-over"></div>
 ```
 
-### CSS
+- CSS
 
 ```css
 .turn-over {
@@ -145,9 +151,9 @@ import {
 
 ## 动画效果三
 
-  <ScaleCSS/>
+<ScaleCSS/>
 
-### HTML
+- HTML
 
 ```html
   <div class="scale-style">
@@ -156,7 +162,7 @@ import {
   </div>
 ```
 
-### CSS
+- CSS
 
 ```css
 .scale-style {
@@ -206,7 +212,7 @@ import {
 
 <CubeRotation/>
 
-### HTML
+- HTML
 
 ```html
   <div class="cube-roate">
@@ -214,6 +220,8 @@ import {
     <div class="cube2"></div>
   </div>
 ```
+
+- CSS
 
 ```css
 .cube-roate {
@@ -271,7 +279,7 @@ import {
 
 <DotRoate/>
 
-### HTML
+- HTML
 
 ```html
   <div class="dot-rotate">
@@ -280,7 +288,7 @@ import {
   </div>
 ```
 
-### CSS
+- CSS
 
 ```css
 .dot-rotate {
@@ -337,7 +345,7 @@ import {
 
 <ScaleLoading/>
 
-### HTML
+- HTML
 
 ```html
   <div class="scale-loading">
@@ -347,7 +355,7 @@ import {
   </div>
 ```
 
-### CSS
+- CSS
 
 ```css
 .scale-loading {
@@ -401,20 +409,20 @@ import {
 
 <GradientRotate/>
 
-### HTML
+- HTML
 
 ```html
   <div class="gradient-rotate"></div>
 ```
 
-### CSS
+- CSS
 
 ```css
 .gradient-rotate {
   width: 40px;
   height: 40px;
   margin: 100px auto;
-  background-color: #333;
+  background-color: #465EFB;
  
   border-radius: 100%; 
   -webkit-animation: scaleout 1.0s infinite ease-in-out;
@@ -445,7 +453,7 @@ import {
 
 <CircleLoading/>
 
-### HTML
+- HTML
 
 ```html
 <div class="circle">
@@ -470,7 +478,7 @@ import {
   </div>
 ```
 
-### CSS
+- CSS
 
 ```css
 .circle {
@@ -483,7 +491,7 @@ import {
 .container1 > div, .container2 > div, .container3 > div {
   width: 6px;
   height: 6px;
-  background-color: #333;
+  background-color: #465EFB;
  
   border-radius: 100%;
   position: absolute;
@@ -589,19 +597,23 @@ import {
 
 <Diverge/>
 
+- HTML
+
 ```vue
 <template>
   <div class="loading">
     <div class="loading-center">
-      <div class="circle" id="circle_animation" v-for="item in animationList" :style="item"></div>
+      <div class="circle" id="circle_animation" v-for="item in animationList" :key="item" :style="item"></div>
       <div class="circle" id="circle_big"></div>
     </div>
   </div>
 </template>
 ```
 
-```javascript
-const animationList = [
+- JS
+
+```typeScript
+const animationList:string[] = [
   '--delay: 0.2s; --translateX: -65px; --translateY: -65px;',
   '--delay: 0.3s; --translateX: 0px; --translateY: -65px;',
   '--delay: 0.4s; --translateX: 65px; --translateY: -65px;',
@@ -613,6 +625,8 @@ const animationList = [
 ]
 
 ```
+
+- CSS
 
 ```css
 
@@ -694,6 +708,638 @@ const animationList = [
   50% {
     transform: translate(var(--translateX), var(--translateY));
     -webkit-transform: translate(var(--translateX), var(--translateY));
+  }
+}
+```
+
+## 动画效果十
+
+<RotationContraction/>
+
+- HTML
+
+```vue
+<template>
+  <div calss="loading">
+    <div class="loading-center">
+      <div v-for="item in animationList" :key="item" class="circle" id="circle_animation" :style="item"></div>
+    </div>
+  </div>
+</template>
+```
+
+- JS
+
+```typeScript
+  const animationList:string[] = [
+    '--translateFX: 90px; --translateSX: 180px;',
+    '--translateFX: -90px; --translateSX: -180px;float:right;',
+  ]
+```
+
+- CSS
+
+```css
+.loading {
+  background-color: #465EFB;
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.loading-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 50px;
+  width: 200px;
+  margin-top: -25px;
+  margin-left: -100px;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #465EFB;
+  float: left;
+  margin-top: 15px;
+  -moz-border-radius: 50% 50% 50% 50%;
+  -webkit-border-radius: 50% 50% 50% 50%;
+  border-radius: 50% 50% 50% 50%;
+}
+
+
+#circle_animation {
+  -webkit-animation: circle_animation 2s infinite;
+  animation: circle_animation 2s infinite;
+}
+
+
+@-webkit-keyframes circle_animation {
+  25% {
+    -ms-transform: translate(var(--translateFX), 0) scale(2);
+    -webkit-transform: translate(var(--translateFX), 0) scale(2);
+    transform: translate(var(--translateFX), 0) scale(2);
+  }
+
+  50% {
+    -ms-transform: translate(var(--translateSX), 0) scale(1);
+    -webkit-transform: translate(var(--translateSX), 0) scale(1);
+    transform: translate(var(--translateSX), 0) scale(1);
+  }
+
+  75% {
+    -ms-transform: translate(var(--translateFX), 0) scale(2);
+    -webkit-transform: translate(var(--translateFX), 0) scale(2);
+    transform: translate(var(--translateFX), 0) scale(2);
+  }
+}
+
+@keyframes circle_animation {
+  25% {
+    -ms-transform: translate(var(--translateFX), 0) scale(2);
+    -webkit-transform: translate(var(--translateFX), 0) scale(2);
+    transform: translate(var(--translateFX), 0) scale(2);
+  }
+
+  50% {
+    -ms-transform: translate(var(--translateSX), 0) scale(1);
+    -webkit-transform: translate(var(--translateSX), 0) scale(1);
+    transform: translate(var(--translateSX), 0) scale(1);
+  }
+
+  75% {
+    -ms-transform: translate(var(--translateFX), 0) scale(2);
+    -webkit-transform: translate(var(--translateFX), 0) scale(2);
+    transform: translate(var(--translateFX), 0) scale(2);
+  }
+}
+```
+
+## 动画效果11 旋转收缩
+
+<Contraction/>
+
+- HTML
+
+```vue
+<template>
+  <div class="loading">
+    <div class="loading-center">
+      <div v-for="item in animationList" :key="item" class="circle" id="circle_animation" :style="item"></div>
+    </div>
+  </div>
+</template>
+```
+
+- JS
+
+```typeScript
+const animationList: string[] = [
+  '--translateX: 20px; --translateY: 20px;',
+  '--translateX: -20px; --translateY: 20px;',
+  '--translateX: 20px; --translateY: -20px;',
+  '--translateX: -20px; --translateY: -20px;',
+]
+```
+
+- CSS
+
+```css
+.loading {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.loading-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 60px;
+  width: 60px;
+  margin-top: -30px;
+  margin-left: -30px;
+  -webkit-animation: loading-center 1s infinite;
+  animation: loading-center 1s infinite;
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #465EFB;
+  float: left;
+  -moz-border-radius: 50% 50% 50% 50%;
+  -webkit-border-radius: 50% 50% 50% 50%;
+  border-radius: 50% 50% 50% 50%;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+.circle:nth-child(2n+0) {
+  margin-right: 0px;
+}
+
+#circle_animation {
+  -webkit-animation: circle_animation 1s infinite;
+  animation: circle_animation 1s infinite;
+}
+
+
+@-webkit-keyframes loading-center {
+  100% {
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+
+}
+
+@keyframes loading-center {
+  100% {
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes circle_animation {
+  50% {
+    -ms-transform: translate(var(--translateX), var(--translateY));
+    -webkit-transform: translate(var(--translateX), var(--translateY));
+    transform: translate(var(--translateX), var(--translateY));
+  }
+}
+
+@keyframes circle_animation {
+  50% {
+    -ms-transform: translate(var(--translateX), var(--translateY));
+    -webkit-transform: translate(var(--translateX), var(--translateY));
+    transform: translate(var(--translateX), var(--translateY));
+  }
+}
+```
+
+## 动画效果12 动态位置
+
+<Moving/>
+
+- HTML
+
+```vue
+<template>
+  <div class="loading">
+    <div class="loading-center">
+      <div v-for="item in animationList" :key="item" id="circle_animation" class="circle" :style="item"></div>
+    </div>
+  </div>
+</template>
+```
+
+- JS
+
+```typeScript
+const animationList: string[] = [
+  '--delay:0s;',
+  '--delay: -.4s;left:20px;',
+  '--delay: -.8s;left:40px;',
+  '--delay: -1.2s;left:60px;',
+  '--delay: -1.6s;left:80px;',
+]
+```
+
+- CSS
+
+```css
+.loading {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.loading-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 20px;
+  width: 100px;
+  margin-top: -10px;
+  margin-left: -50px;
+
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #465EFB;
+  -moz-border-radius: 50% 50% 50% 50%;
+  -webkit-border-radius: 50% 50% 50% 50%;
+  border-radius: 50% 50% 50% 50%;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  position: absolute;
+}
+
+#circle_animation {
+  -webkit-animation: circle 2s linear infinite;
+  animation: circle 2s linear infinite var(--delay);
+}
+
+
+
+@-webkit-keyframes circle {
+  0% {
+    left: 100px;
+    top: 0
+  }
+
+  80% {
+    left: 0;
+    top: 0;
+  }
+
+  85% {
+    left: 0;
+    top: -20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  90% {
+    width: 40px;
+    height: 15px;
+  }
+
+  95% {
+    left: 100px;
+    top: -20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  100% {
+    left: 100px;
+    top: 0;
+  }
+
+}
+
+@keyframes circle {
+  0% {
+    left: 100px;
+    top: 0
+  }
+
+  80% {
+    left: 0;
+    top: 0;
+  }
+
+  85% {
+    left: 0;
+    top: -20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  90% {
+    width: 40px;
+    height: 15px;
+  }
+
+  95% {
+    left: 100px;
+    top: -20px;
+    width: 20px;
+    height: 20px;
+  }
+
+  100% {
+    left: 100px;
+    top: 0;
+  }
+}
+```
+
+## 动画效果13
+
+<RiceRotate/>
+
+- HTML
+
+```vue
+<template>
+  <div class="loading">
+    <div class="loading-center">
+      <div v-for="item in animationList" :key="item" :style="item" class="circle" id="circle_animation"></div>
+    </div>
+  </div>
+</template>
+```
+
+- JS
+
+```typescript
+const animationList: string[] = [
+  '--top:19px;left:19px;--delay:0s;',
+  '--top:0px;left:65px;--delay:0.1s;',
+  '--top:19px;left:111px;--delay:0.2s;',
+  '--top:65px;left:130px;--delay:0.3s;',
+  '--top:111px;left:111px;--delay:0.4s;',
+  '--top:130px;left:65px;--delay:0.5s;',
+  '--top:111px;left:19px;--delay:0.6s;',
+  '--top:65px;left:0px;--delay:0.7s;',
+]
+```
+
+- CSS
+
+```css
+.loading {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.loading-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 150px;
+  width: 150px;
+  margin-top: -75px;
+  margin-left: -75px;
+  -moz-border-radius: 50% 50% 50% 50%;
+  -webkit-border-radius: 50% 50% 50% 50%;
+  border-radius: 50% 50% 50% 50%;
+
+}
+
+.circle {
+  width: 20px;
+  height: 20px;
+  background-color: #465EFB;
+  position: absolute;
+  -moz-border-radius: 50% 50% 50% 50%;
+  -webkit-border-radius: 50% 50% 50% 50%;
+  border-radius: 50% 50% 50% 50%;
+  -webkit-animation: animate 0.8s infinite;
+  animation: animate 0.8s infinite;
+}
+
+#circle_animation {
+  top: var(--top);
+  left: var(--left);
+  -webkit-animation-delay: var(--delay);
+  animation-delay: var(--delay);
+}
+
+@-webkit-keyframes animate {
+
+  25% {
+    -ms-transform: scale(1.5);
+    -webkit-transform: scale(1.5);
+    transform: scale(1.5);
+  }
+
+  75% {
+    -ms-transform: scale(0);
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+}
+
+@keyframes animate {
+  50% {
+    -ms-transform: scale(1.5, 1.5);
+    -webkit-transform: scale(1.5, 1.5);
+    transform: scale(1.5, 1.5);
+  }
+
+  100% {
+    -ms-transform: scale(1, 1);
+    -webkit-transform: scale(1, 1);
+    transform: scale(1, 1);
+  }
+}
+```
+
+## 动画效果14
+
+<MusicDance/>
+
+- HTML
+
+```vue
+<template>
+  <div class="loading">
+    <div class="loading-center">
+      <div v-for="item in animationList" :key="item" :style="item" class="circle" id="circle_animation"></div>
+    </div>
+  </div>
+</template>
+```
+
+- JS
+
+```typescript
+const animationList: string[] = [...Array(10).keys()].map((item: number) => {
+  if (item ===10) {
+    return 'margin-right:0px;'
+  } else {
+    return `-webkit-animation-delay:${item / 10}s;animation-delay:${item / 10}s;`
+  }
+})
+```
+
+- CSS
+
+```css
+.loading {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.loading-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 50px;
+  width: 150px;
+  margin-top: -25px;
+  margin-left: -75px;
+
+}
+
+.circle {
+  width: 8px;
+  height: 50px;
+  margin-right: 5px;
+  background-color: #465EFB;
+  -webkit-animation: animate 1s infinite;
+  animation: animate 1s infinite;
+  float: left;
+}
+
+@-webkit-keyframes animate {
+
+  50% {
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+
+@keyframes animate {
+  50% {
+    -ms-transform: scaleY(0);
+    -webkit-transform: scaleY(0);
+    transform: scaleY(0);
+  }
+}
+```
+
+## 动画效果15
+
+<TriangleBloom/>
+
+- HTML
+
+```vue
+<template>
+  <div class="loading">
+    <div class="loading-center">
+      <div v-for="item in animationList" :key="item" :style="item" class="circle" id="circle_animation"></div>
+    </div>
+  </div>
+</template>
+
+```
+
+- JS
+
+```typescript
+const animationList: string[] = [
+  '--bottom:0;--left:80px;--translateX: 80px; --translateY: 30px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:0;--left:60px;--translateX: 40px; --translateY: 30px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:0;--left:40px;--translateX: 0; --translateY: 30px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:0;--left:20px;--translateX: -40px; --translateY: 30px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:0;--left:0px;--translateX: -80px; --translateY: 30px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:0;--left:70px;--translateX: 60px; --translateY: -20px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:0;--left:50px;--translateX: 0; --translateY: -20px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:0;--left:30px;--translateX: -60px; --translateY: -20px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:0;--left:10px;--translateX: -100px; --translateY: -20px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:20px;--left:70px;--translateX: -100px; --translateY: -40px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:20px;--left:50px;--translateX: -60px; --translateY: -80px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:20px;--left:30px;--translateX: 80px; --translateY: -40px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:20px;--left:10px;--translateX: 80px; --translateY: -80px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:20px;--left:60px;--translateX: 100px; --translateY: -40px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:20px;--left:40px;--translateX: 0; --translateY: -40px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:20px;--left:20px;--translateX: -100px; --translateY: -40px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:40px;--left:60px;--translateX: 80px; --translateY: -60px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:40px;--left:40px;--translateX: 0; --translateY: -60px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:40px;--left:20px;--translateX: -80px; --translateY: -60px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:40px;--left:50px;--translateX: 40px; --translateY: -100px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:40px;--left:30px;--translateX: -40px; --translateY: -100px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:60px;--left:50px;--translateX: 100px; --translateY: -100px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:60px;--left:30px;--translateX: -100px; --translateY: -100px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+  '--bottom:60px;--left:40px;--translateX: 0; --translateY: -80px;--rotateDeg1:180deg;--rotateDeg2:180deg;',
+  '--bottom:80px;--left:40px;--translateX: 0; --translateY: -100px;--rotateDeg1:0deg;--rotateDeg2:180deg;',
+]
+```
+
+- CSS
+
+```css
+.loading {
+  height: 300px;
+  width: 100%;
+  position: relative;
+}
+
+.loading-center {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100px;
+  width: 100px;
+  margin-top: -50px;
+  margin-left: -50px;
+}
+
+.circle {
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 20px solid #465EFB;
+  bottom: var(--bottom);
+  left: var(--left);
+}
+
+#circle_animation {
+  -ms-transform: rotate(var(--rotateDeg1));
+  -webkit-transform: rotate(var(--rotateDeg1));
+  transform: rotate(var(--rotateDeg1));
+  -webkit-animation: circle_animation 3s infinite ease-in-out;
+  animation: circle_animation 3s infinite ease-in-out;
+}
+
+
+@-webkit-keyframes circle_animation {
+  50% {
+    -ms-transform: translate(var(--translateX), var(--translateY)) rotate(var(--rotateDeg2));
+    -webkit-transform: translate(var(--translateX), var(--translateY)) rotate(var(--rotateDeg2));
+    transform: translate(var(--translateX), var(--translateY)) rotate(var(--rotateDeg2));
+
+  }
+}
+
+@keyframes circle_animation {
+  50% {
+    -ms-transform: translate(var(--translateX), var(--translateY)) rotate(var(--rotateDeg2));
+    -webkit-transform: translate(var(--translateX), var(--translateY)) rotate(var(--rotateDeg2));
+    transform: translate(var(--translateX), var(--translateY)) rotate(var(--rotateDeg2));
   }
 }
 ```

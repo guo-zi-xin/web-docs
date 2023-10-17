@@ -34,7 +34,6 @@ defineComponent({
   top: 0;
   background-color: #465EFB;
   border-radius: 100%;
-   
   -webkit-animation: bounce 2.0s infinite ease-in-out;
   animation: bounce 2.0s infinite ease-in-out;
 }

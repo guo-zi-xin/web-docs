@@ -21,7 +21,7 @@ export default defineConfig({
   description: '一些日常',
   head,
 
-  lastUpdated: true,
+  lastUpdated: false,
   cleanUrls: true,
 
   /* markdown 配置 */
@@ -42,7 +42,7 @@ export default defineConfig({
       label: '本页目录'
     },
 
-    socialLinks: [{ icon: 'github', link: 'https://github.com/guo-zi-xin' }],
+    // socialLinks: [{ icon: 'github', link: 'https://github.com/guo-zi-xin' }],
 
     footer: {
       message: '人生没有捷径，就像到二仙桥必须要走成华大道。',
