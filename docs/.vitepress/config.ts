@@ -21,7 +21,7 @@ export default defineConfig({
   description: '一些日常',
   head,
 
-  lastUpdated: false,
+  lastUpdated: false,  //上次更新时间
   cleanUrls: true,
 
   /* markdown 配置 */
