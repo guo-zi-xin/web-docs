@@ -58,6 +58,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
     items: [
       { text: "CSS权重规则", link: "/pages/css/css权重规则" },
       { text: "css一些加载样式", link: "/pages/css/css一些加载样式" },
+      { text: "css跳动方块", link: "/pages/css/css跳动方块" },
     ],
     collapsed: true,
   },
@@ -66,6 +67,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
     text: "Node",
     // link: "/pages/node/index",
     items: [{ text: "Node简介", link: "/pages/node/node简介" }],
+    collapsed: true,
   },
 
   // TypeSccript
