@@ -10,6 +10,7 @@ const itemList: string[] = [...Array(9).keys()].map((item: number) => 'square')
 
 <style lang="scss" scoped>
 .container {
+  margin: 100px auto;
   height: 150px;
   width: 150px;
   padding: 30px;

@@ -59,6 +59,9 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
       { text: "CSS权重规则", link: "/pages/css/css权重规则" },
       { text: "css一些加载样式", link: "/pages/css/css一些加载样式" },
       { text: "css跳动方块", link: "/pages/css/css跳动方块" },
+      { text: "box-shadow一些示例", link: "/pages/css/css-box-shdow" },
+
+      
     ],
     collapsed: true,
   },
@@ -105,6 +108,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
         link: "/pages/algorithm/计数器",
       },
     ],
+    collapsed: true,
   },
 
   // 打包构建
@@ -117,6 +121,7 @@ export const sidebar: DefaultTheme.Config["sidebar"] = [
         link: "/pages/build/什么是SourceMap",
       },
     ],
+    collapsed: true,
   },
   // {
   //   text: "面试相关",
