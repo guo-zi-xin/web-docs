@@ -3,10 +3,13 @@ import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'
 import { defineConfig, type DefaultTheme, PageData } from 'vitepress'
 
-import { 
-  head, 
-  nav, 
-  sidebar, 
+import {
+  head,
+  nav,
+  guideBar,
+  ToolBar,
+  AlgoliaBar,
+  NativeBar,
   // algolia 
 } from './configs'
 
@@ -35,7 +38,12 @@ export default defineConfig({
     siteTitle: '我的胃来食',
     logo: '/image/logo.jpg',
     nav,
-    sidebar,
+    sidebar: {
+      '/guide/': guideBar,
+      '/native/': NativeBar,
+      '/tools/': ToolBar,
+      '/algorithm/': AlgoliaBar,
+    },
     /* 右侧大纲配置 */
     outline: {
       level: 'deep',
