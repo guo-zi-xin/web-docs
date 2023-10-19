@@ -17,7 +17,7 @@ const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
 
 export default defineConfig({
   outDir: '../dist',
-  base: process.env.APP_BASE_PATH || '/',
+  base: process.env.APP_BASE_PATH || '/web-docs/',
 
   lang: 'zh-CN',
   title: '我的胃来食',
