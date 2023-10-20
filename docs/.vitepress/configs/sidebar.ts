@@ -56,7 +56,10 @@ export const NativeBar = [
   // TypeSccript
   {
     text: "Typescript",
-    items: [{ text: "TypeScript推荐文档", link: "/native/typescript/推荐文档" }],
+    items: [
+      { text: "TypeScript推荐文档", link: "/native/typescript/推荐文档" },
+      { text: "TypeScript泛型", link: "/native/typescript/泛型" },
+    ],
     collapsed: false,
   },
 
