@@ -1,6 +1,6 @@
 {
   "name": "web-docs",
-  "type":"module",
+  "type": "module",
   "version": "1.0.0",
   "description": "记录了一些开发过程中的一些问题 以供参考",
   "main": "index.js",
@@ -25,7 +25,7 @@
     "prettier": "^2.8.4",
     "sass": "^1.58.3",
     "sitemap": "^7.1.1",
-    "vitepress": "workspace:*",
+    "vitepress": "1.0.0-rc.23",
     "vue": "^3.2.47"
   }
 }
