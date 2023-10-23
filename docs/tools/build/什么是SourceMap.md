@@ -21,7 +21,7 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
 
 - 怎么在浏览器中使用sourceMap，chrome浏览器中默认是开启了soruce Map功能。如果被关闭可以手动开启，下图所示：
 
-![浏览器中如何设置Source Map](../../public/image/chrome-source-map-settings.jpeg "浏览器中如何设置Source Map")
+![浏览器中如何设置Source Map](/image/chrome-source-map-settings.jpeg "浏览器中如何设置Source Map")
 
 ## Source Map 关键字
 
@@ -29,7 +29,7 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
 
 - [webpcak官网的devtool](https://webpack.docschina.org/configuration/devtool/#root)
 
-![devtool中sourcemap关键字配置](../../public/image/sourcemap.gif "devtool中sourcemap关键字配置")
+![devtool中sourcemap关键字配置](/image/sourcemap.gif "devtool中sourcemap关键字配置")
 
 | 关键字| 含义 |
 |:--|:--|
@@ -138,10 +138,10 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
       ```
 
       对于`cheap-source-map`而言，此时页面 debugger 展示源码是 es5 的代码，因为已经被 babal 转义了
-      ![cheap-source-map](../..//public/image/cheap-source-map.jpeg "cheap-source-map")
+      ![cheap-source-map](/image/cheap-source-map.jpeg "cheap-source-map")
 
       但对于`source-map`而言， 则会定位到精准代码
-      ![source-map](../../public/image/cheap-source-map.jpeg "source-map")
+      ![source-map](/image/cheap-source-map.jpeg "source-map")
 
 ### 常见配置项的对比
 
