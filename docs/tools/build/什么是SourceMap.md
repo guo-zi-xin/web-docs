@@ -6,12 +6,11 @@
 >
 > Source Map 解决了开发代码与实际运行代码不一致时帮助我们debug到原始开发代码的技术。
 
+- **常见的源码转换，主要分为三种情况**
 
-**常见的源码转换，主要分为三种情况**
-
-- 压缩、减少体积
-- 多个文件合并， 减少HTTP请求数
-- 其他文件编译成JavasSript
+  - 压缩、减少体积
+  - 多个文件合并， 减少HTTP请求数
+  - 其他文件编译成JavasSript
 
 ## Source Map功能
 
@@ -124,24 +123,24 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
   |:--|:--|:--|
   |module|会保留loader处理前后文件信息的映射|解决了通过`cheap`关键字导致的无法确定loader处理前源代码的问题|
 
-    - #### `cheap`关键字示例
+- #### `cheap`关键字示例
 
-      ```javascript
-      // # sum页面
-      const sum = (a, b) => { return a + b}
-      debugger
-      export default sum;
+    ```javascript
+    // # sum页面
+    const sum = (a, b) => { return a + b}
+    debugger
+    export default sum;
 
-      // # index页面
-      import sum from './sum';
-      console.log(sum);
-      ```
+    // # index页面
+    import sum from './sum';
+    console.log(sum);
+    ```
 
-      对于`cheap-source-map`而言，此时页面 debugger 展示源码是 es5 的代码，因为已经被 babal 转义了
-      ![cheap-source-map](/image/cheap-source-map.jpeg "cheap-source-map")
+    对于`cheap-source-map`而言，此时页面 debugger 展示源码是 es5 的代码，因为已经被 babal 转义了
+    ![cheap-source-map](../../public/image/cheap-source-map.jpeg "cheap-source-map")
 
-      但对于`source-map`而言， 则会定位到精准代码
-      ![source-map](/image/cheap-source-map.jpeg "source-map")
+    但对于`source-map`而言， 则会定位到精准代码
+    ![source-map](../../public/image/cheap-source-map.jpeg "source-map")
 
 ### 常见配置项的对比
 

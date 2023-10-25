@@ -12,7 +12,7 @@
 set -e
 
 # 生成静态文件
-yarn build
+pnpm run build
 
 # 进入生成的静态文件夹dist
 cd dist
