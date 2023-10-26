@@ -40,8 +40,7 @@ export const NativeBar = [
       { text: "css一些加载样式", link: "/native/css/css一些加载样式" },
       { text: "css跳动方块", link: "/native/css/css跳动方块" },
       { text: "box-shadow一些示例", link: "/native/css/css-box-shdow" },
-
-
+      { text: "3D数字动画", link: "/native/css/3D数字动画" },
     ],
     collapsed: false,
   },
@@ -85,6 +84,10 @@ export const ToolBar = [
     text: "Git",
     items: [
       { text: "git初始化", link: "/tools/git/git-init" },
+      {
+        text: "git 常用操作",
+        link: "/tools/git/git 常用操作",
+      },
       { text: "git stash常用命令", link: "/tools/git/git stash的用法总结" },
       {
         text: "git pull与git fetch的区别",
@@ -95,6 +98,7 @@ export const ToolBar = [
         text: "git 删除分支同步到git仓库",
         link: "/tools/git/git 删除分支同步到git仓库",
       },
+      
     ],
     collapsed: false,
   },

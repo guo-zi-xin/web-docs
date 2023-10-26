@@ -137,10 +137,10 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
     ```
 
     对于`cheap-source-map`而言，此时页面 debugger 展示源码是 es5 的代码，因为已经被 babal 转义了
-    ![cheap-source-map](../../public/image/cheap-source-map.jpeg "cheap-source-map")
+    ![cheap-source-map](/image/cheap-source-map.jpeg "cheap-source-map")
 
     但对于`source-map`而言， 则会定位到精准代码
-    ![source-map](../../public/image/cheap-source-map.jpeg "source-map")
+    ![source-map](/image/cheap-source-map.jpeg "source-map")
 
 ### 常见配置项的对比
 
