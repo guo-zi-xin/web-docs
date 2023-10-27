@@ -129,6 +129,18 @@ export const AlgoliaBar = [
         text: "计数器",
         link: "/algorithm/计数器",
       },
+      {
+        text: "合并两个有序数组",
+        link: "/algorithm/合并两个有序数组",
+      },
+      {
+        text: "两数之和",
+        link: "/algorithm/两数之和",
+      },
+      {
+        text: "三数之和",
+        link: "/algorithm/三数之和",
+      },
     ],
     collapsed: false,
   },
