@@ -1,5 +1,6 @@
 # JS中call apply bind 的区分
 
+---
 在原生js中会有三个很常见的函数，`call`,`apply`,`bind`
 
 他们的作用就是改变当前函数的`this`指针，

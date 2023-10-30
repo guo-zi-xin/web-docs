@@ -1,6 +1,8 @@
 # JS下载文件
 
-## a标签直接下载
+---
+
+- **a标签直接下载**
 
 ```javascript
 data = data.replace(/\\/g, '/');
@@ -10,7 +12,7 @@ aLink.href = data;
 aLink.click();
 ```
 
-## 文件跨域后下载（a标签直接打开文件）
+- **文件跨域后下载（a标签直接打开文件）**
 
 ```javascript
 /**

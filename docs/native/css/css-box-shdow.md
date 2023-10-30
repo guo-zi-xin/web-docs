@@ -1,5 +1,7 @@
 # CSS box-shdow 示例
 
+---
+
 <script setup>
   import { BoxShadow } from './components'
 </script>

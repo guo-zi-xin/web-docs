@@ -18,16 +18,17 @@ export const NativeBar = [
         text: "call bind apply的区别",
         link: "/native/javascript/call apply bind 区别",
       },
-      { text: "offsetSize", link: "/native/javascript/js-size" },
-      { text: "模块化", link: "/native/javascript/js模块化" },
+      { text: "JS中的元素尺寸与布局信息", link: "/native/javascript/JS中的元素尺寸与布局信息" },
+      { text: "JS模块化", link: "/native/javascript/js模块化" },
       { text: "moment使用", link: "/native/javascript/moment使用" },
       {
-        text: "获取当前页面地址路径",
-        link: "/native/javascript/获取当前页面地址路径",
+        text: "获取当前页面URL信息",
+        link: "/native/javascript/获取当前页面URL信息",
       },
       { text: "eslint常见配置", link: "/native/javascript/eslint常见配置" },
       { text: "JS解析URL参数", link: "/native/javascript/JS解析URL参数" },
-      { text: "JS跨域下载文件", link: "/native/javascript/JS跨域下载文件" },
+      { text: "JS下载文件", link: "/native/javascript/JS下载文件" },
+      { text: "cookie参数", link: "/native/javascript/cookie参数" },
     ],
     collapsed: false,
   },
@@ -77,6 +78,7 @@ export const NativeBar = [
   },
 ];
 
+
 // 工具集合
 export const ToolBar = [
   // GIT
@@ -122,8 +124,8 @@ export const AlgoliaBar = [
     text: "常见的前端算法问题",
     items: [
       {
-        text: "寻找首位不重复字符索引",
-        link: "/algorithm/find-last-index",
+        text: "首位不重复字符索引",
+        link: "/algorithm/首位不重复字符索引",
       },
       {
         text: "计数器",
@@ -140,6 +142,14 @@ export const AlgoliaBar = [
       {
         text: "三数之和",
         link: "/algorithm/三数之和",
+      },
+      {
+        text: "搜索插入位置",
+        link: "/algorithm/搜索插入位置",
+      },
+      {
+        text: "计算中心下标索引",
+        link: "/algorithm/计算中心下标索引",
       },
     ],
     collapsed: false,

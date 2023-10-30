@@ -1,6 +1,8 @@
 # JS解析URL参数
 
-## 方法一
+---
+
+- 方法一
 
 ```javascript
 let url = "https: //zhidao.baidu.com/question/1768422895052400180.html?fr=iks&word=slice&ie=gbk";
@@ -22,7 +24,7 @@ const params = UrlParamHash(url);
 const id = decodeURI(params['unit']);
 ```
 
-## 方法二
+- 方法二
 
 ```javascript
 // 解析url字符串参数
@@ -33,7 +35,7 @@ const n2 = url.indexOf("="); //取得=号的位置
 const id = decodeURI(url.substr(n2 + 1, n1 - n2)); //从=号后面的内容
 ```
 
-## 方法三
+- 方法三
 
 ```javascript
 //获取url中的参数
