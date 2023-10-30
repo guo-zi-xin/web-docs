@@ -100,7 +100,7 @@ export const ToolBar = [
         text: "git 删除分支同步到git仓库",
         link: "/tools/git/git 删除分支同步到git仓库",
       },
-      
+
     ],
     collapsed: false,
   },
@@ -154,5 +154,19 @@ export const AlgoliaBar = [
     ],
     collapsed: false,
   },
+]
+
+// 数据结构
+export const structureBar = [
+  {
+    text: '数据结构',
+    items: [
+      {
+        text: "链表",
+        link: "/structure/链表",
+      }
+    ],
+    collapsed: false,
+  }
 ]
 

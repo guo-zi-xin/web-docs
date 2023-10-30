@@ -10,6 +10,7 @@ import {
   ToolBar,
   AlgoliaBar,
   NativeBar,
+  structureBar,
   // algolia 
 } from './configs'
 
@@ -43,6 +44,7 @@ export default defineConfig({
       '/native/': NativeBar,
       '/tools/': ToolBar,
       '/algorithm/': AlgoliaBar,
+      '/structure/': structureBar,
     },
     /* 右侧大纲配置 */
     outline: {
