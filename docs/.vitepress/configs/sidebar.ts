@@ -14,21 +14,16 @@ export const NativeBar = [
     items: [
       { text: '变量的提升', link: '/native/javascript/变量的提升' },
       { text: '回流与重绘', link: '/native/javascript/回流与重绘' },
-      {
-        text: 'call bind apply的区别',
-        link: "/native/javascript/call apply bind 区别",
-      },
+      { text: 'call bind apply的区别', link: "/native/javascript/call apply bind 区别" },
       { text: "JS中的元素尺寸与布局信息", link: "/native/javascript/JS中的元素尺寸与布局信息" },
       { text: "JS模块化", link: "/native/javascript/js模块化" },
       { text: "moment使用", link: "/native/javascript/moment使用" },
-      {
-        text: "获取当前页面URL信息",
-        link: "/native/javascript/获取当前页面URL信息",
-      },
+      { text: "获取当前页面URL信息", link: "/native/javascript/获取当前页面URL信息" },
       { text: "eslint常见配置", link: "/native/javascript/eslint常见配置" },
       { text: "JS解析URL参数", link: "/native/javascript/JS解析URL参数" },
       { text: "JS下载文件", link: "/native/javascript/JS下载文件" },
       { text: "cookie参数", link: "/native/javascript/cookie参数" },
+      { text: "Array.map与Array.forEach的区别", link: "/native/javascript/map与forEach的区别.md" },
     ],
     collapsed: false,
   },
@@ -102,7 +97,7 @@ export const ToolBar = [
       },
       {
         text: 'git rebase合并commit',
-        link: '/tools/git/使用git rebase合并commit',
+        link: '/tools/git/git rebase合并commit',
       },
     ],
     collapsed: false,

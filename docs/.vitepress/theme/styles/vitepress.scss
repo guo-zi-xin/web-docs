@@ -44,6 +44,6 @@
 }
 
 // 代码块复制按钮
-.vp-doc [class*='language-'] > button.copy:focus  {
+.vp-doc [class*='language-'] > button.copy:hover, .vp-doc [class*='language-'] > button.copy:focus  {
   background-color: #161618;
 }
