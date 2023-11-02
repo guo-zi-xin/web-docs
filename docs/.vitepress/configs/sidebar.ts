@@ -1,8 +1,8 @@
 // 先前导言
 export const guideBar = [
   {
-    text: "先前导言",
-    link: "/guide/home",
+    text: '先前导言',
+    link: '/guide/home',
   },
 ]
 
@@ -10,12 +10,12 @@ export const guideBar = [
 export const NativeBar = [
   // JavaScript
   {
-    text: "JavaScript",
+    text: 'JavaScript',
     items: [
-      { text: "变量的提升", link: "/native/javascript/变量的提升" },
-      { text: "回流与重绘", link: "/native/javascript/回流与重绘" },
+      { text: '变量的提升', link: '/native/javascript/变量的提升' },
+      { text: '回流与重绘', link: '/native/javascript/回流与重绘' },
       {
-        text: "call bind apply的区别",
+        text: 'call bind apply的区别',
         link: "/native/javascript/call apply bind 区别",
       },
       { text: "JS中的元素尺寸与布局信息", link: "/native/javascript/JS中的元素尺寸与布局信息" },
@@ -83,35 +83,38 @@ export const NativeBar = [
 export const ToolBar = [
   // GIT
   {
-    text: "Git",
+    text: 'Git',
     items: [
-      { text: "git初始化", link: "/tools/git/git-init" },
+      { text: 'git初始化', link: '/tools/git/git-init' },
       {
-        text: "git 常用操作",
-        link: "/tools/git/git 常用操作",
+        text: 'git 常用操作',
+        link: '/tools/git/git 常用操作',
       },
-      { text: "git stash常用命令", link: "/tools/git/git stash的用法总结" },
+      { text: 'git stash常用命令', link: '/tools/git/git stash的用法总结' },
       {
-        text: "git pull与git fetch的区别",
-        link: "/tools/git/git pull 与git fetch区别",
+        text: 'git pull与git fetch的区别',
+        link: '/tools/git/git pull 与git fetch区别',
       },
-      { text: "git rebase", link: "/tools/git/git rebase" },
+      { text: 'git rebase', link: '/tools/git/git rebase' },
       {
-        text: "git 删除分支同步到git仓库",
-        link: "/tools/git/git 删除分支同步到git仓库",
+        text: 'git 删除分支同步到git仓库',
+        link: '/tools/git/git 删除分支同步到git仓库',
       },
-
+      {
+        text: 'git rebase合并commit',
+        link: '/tools/git/使用git rebase合并commit',
+      },
     ],
     collapsed: false,
   },
 
   // Build
   {
-    text: "打包构建",
+    text: '打包构建',
     items: [
       {
-        text: "什么是SourceMap",
-        link: "/tools/build/什么是SourceMap",
+        text: '什么是SourceMap',
+        link: '/tools/build/什么是SourceMap',
       },
     ],
     collapsed: false,
@@ -121,35 +124,35 @@ export const ToolBar = [
 // 算法相关
 export const AlgoliaBar = [
   {
-    text: "常见的前端算法问题",
+    text: '常见的前端算法问题',
     items: [
       {
-        text: "首位不重复字符索引",
-        link: "/algorithm/首位不重复字符索引",
+        text: '首位不重复字符索引',
+        link: '/algorithm/首位不重复字符索引',
       },
       {
-        text: "计数器",
-        link: "/algorithm/计数器",
+        text: '计数器',
+        link: '/algorithm/计数器',
       },
       {
-        text: "合并两个有序数组",
-        link: "/algorithm/合并两个有序数组",
+        text: '合并两个有序数组',
+        link: '/algorithm/合并两个有序数组',
       },
       {
-        text: "两数之和",
-        link: "/algorithm/两数之和",
+        text: '两数之和',
+        link: '/algorithm/两数之和',
       },
       {
-        text: "三数之和",
-        link: "/algorithm/三数之和",
+        text: '三数之和',
+        link: '/algorithm/三数之和',
       },
       {
-        text: "搜索插入位置",
-        link: "/algorithm/搜索插入位置",
+        text: '搜索插入位置',
+        link: '/algorithm/搜索插入位置',
       },
       {
-        text: "计算中心下标索引",
-        link: "/algorithm/计算中心下标索引",
+        text: '计算中心下标索引',
+        link: '/algorithm/计算中心下标索引',
       },
     ],
     collapsed: false,
@@ -162,8 +165,8 @@ export const structureBar = [
     text: '数据结构',
     items: [
       {
-        text: "链表",
-        link: "/structure/链表",
+        text: '链表',
+        link: '/structure/链表',
       }
     ],
     collapsed: false,

@@ -26,13 +26,13 @@ export default defineConfig({
   head,
 
   lastUpdated: false,  //上次更新时间
-  cleanUrls: true,
-
+  cleanUrls: true,  //去除.html后缀
   /* markdown 配置 */
   markdown: {
-    lineNumbers: true
+    lineNumbers: false,
+    // math: true,
+    theme: 'material-theme-palenight',
   },
-
   /* 主题配置 */
   themeConfig: {
     i18nRouting: false,
