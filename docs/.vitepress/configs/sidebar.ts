@@ -111,6 +111,11 @@ export const ToolBar = [
         text: '什么是SourceMap',
         link: '/tools/build/什么是SourceMap',
       },
+      {
+        text: '什么是AST',
+        link: '/tools/build/什么是AST',
+      },
+      
     ],
     collapsed: false,
   },

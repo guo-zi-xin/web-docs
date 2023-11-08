@@ -1,17 +1,16 @@
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'
-import { defineConfig, type DefaultTheme, PageData } from 'vitepress'
+import { PageData, defineConfig } from 'vitepress'
 
 import {
-  head,
-  nav,
-  guideBar,
-  ToolBar,
   AlgoliaBar,
   NativeBar,
+  ToolBar,
+  guideBar,
+  head,
+  nav,
   structureBar,
-  // algolia 
 } from './configs'
 
 const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
