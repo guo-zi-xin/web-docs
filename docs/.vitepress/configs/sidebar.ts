@@ -154,6 +154,14 @@ export const AlgoliaBar = [
         text: '计算中心下标索引',
         link: '/algorithm/计算中心下标索引',
       },
+      {
+        text: '移除元素',
+        link: '/algorithm/移除元素',
+      },
+      {
+        text: '删除有序数组中的重复项',
+        link: '/algorithm/删除有序数组中的重复项',
+      },
     ],
     collapsed: false,
   },
