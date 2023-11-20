@@ -14,6 +14,10 @@ export const nav: DefaultTheme.Config['nav'] = [
         text: '工具',
         link: '/tools/git/index',
       },
+      {
+        text: '框架',
+        link: '/frame/vue/index',
+      },
     ]
   },
   {

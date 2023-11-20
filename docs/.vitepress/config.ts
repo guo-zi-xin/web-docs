@@ -4,13 +4,14 @@ import { SitemapStream } from 'sitemap'
 import { PageData, defineConfig } from 'vitepress'
 
 import {
-  AlgoliaBar,
-  NativeBar,
-  ToolBar,
-  guideBar,
-  head,
   nav,
-  structureBar,
+  head,
+  AlgorithmBar,
+  NativeBar,
+  ToolsBar,
+  GuideBar,
+  StructureBar,
+  FrameBar,
 } from './configs'
 
 const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
@@ -39,11 +40,12 @@ export default defineConfig({
     logo: '/image/logo.jpg',
     nav,
     sidebar: {
-      '/guide/': guideBar,
+      '/guide/': GuideBar,
       '/native/': NativeBar,
-      '/tools/': ToolBar,
-      '/algorithm/': AlgoliaBar,
-      '/structure/': structureBar,
+      '/tools/': ToolsBar,
+      '/algorithm/': AlgorithmBar,
+      '/structure/': StructureBar,
+      '/frame/': FrameBar
     },
     /* 右侧大纲配置 */
     outline: {

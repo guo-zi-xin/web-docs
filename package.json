@@ -25,7 +25,7 @@
     "prettier": "^2.8.8",
     "sass": "^1.69.5",
     "sitemap": "^7.1.1",
-    "vitepress": "1.0.0-rc.24",
+    "vitepress": "1.0.0-rc.29",
     "vue": "^3.3.7"
   },
   "dependencies": {
