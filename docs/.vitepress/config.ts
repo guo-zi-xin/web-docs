@@ -1,7 +1,7 @@
 import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'
-import { PageData, defineConfig } from 'vitepress'
+import { PageData, defineConfig, } from 'vitepress'
 
 import {
   nav,
@@ -18,7 +18,8 @@ const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
 
 export default defineConfig({
   outDir: '../dist',
-  base: process.env.APP_BASE_PATH || '/web-docs/',
+  base: process.env.APP_BASE_PATH || '/',
+  // base: process.env.APP_BASE_PATH || /web-docs/
 
   lang: 'zh-CN',
   title: '我的胃来食',
@@ -30,7 +31,7 @@ export default defineConfig({
   /* markdown 配置 */
   markdown: {
     lineNumbers: false,
-    // math: true,
+    // math: true, //默认不解析
     theme: 'material-theme-palenight',
   },
   /* 主题配置 */
@@ -88,5 +89,5 @@ export default defineConfig({
     links.forEach((link) => sitemap.write(link))
     sitemap.end()
     await new Promise((r) => writeStream.on('finish', r))
-  }
+  },
 })

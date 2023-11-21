@@ -31,6 +31,9 @@ devDependencies:
   lint-staged:
     specifier: ^13.3.0
     version: 13.3.0
+  medium-zoom:
+    specifier: ^1.1.0
+    version: 1.1.0
   prettier:
     specifier: ^2.8.8
     version: 2.8.8
@@ -1448,6 +1451,10 @@ packages:
 
   /mdurl@1.0.1:
     resolution: {integrity: sha512-/sKlQJCBYVY9Ers9hqzKou4H6V5UWc/M59TH2dvkt+84itfnq7uFOMLpOiOS4ujvHP4etln18fmIxA5R5fll0g==}
+    dev: true
+
+  /medium-zoom@1.1.0:
+    resolution: {integrity: sha512-ewyDsp7k4InCUp3jRmwHBRFGyjBimKps/AJLjRSox+2q/2H4p/PNpQf+pwONWlJiOudkBXtbdmVbFjqyybfTmQ==}
     dev: true
 
   /mensch@0.3.4:

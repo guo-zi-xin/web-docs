@@ -221,10 +221,8 @@ Unmerged paths:
 
 ```shell
 func NewFunc() {
-<<<<<<< HEAD
-=======
-    fmt.Println("add new func")
->>>>>>> feature
+    // [!code --]
+    fmt.Println("add new func")  // [!code ++]
 }
 
 ```
@@ -321,10 +319,8 @@ To abort and get back to the state before "git rebase", run "git rebase --abort"
 
 ```shell
 func NewFunc() {
-<<<<<<< HEAD
-=======
-    fmt.Println("add new func")
->>>>>>> add new func
+    // [!code --]
+    fmt.Println("add new func")  // [!code ++]
 }
 
 ```
