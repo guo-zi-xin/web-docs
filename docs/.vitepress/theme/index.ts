@@ -57,7 +57,6 @@ if (typeof window !== 'undefined') {
 
 // Speed up the rainbow animation on home page
 function updateHomePageStyle(value: boolean) {
-  console.log(value, homePageStyle)
   if (value) {
     if (homePageStyle) return
 
