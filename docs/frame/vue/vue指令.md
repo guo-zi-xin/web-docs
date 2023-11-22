@@ -92,17 +92,19 @@
 
 ![常见vue指令](/image/vue基本指令.png)
 
+### **`v-show`/`v-if`**
+
 **`v-show`与 `v-if`的区别**
 
 - `v-if`
 
- `v-if`是‘真实’的条件渲染， 因为他确保了在切换时， 条件区块内的事件监听和子组件都会被销毁与重建。
+  `v-if`是‘真实’的条件渲染， 因为他确保了在切换时， 条件区块内的事件监听和子组件都会被销毁与重建。
 
- `v-if`是**惰性**的， 如果初次渲染时条件值为**false**， 那么它不会做任何事，条件区块只有当条件首次变为true才会被渲染
+  `v-if`是**惰性**的， 如果初次渲染时条件值为**false**， 那么它不会做任何事，条件区块只有当条件首次变为true才会被渲染
 
-  是基于表达式的真假性，来条件性地渲染元素或者模版片段。
-  
-  当`v-if`元素被触发， 元素及其所包含的指令/组件都会销毁或重构， 如果初始条件是假， 那么其内部的内容根本不会被渲染。
+    是基于表达式的真假性，来条件性地渲染元素或者模版片段。
+
+    当`v-if`元素被触发， 元素及其所包含的指令/组件都会销毁或重构， 如果初始条件是假， 那么其内部的内容根本不会被渲染。
 
 - `v-show`
 
@@ -112,11 +114,11 @@
 
   `v-show` 通过设置内联样式的`display`CSS属性来触发工作， 当元素可见时将使用初始的`display`的值。
 
-  ::: warning 总结
-    `v-if`有更高的切换开销，而`v-show`有更高的初始渲染开销。 因此， 如果需要频繁的切换，则使用`v-show`较好； 如果在运行时绑定条件很少改变，则`v-if`更合适。
-  :::
+::: warning 总结
+  `v-if`有更高的切换开销，而`v-show`有更高的初始渲染开销。 因此， 如果需要频繁的切换，则使用`v-show`较好； 如果在运行时绑定条件很少改变，则`v-if`更合适。
+:::
 
-**`v-for`**
+### **`v-for`**
 
   基于原始数据多次渲染元素或模板块。
 
@@ -125,24 +127,241 @@
 指令值必须使用特殊语法`alias in expression`为正在迭代的元素提供一个别名：
 
 ```vue
-  <div v-for="item in items">{{item.text}}</div>
-
+<div v-for="item in items">{{item.text}}</div>
 ```
 
 或者 也可以为索引指定别名（如果是对象， 则是键值）:
 
 ```vue
-  <div v-for="(item, index) in items"></div>
-  <div v-for="(value, key) in object"></div>
-  <div v-for="(value, name, index) in object"></div>
+<div v-for="(item, index) in items"></div>
+<div v-for="(value, key) in object"></div>
+<div v-for="(value, name, index) in object"></div>
 ```
 
 `v-for`的默认方式是尝试就地更新元素而不移动他们，要强制其重新排序元素，则需要使用特殊attribute `key`来提供一个排序提示：
 
 ```vue
-  <div v-for="item in items" :key="item.id">{{item.text}}</div>
+<div v-for="item in items" :key="item.id">{{item.text}}</div>
 ```
 
-::: warning `v-for`与`v-if`优先级
-  当`v-for`与`v-if`同时使用时， `v-if`比 `v-for`的优先级更高。 并且不推荐在同一元素上使用这两个指令， 因为同时使用时会抛出一个错误
+::: danger `v-for`与`v-if`优先级
+  当`v-for`与`v-if`同时使用时， `v-if`比 `v-for`的优先级更高。 并且不推荐在同一元素上使用这两个指令， 因为同时使用时会抛出一个错误：
+
+  ```vue
+  <template>
+    <ul>
+      <li v-for="user in users" v-if="user.isActive" :key="user.id">
+        {{ user.name }}
+      </li>
+    </ul>
+  </template>
+  ```
+
+  上述示例中，会抛出一个错误， 因为`v-if`会先被执行， 而`v-if`的条件表达式中的`user`此时不存在。
+
+  这个问题可以通过迭代计算属性来解决：
+
+  ```vue
+    <script lang="ts" setup>
+      onComputed(()=> {
+        activeUsers() {
+          return this.users.filter(user => user.isActive)
+        }
+      })
+    </script>
+    <template>
+      <ul>
+        <li v-for="user in activeUsers" :key="user.id">
+          {{ user.name }}
+        </li>
+      </ul>
+    </template>
+  ```
+
+  或者使用`<template>`标签添加`v-for`来包装`<li>`元素：
+
+  ```vue
+  <template>
+    <ul>
+      <template v-for="user in users" :key="user.id">
+        <li v-if="user.isActive">
+          {{ user.name }}
+        </li>
+      </template>
+    </ul>
+  </template>
+  ```
+
 :::
+
+### **`v-bind`**
+
+动态地绑定一个或多个attribute， 也可以是组件的prop参数。
+
+- 修饰符
+
+  - `.camel` 将短横线命名的attribute变更为驼峰式命名
+  - `.prop` 强制绑定为DOM property
+  - `.attr` 强制绑定为DOM Attribute
+
+- 用途
+  当用于绑定`class`或`style`attribute,`v-bind`支持额外的值类型， 如数组或者对象。
+
+  在处理绑定时， Vue会默认利用`in`操作服来检查该元素上是否定义了和绑定了key同名的DOM property。 如果存在同名的 property， 则Vue会将它作为DOM property的赋值， 而不是作为attribute设置。
+
+  当用于组件props绑定时， 所绑定的props必须在子组件中已被正确声明。
+
+  当不带参数使用时， 可以用于绑定一个包含了多个 attribute名称-绑定值 对的对象。
+
+  ```vue
+    <template>
+    <!-- 绑定 attribute -->
+    <img v-bind:src="imageSrc" />
+
+    <!-- 动态 attribute 名 -->
+    <button v-bind:[key]="value"></button>
+
+    <!-- 缩写 -->
+    <img :src="imageSrc" />
+
+    <!-- 缩写形式的动态 attribute 名 -->
+    <button :[key]="value"></button>
+
+    <!-- 内联字符串拼接 -->
+    <img :src="'/path/to/images/' + fileName" />
+
+    <!-- class 绑定 -->
+    <div :class="{ red: isRed }"></div>
+    <div :class="[classA, classB]"></div>
+    <div :class="[classA, { classB: isB, classC: isC }]"></div>
+
+    <!-- style 绑定 -->
+    <div :style="{ fontSize: size + 'px' }"></div>
+    <div :style="[styleObjectA, styleObjectB]"></div>
+
+    <!-- 绑定对象形式的 attribute -->
+    <div v-bind="{ id: someProp, 'other-attr': otherProp }"></div>
+
+    <!-- prop 绑定。“prop” 必须在子组件中已声明。 -->
+    <MyComponent :prop="someThing" />
+
+    <!-- 传递子父组件共有的 prop -->
+    <MyComponent v-bind="$props" />
+
+    <!-- XLink -->
+    <svg><a :xlink:special="foo"></a></svg>
+  </template>
+  ```
+
+  `.prop`修饰符也有专门缩写：
+
+  ```vue
+  <div :someProperty.prop="someObject"></div>
+
+  <!-- 等同于 -->
+  <div .someProperty="someObject"></div>
+  ```
+
+  当在 DOM 内模板使用 `.camel` 修饰符，可以驼峰化`v-bind` attribute 的名称，例如 SVG `viewBox` attribute：
+
+  ```vue
+  <svg :view-box.camel="viewBox"></svg>
+  ```
+
+### **`v-model`**
+
+  用于在表单控件或者组件上创建双向数据绑定.
+
+- 修饰符
+
+  - `.lazy` 监听`change`事件而不是`input`
+  - `.number`将输入合法字符串转为数字
+  - `.trim` 移除输入内容两端空格
+
+  ```vue
+  <template>
+    <input v-model="message" placeholder="编辑我">
+    <p>消息是: {{ message }}</p>
+  </template>
+
+  <script lang="ts" setup>
+    const message = ref('')
+  </script>
+  ```
+
+### **`v-on`**
+
+  指令用于监听 DOM 事件。
+
+- 修饰符
+
+  - `.stop` 调用 `event.stopPropagation()`
+  - `.prevent` 调用 `evemt.preventDefault()`
+  - `.capture` 在捕获模式中调用事件监听器
+  - `.self` 只有事件从元素本身发出菜触发处理函数
+  - `.{keyAlias}` 只在某些案件下触发处理函数
+  - `.once` 最多触发一次处理函数
+  - `.left` 只在鼠标左键事件触发处理函数
+  - `.right` 只在鼠标右键事件触发处理函数
+  - `.middle` 只在鼠标中键事件触发处理函数
+  - `.passive` 通过 `{passive: true}`附加一个DOM事件
+
+  事件类型由参数来指定。表达式可以是一个方法名， 一个内联升明，如果有修饰符可以省略
+
+  当用于普通元素， 只监听原生DOM事件， 当用于自定义元素组件， 则监听子组件出发的自定义事件
+
+  当监听原生DOM事件时， 方法接收原生事件作为唯一参数。如果使用内联声明， 生命可以访问一个特殊的`$event`变量：`v-on:click="handle('ok', $event)"`。
+
+  `v-on`还支持绑定不带参数的事件/监听器的对象。 请注意，**当使用对象语法时， 不支持任何修饰符**。
+
+```vue
+<template>
+  <!-- 方法处理函数 -->
+  <button v-on:click="doThis"></button>
+
+  <!-- 动态事件 -->
+  <button v-on:[event]="doThis"></button>
+
+  <!-- 内联声明 -->
+  <button v-on:click="doThat('hello', $event)"></button>
+
+  <!-- 缩写 -->
+  <button @click="doThis"></button>
+
+  <!-- 使用缩写的动态事件 -->
+  <button @[event]="doThis"></button>
+
+  <!-- 停止传播 -->
+  <button @click.stop="doThis"></button>
+
+  <!-- 阻止默认事件 -->
+  <button @click.prevent="doThis"></button>
+
+  <!-- 不带表达式地阻止默认事件 -->
+  <form @submit.prevent></form>
+
+  <!-- 链式调用修饰符 -->
+  <button @click.stop.prevent="doThis"></button>
+
+  <!-- 按键用于 keyAlias 修饰符-->
+  <input @keyup.enter="onEnter" />
+
+  <!-- 点击事件将最多触发一次 -->
+  <button v-on:click.once="doThis"></button>
+
+  <!-- 对象语法 -->
+  <button v-on="{ mousedown: doThis, mouseup: doThat }"></button>
+</template>
+
+```
+
+监听子组件的自定义事件（当子组件的‘my-event’）被触发，处理函数将被调用：
+
+```vue
+<template>
+  <MyComponent @my-event="handleThis" />
+
+  <!-- 内联声明 -->
+  <MyComponent @my-event="handleThis(123, $event)" />
+</template>
+```
