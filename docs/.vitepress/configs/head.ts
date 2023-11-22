@@ -16,9 +16,4 @@ export const head: HeadConfig[] = [
     'script',
     { src: isDevelopment ? '' : 'https://hm.baidu.com/hm.js?8092fab2f2adfc7938ba5b8885aef5b4' }
   ],
-  ['script', {}, `
-  if (typeof window === 'undefined') {
-    globalThis.window = {}
-  }
-`],
 ]

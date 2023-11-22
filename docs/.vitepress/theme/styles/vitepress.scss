@@ -1,0 +1,25 @@
+/***** vitepress 样式优化 ******/
+
+
+/* 大屏 */
+@media (min-width: 1440px) {
+  .VPDoc.has-aside .content-container.content-container {
+    max-width: 100%;
+  }
+}
+
+
+@media (max-width: 960px) {
+  .VPNav {
+    .VPNavBarMenuLink,
+    .VPNavBarMenuGroup .button {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+}
+
+/* 代码块标题，跟 h6 一样 */
+.custom-block .custom-block-title {
+  font-size: 16px;
+}

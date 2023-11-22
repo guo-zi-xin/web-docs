@@ -1,8 +1,0 @@
-/* 设置 medium-zoom 的 z-index 值为 9999 */
-.medium-zoom--opened .medium-zoom-overlay {
-  z-index: 9998 !important;
-}
-
-.medium-zoom-image--opened {
-  z-index: 9999 !important;
-}
