@@ -28,6 +28,7 @@ export const NativeBar = [
       { text: "css跳动方块", link: "/native/css/css跳动方块" },
       { text: "box-shadow一些示例", link: "/native/css/css-box-shdow" },
       { text: "3D数字动画", link: "/native/css/3D数字动画" },
+      { text: "炫目动画", link: "/native/css/炫目动画" },
     ],
     collapsed: false,
   },
