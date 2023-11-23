@@ -19,6 +19,7 @@
     "@mdit-vue/shared": "^0.12.1",
     "@types/node": "^18.18.8",
     "cross-env": "^7.0.3",
+    "flexsearch": "^0.7.31",
     "globby": "^13.2.2",
     "husky": "^8.0.3",
     "lint-staged": "^13.3.0",
@@ -27,6 +28,7 @@
     "sass": "^1.69.5",
     "sitemap": "^7.1.1",
     "vitepress": "1.0.0-rc.29",
+    "vitepress-plugin-search": "1.0.4-alpha.20",
     "vue": "^3.3.7"
   },
   "dependencies": {

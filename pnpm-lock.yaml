@@ -22,6 +22,9 @@ devDependencies:
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
+  flexsearch:
+    specifier: ^0.7.31
+    version: 0.7.31
   globby:
     specifier: ^13.2.2
     version: 13.2.2
@@ -46,6 +49,9 @@ devDependencies:
   vitepress:
     specifier: 1.0.0-rc.29
     version: 1.0.0-rc.29(@algolia/client-search@4.20.0)(@types/node@18.18.8)(markdown-it-mathjax3@4.3.2)(sass@1.69.5)(search-insights@2.11.0)
+  vitepress-plugin-search:
+    specifier: 1.0.4-alpha.20
+    version: 1.0.4-alpha.20(flexsearch@0.7.31)(vitepress@1.0.0-rc.29)(vue@3.3.7)
   vue:
     specifier: ^3.3.7
     version: 3.3.7
@@ -595,8 +601,19 @@ packages:
     dev: true
     optional: true
 
+  /@types/flexsearch@0.7.6:
+    resolution: {integrity: sha512-H5IXcRn96/gaDmo+rDl2aJuIJsob8dgOXDqf8K0t8rWZd1AFNaaspmRsElESiU+EWE33qfbFPgI0OC/B1g9FCA==}
+    dev: true
+
   /@types/linkify-it@3.0.4:
     resolution: {integrity: sha512-hPpIeeHb/2UuCw06kSNAOVWgehBLXEo0/fUs0mw3W2qhqX89PI2yvok83MnuctYGCPrabGIoi0fFso4DQ+sNUQ==}
+    dev: true
+
+  /@types/markdown-it@12.2.3:
+    resolution: {integrity: sha512-GKMHFfv3458yYy+v/N8gjufHO6MSZKCOXpZc5GXIWWy8uldwfmPn98vp81gZ5f9SVw8YYBctgfJ22a2d7AOMeQ==}
+    dependencies:
+      '@types/linkify-it': 3.0.4
+      '@types/mdurl': 1.0.4
     dev: true
 
   /@types/markdown-it@13.0.5:
@@ -1224,6 +1241,10 @@ packages:
       to-regex-range: 5.0.1
     dev: true
 
+  /flexsearch@0.7.31:
+    resolution: {integrity: sha512-XGozTsMPYkm+6b5QL3Z9wQcJjNYxp0CYn3U1gO7dwD6PAqU1SVWZxI9CCg3z+ml3YfqdPnrBehaBrnH2AGKbNA==}
+    dev: true
+
   /focus-trap@7.5.4:
     resolution: {integrity: sha512-N7kHdlgsO/v+iD/dMoJKtsSqs5Dz/dXZVebRgJw23LDk+jMi/974zyiOYDziY2JPp8xivq9BmUGwIJMiuSBi7w==}
     dependencies:
@@ -1248,6 +1269,10 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       is-glob: 4.0.3
+    dev: true
+
+  /glob-to-regexp@0.4.1:
+    resolution: {integrity: sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==}
     dev: true
 
   /globby@13.2.2:
@@ -1853,6 +1878,23 @@ packages:
       sass: 1.69.5
     optionalDependencies:
       fsevents: 2.3.3
+    dev: true
+
+  /vitepress-plugin-search@1.0.4-alpha.20(flexsearch@0.7.31)(vitepress@1.0.0-rc.29)(vue@3.3.7):
+    resolution: {integrity: sha512-zG+ev9pw1Mg7htABlFCNXb8XwnKN+qfTKw+vU0Ers6RIrABx+45EAAFBoaL1mEpl1FRFn1o/dQ7F4b8GP6HdGQ==}
+    engines: {node: ^14.13.1 || ^16.7.0 || >=18}
+    peerDependencies:
+      flexsearch: ^0.7.31
+      vitepress: ^1.0.0-alpha.65
+      vue: '3'
+    dependencies:
+      '@types/flexsearch': 0.7.6
+      '@types/markdown-it': 12.2.3
+      flexsearch: 0.7.31
+      glob-to-regexp: 0.4.1
+      markdown-it: 13.0.2
+      vitepress: 1.0.0-rc.29(@algolia/client-search@4.20.0)(@types/node@18.18.8)(markdown-it-mathjax3@4.3.2)(sass@1.69.5)(search-insights@2.11.0)
+      vue: 3.3.7
     dev: true
 
   /vitepress@1.0.0-rc.29(@algolia/client-search@4.20.0)(@types/node@18.18.8)(markdown-it-mathjax3@4.3.2)(sass@1.69.5)(search-insights@2.11.0):
