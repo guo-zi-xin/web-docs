@@ -1,6 +1,5 @@
 # Cookie (document.cookie)
 
----
 `cookie`是直接存储在浏览器的一小串数据， 它们是`HTTP`协议的一部分，由 [RFC 6265][1] 规范定义。
 
 `Cookie` 通常是由Web服务器使用响应`Set-Cookie`HTTP-header设置的。然后浏览器使用`Cookie` HTTP-header 将它们自动添加到（几乎）每个对相同域的请求中。

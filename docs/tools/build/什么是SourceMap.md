@@ -1,6 +1,6 @@
 # SourceMap(源映射) 基本信息
 
-## 什么是Source Map
+### 什么是Source Map
 
 > Source Map 是一个信息文件，里面储存着位置信息。也就是说，转换后代码的每一个位置所对应的转换前的位置。有了它，出错的时候，开发着工具将直接显示原始代码，而不是转换后的代码。
 >
@@ -12,17 +12,17 @@
   - 多个文件合并， 减少HTTP请求数
   - 其他文件编译成JavasSript
 
-## Source Map功能
+### Source Map功能
 
 js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器中运行， 随着持续开发所带来的代码量增多，实际运行的代码与开发环境的代码不一致，导致进行debug越来越困难， Source Map就是为了解决这个问题才出现的。
 
-## 浏览器中如何使用Source Map
+### 浏览器中如何使用Source Map
 
 - 怎么在浏览器中使用sourceMap，chrome浏览器中默认是开启了soruce Map功能。如果被关闭可以手动开启，下图所示：
 
 ![浏览器中如何设置Source Map](/image/chrome-source-map-settings.jpeg "浏览器中如何设置Source Map")
 
-## Source Map 关键字
+### Source Map 关键字
 
 对于SourceMap而言，我们最常见的，莫过于在`webpack`的配置项devTools中进行使用, 差不多有二十来种, 但归根结底 是`eval`,`source-map`,`cheap`,`module`,`inline`,这五种关键字的组合
 
@@ -62,7 +62,7 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
 
 - `inline` 将.map经过base64编码作为DataURI嵌入，不单独生成.map文件（这个配置项比较少见）
 
-### 各个关键字处理示例
+#### 各个关键字处理示例
 
   ```javascript
   let a = 1, b
@@ -123,7 +123,7 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
   |:--|:--|:--|
   |module|会保留loader处理前后文件信息的映射|解决了通过`cheap`关键字导致的无法确定loader处理前源代码的问题|
 
-- #### `cheap`关键字示例
+- ##### `cheap`关键字示例
 
     ```javascript
     // # sum页面
@@ -142,7 +142,7 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
     但对于`source-map`而言， 则会定位到精准代码
     ![source-map](/image/cheap-source-map.jpeg "source-map")
 
-### 常见配置项的对比
+#### 常见配置项的对比
 
 |devtool|构建速度|重新构建速度|生产环境|品质(quality)|
 |:--|:--|:--|:--|:--|
@@ -167,7 +167,7 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
 [^5]: `o 中等`
 [^6]: `- 比较慢`
 
-### 在项目中的使用
+#### 在项目中的使用
 
 - **开发环境**
 

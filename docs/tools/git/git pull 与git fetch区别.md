@@ -1,6 +1,6 @@
 # git pull 与 git fetch区别
 
-## 1、简单概括
+### 1、简单概括
 
 先用一张图来理一下`git fetch`和`git pull`的概念：
 
@@ -14,7 +14,7 @@
 
 下面我们来详细了解一下`git fetch` 和`git pull` 的用法。
 
-## 2、分支的概念
+### 2、分支的概念
 
 在介绍两种方法之前，我们需要先了解一下分支的概念：
 分支是用来标记特定代码的提交，每一个分支通过SHA1sum值来标识，所以对分支的操作是轻量级的，你改变的仅仅是SHA1sum值。
@@ -99,7 +99,7 @@ git branch -m <oldbranch> <newbranch> //重命名本地分支
 --all：所有
 ```
 
-## 3、git fetch 用法
+### 3、git fetch 用法
 
 git fetch 命令：
 
@@ -132,7 +132,7 @@ git log -p FETCH_HEAD
 
 我们可以通过这些信息来判断是否产生冲突，以确定是否将更新merge到当前分支。
 
-## 4、git pull 用法
+### 4、git pull 用法
 
 前面提到，`git pull` 的过程可以理解为：
 

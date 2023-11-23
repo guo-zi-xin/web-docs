@@ -1,9 +1,12 @@
 import mediumZoom from 'medium-zoom'
 import DefaultTheme from 'vitepress/theme'
-import { useData } from 'vitepress'
+import { inBrowser, useData, useRoute } from 'vitepress'
 import type { EnhanceAppContext, Theme } from 'vitepress'
-import { h, onMounted, watch } from 'vue'
+import { h, onMounted, watch, nextTick } from 'vue'
+import busuanzi from 'busuanzi.pure.js'
+
 import './styles/index.scss'
+import 'uno.css'
 
 let homePageStyle: HTMLStyleElement | undefined
 
@@ -21,6 +24,12 @@ const theme: Theme = {
         { immediate: true },
       )
     }
+    if (inBrowser) {
+      router.onAfterRouteChanged = (to) => {
+        // 卜算子插件
+        busuanzi.fetch()
+      }
+    }
   },
   Layout: () => {
     const props: Record<string, any> = {}
@@ -35,12 +44,17 @@ const theme: Theme = {
     return h(DefaultTheme.Layout, props)
   },
   setup() {
+    const route = useRoute()
     const initZoom = () => {
       mediumZoom('.main img', { background: 'var(--vp-c-bg)' }) // Should there be a new?
     }
     onMounted(() => {
       initZoom()
     })
+    watch(
+      () => route.path,
+      () => nextTick(() => initZoom()),
+    )
   },
 }
 

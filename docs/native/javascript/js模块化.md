@@ -1,7 +1,5 @@
 # JS模块化
 
----
-
 **JavaScript的 `ESM` `AMD` `UMD` `CJS`**
 
 - **`ESM`**

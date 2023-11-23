@@ -1,7 +1,5 @@
 # 获取当前页面URL信息
 
----
-
  **假设当前页完整地址是：`https://www.example.com:8080/path/to/page.html?id=2&age=18`**
 
 - 获取当前窗口的Url

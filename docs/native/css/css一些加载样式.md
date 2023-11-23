@@ -20,7 +20,7 @@ import {
   } from './components'
 </script>
 
-## 动画效果一
+### 动画效果一
 
 <Spinner/>
 
@@ -106,7 +106,7 @@ import {
 }
 ```
 
-## 动画效果二
+### 动画效果二
 
 <TurnOverCSS/>
 
@@ -149,7 +149,7 @@ import {
 }
 ```
 
-## 动画效果三
+### 动画效果三
 
 <ScaleCSS/>
 
@@ -208,7 +208,7 @@ import {
 }
 ```
 
-## 动画效果四
+### 动画效果四
 
 <CubeRotation/>
 
@@ -275,7 +275,7 @@ import {
 }
 ```
 
-## 动画效果五
+### 动画效果五
 
 <DotRoate/>
 
@@ -341,7 +341,7 @@ import {
 }
 ```
 
-## 动画效果六
+### 动画效果六
 
 <ScaleLoading/>
 
@@ -405,7 +405,7 @@ import {
 
 ```
 
-## 动画效果七
+### 动画效果七
 
 <GradientRotate/>
 
@@ -449,7 +449,7 @@ import {
 }
 ```
 
-## 动画效果八
+### 动画效果八
 
 <CircleLoading/>
 
@@ -593,7 +593,7 @@ import {
 }
 ```
 
-## 动画样式九
+### 动画样式九
 
 <Diverge/>
 
@@ -712,7 +712,7 @@ const animationList:string[] = [
 }
 ```
 
-## 动画效果十
+### 动画效果十
 
 <RotationContraction/>
 
@@ -816,7 +816,7 @@ const animationList:string[] = [
 }
 ```
 
-## 动画效果11 旋转收缩
+### 动画效果11 旋转收缩
 
 <Contraction/>
 
@@ -920,7 +920,7 @@ const animationList: string[] = [
 }
 ```
 
-## 动画效果12 动态位置
+### 动画效果12 动态位置
 
 <Moving/>
 
@@ -1061,7 +1061,7 @@ const animationList: string[] = [
 }
 ```
 
-## 动画效果13
+### 动画效果13
 
 <RiceRotate/>
 
@@ -1164,7 +1164,7 @@ const animationList: string[] = [
 }
 ```
 
-## 动画效果14
+### 动画效果14
 
 <MusicDance/>
 
@@ -1240,7 +1240,7 @@ const animationList: string[] = [...Array(10).keys()].map((item: number) => {
 }
 ```
 
-## 动画效果15
+### 动画效果15
 
 <TriangleBloom/>
 

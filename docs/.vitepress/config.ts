@@ -2,8 +2,8 @@ import { createWriteStream } from 'node:fs'
 import { resolve } from 'node:path'
 import { SitemapStream } from 'sitemap'
 import { PageData, defineConfig, } from 'vitepress'
-import { SearchPlugin } from "vitepress-plugin-search";
-import flexSearchIndexOptions from "flexsearch";
+
+
 import algolia from './algolia';
 
 import {
@@ -16,26 +16,17 @@ import {
   StructureBar,
   FrameBar,
 } from './configs'
-var options = {
-  ...flexSearchIndexOptions,
-  previewLength: 62, // 搜索结果预览长度
-  buttonLabel: "搜索",
-  placeholder: "搜索关键词",
-  allow: [],
-  ignore: [],
-};
 const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
 
 export default defineConfig({
   outDir: '../dist',
   base: process.env.APP_BASE_PATH || '/web-docs/',
-
   lang: 'zh-CN',
   title: '我的胃来食',
   description: '一些日常',
   head,
 
-  lastUpdated: false,  //上次更新时间
+  lastUpdated: true,  //上次更新时间
   cleanUrls: true,  //去除.html后缀
   /* markdown 配置 */
   markdown: {
@@ -99,5 +90,4 @@ export default defineConfig({
     sitemap.end()
     await new Promise((r) => writeStream.on('finish', r))
   },
-  vite: { plugins: [SearchPlugin(options)] }
 })

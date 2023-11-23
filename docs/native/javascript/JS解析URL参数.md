@@ -1,7 +1,5 @@
 # JS解析URL参数
 
----
-
 - 方法一
 
 ```javascript

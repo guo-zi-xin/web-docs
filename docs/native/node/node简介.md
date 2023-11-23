@@ -1,7 +1,5 @@
 # Node 简介
 
----
-
 `Node.js` 是一个基于 `Chrome V8 引擎`的 [JavaScript](https://baike.baidu.com/item/JavaScript/321142) 运行环境。
 
 `Node` 是一个让 `JavaScript` 运行在[服务端](https://baike.baidu.com/item/%E6%9C%8D%E5%8A%A1%E7%AB%AF/6492316)的开发平台, 发布于2009年5月，由Ryan Dahl开发，实质是对`Chrome V8引擎`进行了封装。
