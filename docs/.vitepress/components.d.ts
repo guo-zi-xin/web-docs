@@ -17,6 +17,7 @@ declare module 'vue' {
     'Octicon:feedPerson16': typeof import('~icons/octicon/feed-person16')['default']
     'Ooui:clock': typeof import('~icons/ooui/clock')['default']
     PageInfo: typeof import('./theme/components/PageInfo.vue')['default']
+    'Ph:linkFill': typeof import('~icons/ph/link-fill')['default']
     'Ph:planetFill': typeof import('~icons/ph/planet-fill')['default']
     'RadixIcons:update': typeof import('~icons/radix-icons/update')['default']
     'SkillIcons:reactDark': typeof import('~icons/skill-icons/react-dark')['default']

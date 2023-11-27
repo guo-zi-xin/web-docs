@@ -39,7 +39,17 @@ export const ToolsBar = [
         text: '什么是AST',
         link: '/tools/build/什么是AST',
       },
-      
+    ],
+    collapsed: false,
+  },
+  // CSS
+  {
+    text: 'CSS工具🔧',
+    items: [
+      {
+        text: 'UnoCss',
+        link: '/tools/css/unocss',
+      },
     ],
     collapsed: false,
   },

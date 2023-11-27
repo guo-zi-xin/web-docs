@@ -15,7 +15,7 @@ const publishedTime = getDate(frontmatter.value?.date)
 if (frontmatter.value?.author)
   author.value = frontmatter.value?.author
 
-const lastUpdatedDate = computed(() => new Date(page.value.lastUpdated!))
+const lastUpdatedDate = computed(() => page.value.lastUpdated? new Date(page.value.lastUpdated) : new Date())
 const isoDatetime = computed(() => lastUpdatedDate.value.toISOString())
 const timeFormNow = getFromNow(isoDatetime.value)
 </script>

@@ -66,11 +66,10 @@ const component = computed(() => {
         <section class="flex group flex-col rounded-md p-4 gap-3 transition duration-500 cursor-pointer ">
           <span
             class="text-ellipsis w-[90%] whitespace-nowrap overflow-hidden dark:opacity-90 font-600 group-hover:text-[#06f]"
-          >{{
-            title }}</span>
+          >{{ title }}
+          </span>
           <div v-if="desc" class="opacity-75 font-500 text-sm">
-            {{ desc
-            }}
+            {{ desc }}
           </div>
           <div class="flex item-center justify-between">
             <div class="flex items-center gap-1 w-full max-w-[75%]">
@@ -89,14 +88,10 @@ const component = computed(() => {
               <skill-icons:stackoverflow-dark v-if="hrefSource === 'stackoverflow'" class="w-7 h-7" />
               <vscode-icons:file-type-bun v-if="hrefSource === 'bun'" class="w-7 h-7" />
               <icon-park:add-web v-if="hrefSource === 'web'" class="w-7 h-7" />
-              <span class="text-ellipsis w-full whitespace-nowrap overflow-hidden text-sm opacity-75 font-500">{{ href
-              }}</span>
+              <span class="text-ellipsis w-full whitespace-nowrap overflow-hidden text-sm opacity-75 font-500">
+                {{ href }}
+              </span>
             </div>
-            <!-- <div class="items-center gap-1 hidden sm:flex">
-              <span
-                class="text-ellipsis w-full whitespace-nowrap overflow-hidden text-sm font-500 opacity-50"
-              >chodocs.cn</span>
-            </div> -->
           </div>
         </section>
       </div>
