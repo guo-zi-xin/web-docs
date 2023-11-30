@@ -29,6 +29,8 @@ export const NativeBar = [
       { text: "box-shadow一些示例", link: "/native/css/css-box-shdow" },
       { text: "3D数字动画", link: "/native/css/3D数字动画" },
       { text: "炫目动画", link: "/native/css/炫目动画" },
+      { text: "css背景动画", link: "/native/css/css背景动画" },
+
     ],
     collapsed: false,
   },
