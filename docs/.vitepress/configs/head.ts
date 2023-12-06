@@ -9,9 +9,7 @@ export const head: HeadConfig[] = [
   ['meta', { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }],
   ['meta', { name: 'msapplication-TileColor', content: '#000000' }],
   ['meta', { name: 'msapplication-TileImage', content: '/favicon.ico' }],
-  ['meta', { name: 'baidu-site-verification', content: 'codeva-Whjnr38WFE' }],
-
-  ['link', { rel: 'icon', href: '/image/blog-logo.png', color: '#3eaf7c' }], // 需要被注入到当前页面的 HTML <head> 中的标签
+  ['link', { rel: 'icon', href: '/svg/blog-logo.svg', color: '#3eaf7c' }],
   ['link', { rel: 'stylesheet', href: '/styles/index.scss' }],
   ['link', { rel: 'apple-touch-icon', sizes: '120x120', href: '/image/blog-logo.png' }],
 ]
