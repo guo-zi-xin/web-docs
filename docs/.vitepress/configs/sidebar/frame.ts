@@ -11,7 +11,11 @@ export const FrameBar = [
       {
         text: 'NextTick',
         link: '/frame/vue/nextTick',
-      }
+      },
+      {
+        text: 'keepAlive',
+        link: '/frame/vue/keepAlive',
+      },
     ],
     collapsed: false,
   },

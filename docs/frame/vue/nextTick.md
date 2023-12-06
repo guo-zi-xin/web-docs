@@ -2,6 +2,10 @@
 
 NextTick 是一个用于在下次 DOM 更新循环结束之后执行回调函数的方法。其内部原理涉及到 `Vue.js` 的异步更新队列以及浏览器的事件循环机制。
 
+- 在 Vue2 中，nextTick 的实现原理基于浏览器的异步任务队列和微任务队列。Vue2 默认使用微任务，在没有原生 Promise 和 MutationObserver 的情况下才会改用 setTimeout。
+
+- 在 Vue3 中，nextTick 的实现原理基于 MutationObserver 和 Promise.resolve().then()。如果浏览器不支持原生 Promise，则使用 setTimeout 来模拟 Promise 的行为，并在回调函数执行前添加一个空的定时器来强制推迟执行。
+
 ### 异步任务队列
 
  浏览器中，每个宏任务结束后都会检查微任务队列， 如果有任务则依次执行，当所有微任务执行完成后，才会执行下一个宏任务。 因此可以通过将任务作为微任务添加到微任务队列中，来确保任务在所有宏任务执行完毕后立即执行
