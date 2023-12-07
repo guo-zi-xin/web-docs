@@ -53,4 +53,14 @@ export const ToolsBar = [
     ],
     collapsed: false,
   },
+  {
+    text: '图片工具🔧',
+    items: [
+      // {
+      //   text: '图片压缩工具',
+      //   link: '/tools/image/图片压缩工具',
+      // },
+    ],
+    collapsed: false,
+  },
 ]
