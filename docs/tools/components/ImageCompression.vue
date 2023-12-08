@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-const reader = new FileReader();
+// const reader = new FileReader();
+const reader = {} as any;
 const img = new Image();
 
 const imageWidth = ref<string>('') // 图片宽度

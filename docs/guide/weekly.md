@@ -1,0 +1,74 @@
+# 231204 ~ 231208
+
+## 23-12-06
+
+**设计一个函数让两个数字相加，但不得使用`+`或者其他运算符**
+
+```javascript
+输入 a = 1 b = 2
+输出 3
+```
+
+```typescript
+const getSum = (a:number, b:number):number => {
+ return [...Array(a), ...Array(b)].length
+}
+```
+
+- **如果是多个参数求和**
+
+```typescript
+
+const getSums = (...args:number[]):number => {
+  const arr = []
+  for (let k = 0; k < args.length; k++) {
+    arr.push(...Array(args[k]))
+  }
+  return arr.length
+}
+```
+
+## 23-12-08
+
+**`import` 和 `require` 区别**
+
+- 来源不同
+  - `import`/`export` 来源于ECM(ES6)
+  - `require`/`exports` 来源于`CommonJS`
+
+- 加载时机不同
+  - `import`/`export` 编译时加载
+  - `require`/`exports` 运行时加载
+
+- 输出不同
+  - `import`/`export` 输出的是值的引用，JS 引擎对脚本静态分析的时候，遇到模块加载命令`import`，就会生成一个只读引用。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。
+
+  - `require`/`exports` 输出的是对象的拷贝， 在引入的模块中的变化影响不到这个值.
+
+  若文件引用的模块值改变，require 引入的模块值不会改变，而 import 引入的模块值会改变。
+
+- 用法不同
+
+  - `require`/`exports`
+
+    ```javascript
+    const fs = require('fs')
+    // exports相当于是对 module.exports的引用  两者等价
+    exports.fs = fs
+    module.exports = fs
+    ```
+
+  - `import`/`export`
+
+    ```javascript
+    import {readFile} from 'fs' //从 fs 导入 readFile 模块
+    import {default as fs} from 'fs' //从 fs 中导入使用 export default 导出的模块
+    import * as fileSystem from 'fs' //从 fs 所有导出模块，引用对象名为 fileSystem
+    import {readFile as read} from 'fs' //从 fs 导入 readFile 模块，引用对象名为 read
+
+    export default fs
+    export const fs
+    export function readFile
+    export {readFile, read}
+    export * from 'fs'
+    ```
