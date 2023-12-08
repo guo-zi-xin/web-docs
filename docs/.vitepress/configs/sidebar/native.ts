@@ -23,6 +23,9 @@ export const NativeBar = [
         ],
         collapsed: false,
       },
+      {
+        text: 'setTimeout与setInterval', link: '/native/javascript/setTimeout与setInterval' 
+      },
     ],
     collapsed: false,
   },
