@@ -39,6 +39,11 @@ export const AlgorithmBar = [
         text: '删除有序数组中的重复项',
         link: '/algorithm/删除有序数组中的重复项',
       },
+      {
+        text: '寻找数组中最长驼峰',
+        link: '/algorithm/寻找数组中最长驼峰',
+      },
+      
     ],
     collapsed: false,
   },
