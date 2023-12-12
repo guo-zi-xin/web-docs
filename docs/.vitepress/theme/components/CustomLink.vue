@@ -13,34 +13,36 @@ interface ILink {
 
 const { href, title, tag = 'a', rel, target, desc } = defineProps<ILink>()
 
+const lowerHref = href.toLocaleLowerCase();
+
 const hrefSource = computed(() => {
-  if (/bilibili\.com/.test(href))
+  if (/bilibili\.com/.test(lowerHref))
     return 'bilibili'
-  if (/juejin\.cn/.test(href))
+  if (/juejin\.cn/.test(lowerHref))
     return 'juejin'
-  if (/mp\.weixin\.qq/.test(href))
+  if (/mp\.weixin\.qq/.test(lowerHref))
     return 'mpwx'
-  if (/weread\.qq\.com/.test(href))
+  if (/weread\.qq\.com/.test(lowerHref))
     return 'weread'
-  else if (/youtube\.com/.test(href))
+  else if (/youtube\.com/.test(lowerHref))
     return 'youtube'
-  else if (/github\.com/.test(href))
+  else if (/github\.com/.test(lowerHref))
     return 'github'
-  else if (/zsxq\.com/.test(href))
+  else if (/zsxq\.com/.test(lowerHref))
     return 'zsxq'
-  else if (/vercel/.test(href))
+  else if (/vercel/.test(lowerHref))
     return 'vercel'
-  else if (/next[-]?js/.test(href))
+  else if (/next[-]?js/.test(lowerHref))
     return 'nextjs'
-  else if (/typescript/.test(href))
+  else if (/typescript/.test(lowerHref))
     return 'typescript'
-  else if (/react[-]?query/.test(href))
+  else if (/react[-]?query/.test(lowerHref))
     return 'react-query'
-  else if (/react/.test(href))
+  else if (/react/.test(lowerHref))
     return 'react'
-  else if (/stackoverflow/.test(href))
+  else if (/stackoverflow/.test(lowerHref))
     return 'stackoverflow'
-  else if (/bun/.test(href))
+  else if (/bun/.test(lowerHref))
     return 'bun'
   else return 'web'
 })
