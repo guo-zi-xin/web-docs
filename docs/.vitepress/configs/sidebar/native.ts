@@ -60,7 +60,7 @@ export const NativeBar = [
       { text: 'TypeScript推荐文档', link: '/native/typescript/推荐文档' },
       { text: 'TypeScript泛型', link: '/native/typescript/泛型' },
       { text: 'TypeScript枚举', link: '/native/typescript/枚举' },
-      { text: 'TypeScript类型体操', link: '/native/typescript/类型体操' },
+      { text: 'TypeScript高级类型', link: '/native/typescript/高级类型' },
     ],
     collapsed: false,
   },
