@@ -15,6 +15,7 @@ import {
   GuideBar,
   StructureBar,
   FrameBar,
+  InterViewBar,
 } from './configs'
 const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
 
@@ -41,12 +42,20 @@ export default defineConfig({
     logo: '/image/logo.jpg',
     nav,
     sidebar: {
+      // 先前导言
       '/guide/': GuideBar,
+      // 原生
       '/native/': NativeBar,
+      // 工具
       '/tools/': ToolsBar,
+      // 算法题
       '/algorithm/': AlgorithmBar,
+      // 数据结构
       '/structure/': StructureBar,
-      '/frame/': FrameBar
+      // 框架
+      '/frame/': FrameBar,
+      // 面试
+      '/interview/': InterViewBar
     },
     /* 右侧大纲配置 */
     outline: {

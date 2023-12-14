@@ -3,6 +3,7 @@ import type { DefaultTheme } from 'vitepress'
 export const nav: DefaultTheme.Config['nav'] = [
   { text: '首页', link: '/' },
   { text: '先前导言', link: '/guide/home', },
+  { text: '面试相关', link: '/interview/index', },
   {
     text: '前端',
     items: [
