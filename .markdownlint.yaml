@@ -8,8 +8,7 @@
   MD006:
     ul_single: true
     ol_single: true
-  MD007:
-    indent: 4
+  MD007: false
   MD009:
     br_spaces: 2
   MD010: true
@@ -22,7 +21,7 @@
   MD020: false
 
   MD026: true
-
+  MD028: false
   MD029: true
   MD030: false
   MD033: false
