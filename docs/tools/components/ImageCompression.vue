@@ -1,151 +1,152 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-// const reader = new FileReader();
-const reader = {} as any;
-const img = new Image();
+// // const reader = new FileReader();
+// const reader = {} as any;
+// // const img = new Image();
+// const img = {} as any;
 
-const imageWidth = ref<string>('') // 图片宽度
-const imageHeight = ref<string>('') // 图片高度
-const imageType = ref<'jpeg' | 'png'>('jpeg') // 图片类型
-const imageTypeOptions = ref<string[]>(['jpeg', 'png']) // 图片类型
-const imageOnline = ref<string>('') // 在线图片地址
-const imageQuality = ref<string>('80') // 图片质量百分比
-const myCanvas = ref<HTMLCanvasElement | null>(null);
-const myFile = ref<HTMLInputElement | null>(null);
-const myImgDisplay = ref<HTMLImageElement | null>(null);
-const myImgSize = ref<HTMLParagraphElement | null>(null);
-const myImgOriginWeight = ref<HTMLParagraphElement | null>(null);
-const myImgNowWeight = ref<HTMLParagraphElement | null>(null);
-const imgParamMap = new Map<string, string>([
-  ['width', imageWidth.value],
-  ['height', imageHeight.value],
-  ['quality', imageQuality.value]
-]);
-// 开启图片地址跨域
-img.setAttribute('crossOrigin', 'Anonymous');
-const canvas = myCanvas.value!;
-if (canvas) { const context = canvas.getContext('2d') }
+// const imageWidth = ref<string>('') // 图片宽度
+// const imageHeight = ref<string>('') // 图片高度
+// const imageType = ref<'jpeg' | 'png'>('jpeg') // 图片类型
+// const imageTypeOptions = ref<string[]>(['jpeg', 'png']) // 图片类型
+// const imageOnline = ref<string>('') // 在线图片地址
+// const imageQuality = ref<string>('80') // 图片质量百分比
+// const myCanvas = ref<HTMLCanvasElement | null>(null);
+// const myFile = ref<HTMLInputElement | null>(null);
+// const myImgDisplay = ref<HTMLImageElement | null>(null);
+// const myImgSize = ref<HTMLParagraphElement | null>(null);
+// const myImgOriginWeight = ref<HTMLParagraphElement | null>(null);
+// const myImgNowWeight = ref<HTMLParagraphElement | null>(null);
+// const imgParamMap = new Map<string, string>([
+//   ['width', imageWidth.value],
+//   ['height', imageHeight.value],
+//   ['quality', imageQuality.value]
+// ]);
+// // 开启图片地址跨域
+// img.setAttribute('crossOrigin', 'Anonymous');
+// const canvas = myCanvas.value!;
+// if (canvas) { const context = canvas.getContext('2d') }
 
-const eleLink = document.createElement('a');
-eleLink.style.display = 'none';
+// const eleLink = document.createElement('a');
+// eleLink.style.display = 'none';
 
-// 图片质量百分比与图片大小的转换
-const updateImage = (type, event?) => {
-  if (canvas) {
-    imgParamMap.set(type, event?.target.value)
-    let targetWidth = 0;
-    let targetHeight = 0;
-    const customWidth = +imageWidth.value;
-    const customHeight = +imageHeight.value;
-    console.log(customWidth, customHeight)
-    //  判断宽高填写的四种情况
-    if (customWidth && customHeight) {
-      targetWidth = customWidth;
-      targetHeight = customHeight;
-    } else if (customWidth && !customHeight) {
-      targetWidth = customWidth;
-      targetHeight = Math.round(targetWidth * (+imageHeight.value / +imageWidth.value));
-    } else if (!customWidth && customHeight) {
-      targetHeight = customHeight;
-      targetWidth = Math.round(targetHeight * (+imageHeight.value / +imageWidth.value));
-    } else {
-      targetWidth = +imageWidth.value;
-      targetHeight = +imageHeight.value
-    }
-    // canvas对图片进行缩放
-    canvas.width = targetWidth;
-    canvas.height = targetHeight;
-    const context = canvas.getContext('2d');
-    // 清除画布
-    context && context.clearRect(0, 0, targetWidth, targetHeight);
-    // 图片压缩
-    context && context.drawImage(img, 0, 0, targetWidth, targetHeight);
-    // 存储图片base64链接
-    if (imageType.value === 'png') {
-      eleLink.href = canvas.toDataURL('image/png');
-    } else {
-      eleLink.href = canvas.toDataURL('image/jpeg', +imageQuality.value / 100);
-    }
-    // 存储下载文件名，清晰度
-    eleLink.download = `${targetWidth}_${targetHeight}`;
-    // 清楚当前文件的路径值，避免不能上传同一张图片的问题
-    myFile.value = '' as any;
-    // 图片预览
-    // @ts-ignore
-    myImgDisplay.value.setAttribute('src', eleLink.href);
-    // 图片信息展示
-    const imgInfo = `图片尺寸：${targetWidth} * ${targetHeight} （长 * 宽）(单位：像素)`;
-    // @ts-ignore
-    myImgSize.value.innerHTML = imgInfo;
-    // @ts-ignore
-    myImgNowWeight.value.innerHTML = `压缩后大小：${(getFileSize(eleLink.href) / 1024).toFixed(2)}KB`;
-    console.log(document.getElementsByClassName('img-details'))
-    document.getElementsByClassName('img-details')[0].classList.remove('hidden');
-    document.getElementsByClassName('img-preview')[0].classList.remove('hidden');
-  }
+// // 图片质量百分比与图片大小的转换
+// const updateImage = (type, event?) => {
+//   if (canvas) {
+//     imgParamMap.set(type, event?.target.value)
+//     let targetWidth = 0;
+//     let targetHeight = 0;
+//     const customWidth = +imageWidth.value;
+//     const customHeight = +imageHeight.value;
+//     console.log(customWidth, customHeight)
+//     //  判断宽高填写的四种情况
+//     if (customWidth && customHeight) {
+//       targetWidth = customWidth;
+//       targetHeight = customHeight;
+//     } else if (customWidth && !customHeight) {
+//       targetWidth = customWidth;
+//       targetHeight = Math.round(targetWidth * (+imageHeight.value / +imageWidth.value));
+//     } else if (!customWidth && customHeight) {
+//       targetHeight = customHeight;
+//       targetWidth = Math.round(targetHeight * (+imageHeight.value / +imageWidth.value));
+//     } else {
+//       targetWidth = +imageWidth.value;
+//       targetHeight = +imageHeight.value
+//     }
+//     // canvas对图片进行缩放
+//     canvas.width = targetWidth;
+//     canvas.height = targetHeight;
+//     const context = canvas.getContext('2d');
+//     // 清除画布
+//     context && context.clearRect(0, 0, targetWidth, targetHeight);
+//     // 图片压缩
+//     context && context.drawImage(img, 0, 0, targetWidth, targetHeight);
+//     // 存储图片base64链接
+//     if (imageType.value === 'png') {
+//       eleLink.href = canvas.toDataURL('image/png');
+//     } else {
+//       eleLink.href = canvas.toDataURL('image/jpeg', +imageQuality.value / 100);
+//     }
+//     // 存储下载文件名，清晰度
+//     eleLink.download = `${targetWidth}_${targetHeight}`;
+//     // 清楚当前文件的路径值，避免不能上传同一张图片的问题
+//     myFile.value = '' as any;
+//     // 图片预览
+//     // @ts-ignore
+//     myImgDisplay.value.setAttribute('src', eleLink.href);
+//     // 图片信息展示
+//     const imgInfo = `图片尺寸：${targetWidth} * ${targetHeight} （长 * 宽）(单位：像素)`;
+//     // @ts-ignore
+//     myImgSize.value.innerHTML = imgInfo;
+//     // @ts-ignore
+//     myImgNowWeight.value.innerHTML = `压缩后大小：${(getFileSize(eleLink.href) / 1024).toFixed(2)}KB`;
+//     console.log(document.getElementsByClassName('img-details'))
+//     document.getElementsByClassName('img-details')[0].classList.remove('hidden');
+//     document.getElementsByClassName('img-preview')[0].classList.remove('hidden');
+//   }
 
-}
+// }
 
-// 图片类型
-const clarityWeightChange = (event) => {
-  imageType.value = event.target.value
-}
+// // 图片类型
+// const clarityWeightChange = (event) => {
+//   imageType.value = event.target.value
+// }
 
-// 上传图片
-const showFileUpload = () => {
-  myFile.value?.click()
-}
-// 获取图片原始尺寸
-img.onload = (image) => {
-  console.log(image)
-  // @ts-ignore
-  imageWidth.value = image.path[0].width;
-  // @ts-ignore
-  imageHeight.value = image.path[0].height;
-};
+// // 上传图片
+// const showFileUpload = () => {
+//   myFile.value?.click()
+// }
+// // 获取图片原始尺寸
+// img.onload = (image) => {
+//   console.log(image)
+//   // @ts-ignore
+//   imageWidth.value = image.path[0].width;
+//   // @ts-ignore
+//   imageHeight.value = image.path[0].height;
+// };
 
-// 获取在线图片
-const getOnlineImage = (): void => {
-  img.src = imageOnline.value;
-}
+// // 获取在线图片
+// const getOnlineImage = (): void => {
+//   img.src = imageOnline.value;
+// }
 
-// 文件base64化，以便获知图片原始尺寸
-reader.onload = function (e) {
-  img.src = e.target?.result as string;
-};
+// // 文件base64化，以便获知图片原始尺寸
+// reader.onload = function (e) {
+//   img.src = e.target?.result as string;
+// };
 
-// 读取原始文件信息
-myFile.value && myFile.value.addEventListener('change', (event: any) => {
-  console.log(event)
-  reader.readAsDataURL(event.target.files[0]);
-  const fileInfo = event.target.files[0];
-  if (myImgOriginWeight.value) myImgOriginWeight.value.innerHTML = `压缩前大小：${(fileInfo.size / 1024).toFixed(2)}KB`;
-});
-// 根据base64计算文件体积
-const getFileSize = (base64Url) => {
-  //  编码原理
-  // 要求把3个8位字节（3*8=24）转化为4个6位的字节（4*6=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，用0填充，输出字符使用’=’，因此编码后输出的文本末尾可能会出现1或2个’=’
-  //  去掉无用头部信息（data:image/png;base64,）
-  let baseStr = base64Url.substring(base64Url.indexOf('base64,') + 'base64,'.length);
-  // 去掉”=“
-  baseStr = baseStr.replace(/=/gi, '');
-  // 进行计算
-  const strLen = baseStr.length;
-  return strLen - (strLen / 8) * 2
-}
+// // 读取原始文件信息
+// myFile.value && myFile.value.addEventListener('change', (event: any) => {
+//   console.log(event)
+//   reader.readAsDataURL(event.target.files[0]);
+//   const fileInfo = event.target.files[0];
+//   if (myImgOriginWeight.value) myImgOriginWeight.value.innerHTML = `压缩前大小：${(fileInfo.size / 1024).toFixed(2)}KB`;
+// });
+// // 根据base64计算文件体积
+// const getFileSize = (base64Url) => {
+//   //  编码原理
+//   // 要求把3个8位字节（3*8=24）转化为4个6位的字节（4*6=24），之后在6位的前面补两个0，形成8位一个字节的形式。 如果剩下的字符不足3个字节，用0填充，输出字符使用’=’，因此编码后输出的文本末尾可能会出现1或2个’=’
+//   //  去掉无用头部信息（data:image/png;base64,）
+//   let baseStr = base64Url.substring(base64Url.indexOf('base64,') + 'base64,'.length);
+//   // 去掉”=“
+//   baseStr = baseStr.replace(/=/gi, '');
+//   // 进行计算
+//   const strLen = baseStr.length;
+//   return strLen - (strLen / 8) * 2
+// }
 
-// 下载图片
-const downloadImage = (): void => {
-  // 触发点击
-  document.body.appendChild(eleLink);
-  eleLink.click();
-  // 然后移除
-  document.body.removeChild(eleLink);
-}
+// // 下载图片
+// const downloadImage = (): void => {
+//   // 触发点击
+//   document.body.appendChild(eleLink);
+//   eleLink.click();
+//   // 然后移除
+//   document.body.removeChild(eleLink);
+// }
 </script>
 
 <template>
-  <div class="compression">
+  <!-- <div class="compression">
     <div class="wrapper">
       <div class="size-options">
         <p class="sub-title">图片自定义宽高</p>
@@ -205,7 +206,7 @@ const downloadImage = (): void => {
         <img id="img-display" src="" alt="" ref="myImgDisplay">
       </div>
     </div>
-  </div>
+  </div> -->
 </template>
 
 <style lang="scss" scoped>
