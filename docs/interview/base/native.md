@@ -40,11 +40,11 @@
 
 #####  标准盒模型
 
-![标准盒模型](../../public/svg/标准盒模型.svg)
+![标准盒模型](/svg/标准盒模型.svg)
 
 ##### IE盒模型
 
-![标准盒模型](../../public/svg/IE盒模型.svg)
+![标准盒模型](/svg/IE盒模型.svg)
 
 > css3中引入了`box-sizing`属性,`box-sizing:content-box` 表示标准盒子模型,`box-sizing:border-box` 表示IE盒子模型
 
