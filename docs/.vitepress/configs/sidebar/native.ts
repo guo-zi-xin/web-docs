@@ -15,7 +15,7 @@ export const NativeBar = [
       { text: 'JS下载文件', link: '/native/javascript/JS下载文件' },
       { text: 'cookie参数', link: '/native/javascript/cookie参数' },
       { text: '前端数据类型', link: '/native/javascript/前端数据类型' },
-      { 
+      {
         text: '数组相关',
         items: [
           { text: '常用的数组的方法', link: '/native/javascript/Array/常用的数组的方法' },
@@ -24,8 +24,9 @@ export const NativeBar = [
         collapsed: false,
       },
       {
-        text: 'setTimeout与setInterval', link: '/native/javascript/setTimeout与setInterval' 
+        text: 'setTimeout与setInterval', link: '/native/javascript/setTimeout与setInterval'
       },
+      { text: '浏览器缓存', link: '/native/javascript/浏览器缓存' },
     ],
     collapsed: false,
   },
