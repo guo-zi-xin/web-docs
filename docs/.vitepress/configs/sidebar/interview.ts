@@ -9,6 +9,10 @@ export const InterViewBar = [
           {
             text: 'HTML CSS 浏览器相关',
             link: '/interview/base/native',
+          },
+          {
+            text: 'JavaScript相关',
+            link: '/interview/base/javascript',
           }
         ]
       }
