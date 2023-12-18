@@ -27,6 +27,8 @@ export const NativeBar = [
         text: 'setTimeout与setInterval', link: '/native/javascript/setTimeout与setInterval'
       },
       { text: '浏览器缓存', link: '/native/javascript/浏览器缓存' },
+      { text: 'TCP三次握手与四次挥手', link: '/native/javascript/TCP三次握手与四次挥手' },
+      { text: 'TCP四层五层与OSI七层模型区别', link: '/native/javascript/TCP四层五层与OSI七层模型区别' },
     ],
     collapsed: false,
   },
