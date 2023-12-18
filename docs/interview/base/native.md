@@ -534,7 +534,7 @@ TCP三次握手：[TCP三次握手与四次挥手](../../native/javascript/TCP�
 
    当浏览器到web服务器建立连接后，浏览器会发送一个初始的 HTTP GET请求， 请求目标通常是一个HTML文件，服务器收到请求后，将返回一个 HTTP 的响应报文，内容包括响应头和 HTML 正文
 
-  ```xhr
+  ```txt
   GET /index.html HTTP1.1
   ```
 
