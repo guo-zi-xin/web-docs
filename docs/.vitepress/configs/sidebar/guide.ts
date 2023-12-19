@@ -14,6 +14,10 @@ export const GuideBar = [
         text: '231211-231215',
         link: '/guide/weekly/231211-231215',
       },
+      {
+        text: '231218-231222',
+        link: '/guide/weekly/231218-231222',
+      },
     ],
     collapsed:false
   }
