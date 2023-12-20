@@ -15,6 +15,20 @@ export const InterViewBar = [
             link: '/interview/base/javascript',
           }
         ]
+      },
+      {
+        text: '框架相关',
+        link: '/interview/frame/index',
+        items: [
+          {
+            text: 'Vue相关',
+            link: '/interview/base/vue',
+          },
+          {
+            text: 'React',
+            link: '/interview/base/react',
+          }
+        ]
       }
     ]
   },
