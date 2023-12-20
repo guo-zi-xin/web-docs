@@ -29,8 +29,11 @@ export const NativeBar = [
       { text: '浏览器缓存', link: '/native/javascript/浏览器缓存' },
       { text: 'TCP三次握手与四次挥手', link: '/native/javascript/TCP三次握手与四次挥手' },
       { text: 'TCP四层五层与OSI七层模型区别', link: '/native/javascript/TCP四层五层与OSI七层模型区别' },
-      { text: 'ES6新特性(一)', link: '/native/javascript/ES6新特性(一)' },
-
+      { text: '原型与原型链', link: '/native/javascript/原型与原型链' },
+      { text: '防抖与节流', link: '/native/javascript/防抖与节流' },
+      { text: 'XSS攻击与CSRF攻击', link: '/native/javascript/XSS攻击与CSRF攻击' },
+      { text: '浅拷贝与深拷贝', link: '/native/javascript/浅拷贝与深拷贝' },
+      { text: 'ES6新特性(一)', link: '/native/javascript/ES6新特性一' },
     ],
     collapsed: false,
   },
