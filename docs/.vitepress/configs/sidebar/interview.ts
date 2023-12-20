@@ -21,12 +21,12 @@ export const InterViewBar = [
         link: '/interview/frame/index',
         items: [
           {
-            text: 'Vue相关',
-            link: '/interview/base/vue',
+            text: 'Vue',
+            link: '/interview/frame/vue',
           },
           {
             text: 'React',
-            link: '/interview/base/react',
+            link: '/interview/frame/react',
           }
         ]
       }
