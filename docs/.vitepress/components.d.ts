@@ -13,6 +13,7 @@ declare module 'vue' {
     'EosIcons:modifiedDate': typeof import('~icons/eos-icons/modified-date')['default']
     'Fe:youtube': typeof import('~icons/fe/youtube')['default']
     'IconPark:addWeb': typeof import('~icons/icon-park/add-web')['default']
+    'Logos:momentjs': typeof import('~icons/logos/momentjs')['default']
     'Logos:reactQueryIcon': typeof import('~icons/logos/react-query-icon')['default']
     'Octicon:feedPerson16': typeof import('~icons/octicon/feed-person16')['default']
     'Ooui:clock': typeof import('~icons/ooui/clock')['default']

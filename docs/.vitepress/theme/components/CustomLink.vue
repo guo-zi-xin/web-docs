@@ -44,6 +44,8 @@ const hrefSource = computed(() => {
     return 'stackoverflow'
   else if (/bun/.test(lowerHref))
     return 'bun'
+  else if (/momentjs/.test(lowerHref))
+  return 'momentjs'
   else return 'web'
 })
 
@@ -90,6 +92,7 @@ const component = computed(() => {
               <skill-icons:stackoverflow-dark v-if="hrefSource === 'stackoverflow'" class="w-7 h-7" />
               <vscode-icons:file-type-bun v-if="hrefSource === 'bun'" class="w-7 h-7" />
               <icon-park:add-web v-if="hrefSource === 'web'" class="w-7 h-7" />
+              <logos:momentjs v-if="hrefSource === 'momentjs'" class="w-7 h-7"/>
               <span class="text-ellipsis w-full whitespace-nowrap overflow-hidden text-sm opacity-75 font-500">
                 {{ href }}
               </span>
