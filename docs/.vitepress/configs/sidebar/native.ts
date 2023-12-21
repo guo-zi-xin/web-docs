@@ -18,8 +18,8 @@ export const NativeBar = [
       {
         text: '数组相关',
         items: [
-          { text: '常用的数组的方法', link: '/native/javascript/Array/常用的数组的方法' },
-          { text: 'Array.map与Array.forEach的区别', link: '/native/javascript/Array/map与forEach的区别' },
+          { text: '常用的数组的方法', link: '/native/javascript/常用的数组的方法' },
+          { text: 'Array.map与Array.forEach的区别', link: '/native/javascript/map与forEach的区别' },
         ],
         collapsed: false,
       },
