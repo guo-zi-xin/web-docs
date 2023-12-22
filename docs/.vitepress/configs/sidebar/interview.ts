@@ -29,6 +29,10 @@ export const InterViewBar = [
             link: '/interview/frame/react',
           }
         ]
+      },
+      {
+        text: '小程序相关',
+        link:'/interview/applet'
       }
     ]
   },

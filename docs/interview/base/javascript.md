@@ -292,7 +292,7 @@ function myNew(fn, ...args) {
 
 ### 原型与原型链
 
-- [原型与原型链](../../native/javascript/原型与原型链) // **待开发**
+- [原型与原型链](../../native/javascript/原型与原型链)
 
 ### Promise
 
@@ -696,7 +696,7 @@ console.log(permutations);
 
 ### 深拷贝与浅拷贝
 
-- [手写深拷贝](../../native/javascript/浅拷贝与深拷贝) // **待开发**
+- [手写深拷贝](../../native/javascript/浅拷贝与深拷贝)
 
 深拷贝：指针赋值，并且内容拷贝 `JSON.parse(JSON.stringify())`不仅适用于数组还适用于对象。不能拷贝*函数*，*undefined*，*symbol*。
 浅拷贝：只是简单的指针赋值 数组，如果是数组，可以使用数组的一些方法实现：slice()，concat()返回一个新数组的特性实现拷贝。用扩展运算符 spread 实现数组
@@ -723,7 +723,7 @@ console.log(permutations);
 5. 寄生式继承
 6. 寄生组合式继承
 
-- [类的继承](../../native/javascript/call-apply-bind的区别)  //待开发
+- [类的继承](../../native/javascript/类的继承)  //待开发
 
 ### 同步与异步的区别/阻塞与非阻塞区别
 
@@ -783,4 +783,4 @@ console.log(permutations);
 
 ### XSS 与 CSRF
 
-- [XSS攻击与CSRF攻击](../../native/javascript/XSS攻击与CSRF攻击) // **待开发**
+- [XSS攻击与CSRF攻击](../../native/javascript/XSS攻击与CSRF攻击)
