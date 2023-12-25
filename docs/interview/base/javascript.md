@@ -723,7 +723,7 @@ console.log(permutations);
 5. 寄生式继承
 6. 寄生组合式继承
 
-- [类的继承](../../native/javascript/类的继承)  //待开发
+- [类的继承](../../native/javascript/类的继承)
 
 ### 同步与异步的区别/阻塞与非阻塞区别
 
@@ -779,7 +779,7 @@ console.log(permutations);
 
 ### 防抖与节流
 
-- [防抖与节流](../../native/javascript/防抖与节流) // **待开发**
+- [防抖与节流](../../native/javascript/防抖与节流)
 
 ### XSS 与 CSRF
 

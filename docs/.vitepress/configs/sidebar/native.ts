@@ -34,6 +34,7 @@ export const NativeBar = [
       { text: 'XSS攻击与CSRF攻击', link: '/native/javascript/XSS攻击与CSRF攻击' },
       { text: '浅拷贝与深拷贝', link: '/native/javascript/浅拷贝与深拷贝' },
       { text: 'ES6新特性(一)', link: '/native/javascript/ES6新特性一' },
+      { text: '类的继承', link: '/native/javascript/类的继承' },
     ],
     collapsed: false,
   },
