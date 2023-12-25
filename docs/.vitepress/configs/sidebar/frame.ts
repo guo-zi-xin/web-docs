@@ -9,6 +9,10 @@ export const FrameBar = [
         link: '/frame/vue/vue指令',
       },
       {
+        text: 'Vue生命周期',
+        link: '/frame/vue/vue生命周期',
+      },
+      {
         text: 'NextTick',
         link: '/frame/vue/nextTick',
       },
