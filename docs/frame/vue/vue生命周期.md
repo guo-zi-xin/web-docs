@@ -1,22 +1,22 @@
 # Vue生命周期
 
-vue2 的生命周期与 vue3 的声明是有所区别的，
+**vue2** 的生命周期与 **vue3** 的声明是有所区别的，
 
-vue2 的生命周期主要是：
+**vue2** 的生命周期主要是：
 
-- beforeCreate
-- created
-- beforeMount
-- mounted
-- beforeupdate
-- updated
-- beforeDestroy
-- Destroyed
+- `beforeCreate`
+- `created`
+- `beforeMount`
+- `mounted`
+- `beforeupdate`
+- `updated`
+- `beforeDestroy`
+- `Destroyed`
 
 而在 vue3 中， 在 vue2 的基础上做了一些改变， 主要是针对最后两个生命周期：
 
-- beforeDestroy -> beforeunmount
-- Destroyed -> Unmounted
+- `beforeDestroy` -> `beforeunmount`
+- `Destroyed` -> `Unmounted`
 
 另外， `options API` 和 `composition API` 在生命周期上也有一些小的不同：
 
@@ -139,3 +139,230 @@ vue2 的生命周期主要是：
 |errorCaptured|捕获一个来自子孙组件的错误时被调用|
 
 ![vue生命周期](/svg/vue生命周期.svg)
+
+##### 具体功能
+
+- **setup**
+  
+  `setup` 函数是一个全新的组件选项，它是 Composition API 的核心，用于初始化组件实例
+
+  `setup` 接收两个参数：`props` 和 `context`。 其中 `props` 是父组件传递给当前组件实例的属性，而 `context`属性则包含了一些
+  helper 的方法和组件选项，(如 `attrs`， `slots`, `emit` 等)
+
+  在`setup`中， 我们可以使用Vue3提供多个工具函数来定义响应式数据，监听生命周期钩子，处理计算属性、声明事件处理函数等， 这些函数包括：
+
+  - `reactive`: 用于创建响应式对象
+  - `ref`: 用于创建一个单一的响应式值
+  - `computed`: 用于创建计算属性
+  - `watch`: 用于监听响应式数据的变化
+  - `onMounted`和`onUpdate`和`onUnmounted`: 用于监听生命周期钩子
+  - `toRefs`: 用于将响应式对象转换为普通对象
+  - `inject` 和 `provide`: 用于跨层级组件传递数据
+  - `getCurrentInstance`: 用于访问当前组件实例
+  
+  使用`setup` 函数的优点是可以讲相似的逻辑组织在一起，便于代码的维护和重用。此外。 `setup`函数需要返回一个对象，用于暴露组件状态和方法给模版使用，
+  因此也提高了代码的可读性和组件的封装性
+
+  ```javascript
+  export default {
+    setup(props,context) {
+      // 透传 Attributes(非响应式对象， 等价于$attrs)
+      console.log(context.attrs)
+
+      // 插槽，(非响应式对象，等价于$slots)
+      console.log(context.slots)
+
+      // 触发事件(函数，等价于 $emit)
+      console.log(context.emit)
+
+      // 暴露公共属性
+      console.log(context.expose)
+    }
+  }
+  ```
+
+  - **onBeforeMount和onMounted**
+  
+    `onBeforeMount` 和 `onMounted` 都是 Vue3 中的生命周期钩子，它们分别在组件`挂载`之前和之后运行
+
+    - **onBeforeMount**
+
+      `onBeforeMount`钩子函数会在组件挂载到DOM前运行， 可以用来在组件挂载前执行一些初始化操作
+
+      ```vue
+      <script lang="ts" setup>
+        import { onBeforeMount } from 'vue'
+
+        onBeforeMount(() =>{
+          console.log('before mount')
+        })
+      </script>
+      ```
+
+    - **onMounted**
+
+      `onMounted` 钩子函数会在组件挂载到 DOM 后运行， 通常用于获取数据和初始化页面状态等操作
+
+      ```vue
+      <template>
+        <div>{{ message }}</div>
+      </template>
+
+      <script setup lang="ts">
+        import { onMounted, reactive } from 'vue'
+
+        const state = reactive({ message: '' })
+
+        onMounted(() => {
+          // 发送 AJAX 请求， 获取数据
+          fetch('/api/data').then(res => { 
+            res.json() 
+          }).then(data => { 
+            state.message = data.message 
+          })
+        })
+      </script>
+      ```
+
+    需要注意的是 `onBeforeMount`钩子 和 `onMounted` 钩子需要在 `setup`函数中使用
+
+  - **onBeforeUpdate 和 onUpdated**
+
+  `onBeforeMount` 和 `onMounted` 都是 Vue3 中的生命周期钩子，它们分别在组件`更新`之前和之后运行
+
+  - **onBeforeUpdate**
+
+    `onBeforeUpdate` 钩子函数会在数据重新渲染之前运行，可以用来在组件更新前执行一些操作
+
+    ```vue
+    <script lang="ts" setup>
+      import { onBeforeUpdate } from 'vue'
+
+      let count = 1
+      onBeforeUpdate(() => {
+        console.log('before update', count)
+      })
+
+      const handleClick = () => {
+        count++
+      }
+    </script>
+
+    <template>
+      <div>
+        <p>{{ count }}</p>
+        <button @click="handleClick">增加</button>
+      </div>
+    </template>
+    ```
+
+    在上面的示例中，我们通过 `onBeforeUpdate` 钩子注册了 一个函数，在每次组件更新之前输出计数器数据的值，同时， 在方法中添加了一个按钮点击事件， 用于修改计数器的值
+
+    - **onUpdated**
+
+      `onMounted` 钩子函数会在数据重新渲染后运行，通常用于更新 DOM 执行动画或获取最新的状态等操作
+
+      ```vue
+      <script lang="ts" setup>
+        import { onMounted, onUpdated, ref } from 'vue' 
+
+        const message = ref('hello')
+
+        onMounted(() => {
+          // 模拟异步消息
+          setTimeout(() => {
+            message.value = 'vue3'
+          },2000)
+        })
+
+        onUpdate(() => {
+          console.log('DOM updated')
+        })
+
+        const handleClick = () => {
+          alert(message.value)
+        }
+      </script>
+      <template>
+        <div>
+         <p> {{ message }} </p>
+
+         <button #click=handleClick>获取最新的值</button>
+        </div>
+      </template>
+      ```
+
+  -  **onBeforeUnmount 和 onUnmounted**
+
+    当组件不再被需要时， Vue3 将依次执行 beforeUnmount 和 unmount 钩子函数。 beforeUnmount钩子函数在组件卸载之前调用 通常用于处理一些事件监听器或者一些异步任务
+
+    Unmounted钩子函数在组件完全被卸载后调用，此时，组件可以回收内存等资源
+
+    - **onBeforeUnmount**
+
+      `onBeforeUnmount`钩子会在组件卸载之前进行 通常可以用来清除定时器、取消事件监听器等操作
+
+      ```vue
+      <script lang="ts" setup>
+        import { onBeforeUnmount, ref } from 'vue'
+
+        const timer = ref(null)
+        onBeforeUnmount(() => {
+          clearInterval(timer.value)
+        })
+
+        const startTimer = () => {
+          timer.value = setInterval(() => {
+            console.log('hello')
+          }, 1000)
+        }
+
+        const clearTimer = () => {
+          clearInterval(timer.value)
+        }
+      </script>
+
+      <template>
+        <div>
+          <p>定时器示例</p>
+          <button @click="startTimer">开始</button>
+          <button @click="stopTimer">停止</button>
+        </div>
+      </template>
+      ```
+
+    - **onUnmount**
+
+      `onUnmounted` 钩子函数会在组件卸载后运行，通常用于清理一些资源或取消订阅。
+
+      ```vue
+      <script lang="ts" setup>
+        import { onMounted, onUnmounted, ref } from 'vue'
+
+        const message = ref('')
+        let subscription = null
+
+        onMounted(() => {
+          // 模拟创建一个订阅
+          subscription = setInterval(() => {
+            message.value = new Date().toLocaleTimeString()
+          }, 1000)
+        })
+
+        onUnmounted(() => {
+          // 在组件卸载后取消订阅
+          clearInterval(subscription)
+        })
+
+        const unsubscribe = () => {
+          clearInterval(subscription)
+        }
+      </script>
+
+      <template>
+        <div>
+          <p>{{ message }}</p>
+          <button @click="unsubscribe">取消订阅</button>
+        </div>
+      </template>
+      ```
