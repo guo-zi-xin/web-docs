@@ -110,6 +110,393 @@ MVVM(Model-View-ViewModel)是一种前端设计模式，它将应用程序分为
 
 每个计算属性都包括一个 getter 和 setter， 读取时触发 getter ， 修改时触发 setter
 
+### Vue中跳转路由的方式
+
+Vue中路由跳转的方式有两种，分别是 声明式 和 编程式
+
+用 js 方式进行跳转的叫做编程式导航 `this.$router.push()`
+
+用 router-link 进行跳转的叫声明式 router-view 路由出口， 路由模版显示的位置
+
+**路由中name的作用**
+
+在 router-link 中使用 name 导航到对应路由
+
+使用 name 导航的同时，给子路由传递参数
+
+### Vue 跨域解决方案
+
+1. 后台更改`header`
+2. 使用 `http-proxy-middleware` (配置代理服务器的中间件)
+
+### Vue 生命周期
+
+- [vue生命周期](../../frame/vue/vue生命周期)
+
+### Vue 路由的实现
+
+vue路由有三种模式，分别是 `hash`、`history`、`abstract`
+
+- `hash`:  使用 URL的 hash值来做路由，支持所有浏览器，包括不支持 HTML5 History API的浏览器
+- `history`: 依赖 HTML5 History API和服务器配置
+- `abstract`: 支持所有 Javascript运行环境，如 Node.js服务器端。如果发现没有浏览器的API，路由强制进入这个模式
+
+##### 基本原理
+
+useRouter() 中的 push 和 replace 是手动调用内部路径切换方法 transitionTo，go、back、 forward 方法实际调用的是 window.history.go(), 以及浏览器的前进后退会触发相应的监听事件
+然后调用 transitionTo， 之后更新路由， 触发 `<router-view>` 的重新渲染
+
+- `hash` 模式是优先监听 popstate 事件，不行就降级为 hashchange 事件， `history` 模式监听 popstate 事件
+- history.pushState() 和 history.replaceState() 修改浏览器历史栈后 url 改变但不会刷新页面， 不会触发 popstate 事件
+- window.location.hash = '#/b' 修改 hash 不会刷新页面，会触发 hashchange 事件， hash的改变会自动添加到浏览器历史记录中
+
+### Vue 路由模式 hash 和 history
+
+##### hash
+
+hash 模式是用 `createWebHashHistory()` 创建的
+
+```javascript
+import { createRouter, createWebHashHistory } from 'vue-router'
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes: [
+    // ...
+  ]
+})
+```
+
+hash 模式在内部传递的实际URL之前使用了一个哈希字符(`#`)，
+
+由于这部分 URL 从未被发送到服务器，所以它不需要在服务器里面进行任何特殊处理，对后端没啥影响
+
+改变Hash值不会重新加载页面，因为浏览器可以通过`onHashChange()`事件监听Hash的辩护，从而实现前端路由切换
+
+浏览器支持度友好，包括低版本IE浏览器，已经成为SPA标配
+
+**原理**: Hash模式的主要原理是`onhashchange`事件，无需向后端发起请求，浏览器可以监听哈希值的变化，并按照规则加载相应的代码，同时，
+Hash值的变化会被浏览器记录，实现页面的前进和后退功能
+
+不过，**它在SEO中的确有不好的影响**
+
+##### history
+
+history就是 HTML5模式， 使用`createWebHistory()`创建 HTML5 模式，推荐使用这个模式
+
+```javascript
+import { createRouter, createWebHistory } from 'vue-router'
+
+const router = createRouter({
+  history:createWebHistory(),
+  routes: [
+    // ...
+  ]
+})
+```
+
+History模式的URL中没有`#`号，采用传统的路由分发模式，即用户输入 URL 时， 服务器接收请求并解析 URL， 然后进行相应的逻辑处理
+
+当使用这种模式时， 会导致一个问题，由于我们是一个单页的客户端应用，如果没有适当的服务器配置，用户在浏览器中直接访问没有配置的路由时，会返回404
+
+**API**: history模式使用 History API， 包括 `pushState()`和 `replaceState()`方法用于修改历史状态，以及 `forward()`、`back()`、`go()` 方法用于切换历史状态
+
+##### 两者区别
+
+- History模式优势
+
+  `pushState()` 设置的新URL可以与当前URL同源的URL，而 Hash只能修改`#`的部分
+
+  可以设置与当前URL一样的新的URL，将记录添加到栈中
+
+  可以通过`stateObject`参数添加任意类型的数据到记录中，而Hash只能添加短字符串
+
+  可以额外设置title属性供后续使用
+
+- URL处理
+  
+  在Hash模式下，仅Hash符号之前的URL会被包含在请求中，后端如果没有覆盖所有路由，也不会返回404错误
+
+### Vue 路由传参的两种方式，params 和 query方式与区别
+
+##### 路由参数(params)
+
+路由参数通常用于标识性的信息，如资源ID、用户ID等，他们直接包含在路由的路径中，这些参数作为路径的一部分，提供了对特定资源的访问
+
+```javascript
+// 路由定义
+{
+  path: '/user/:id'
+  component: UseProfile
+}
+```
+
+在页面中调用：
+
+```javascript
+router.push({path: '/user/123'})
+```
+
+**优点**
+
+直观， 路由参数直接体现在url中，用户可以直接看到传递的信息
+
+**缺点**
+
+有限性，路由参数通常只能传递有限数量的信息，因为他们必须以路径的一部分存在
+
+##### 查询参数(query)
+
+查询参数适合用于传递非标识性信息，如筛选条件、搜索关键字、分页信息等，他们不包含在路由的路径中，而是作为键值对附加到URL后面
+
+```javascript
+// 导航到搜索页面并传递查询参数
+router.push({ path: '/search', query: { q: 'vue', category: 'framework' } });
+```
+
+**优点**
+
+查询参数可以传递多个键值对，因此更灵活，适用于各种场景。
+
+查询参数式可选的，因此可以选择何时传递它们
+
+**缺点**
+
+查询参数不像路由参数那么直观，因为他们不包含在路径中，用户不容易传递信息
+
+##### 何时使用
+
+- **params**
+
+  标识性信息：当需要传递标识性信息，如用户ID，帖子ID等，使用路由参数更合适
+
+  确保信息直接可见：如果希望用户能够在URL中看到传递的信息，使用路由参数
+
+- **query**
+
+  非标识性信息：当需要传递筛选条件、搜索关键字、分页信息等非标识性信息时，查询参数更合适
+
+  灵活性: 如果需要传递多个键值对或灵活地控制何时传递参数、使用查询参数
+
+  非必要信息: 查询参数通常用于传递可选信息，不影响访问资源的关键性标识
+
+### Vue 数据绑定的几种方式
+
+##### 插值(interpolation)
+
+插值是最基本的数据绑定方式之一，使用双大括号`{{}}`将变量插入到模版中
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const message = ref<string>('hello world')
+</script>
+
+<template>
+  <p>{{message}}</p>
+</template>
+```
+
+##### 绑定属性(Binding Attributes)
+
+使用 `v-bind` 指令可以将一个变量的值绑定到HTML元素属性上
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const url = ref<string>('www.baidu.com')
+</script>
+
+<template>
+  <div>
+    <a v-bind:href="url">点击跳转</a>
+  </div>
+</template>
+```
+
+##### 动态类绑定(Dynamic Class Binding)
+
+使用`v-bind:class`可以根据条件动态绑定类名
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const isActive = ref<boolean>(false)
+const hasError = ref<boolean>(false)
+</script>
+
+<template>
+  <div v-bind:class="{'active': isActive, 'text-danger': hasError}">类名</div>
+</template>
+
+<style lang="scss" scoped>
+.active {
+  display: inline-block;
+}
+.text-danger {
+  color: red
+}
+</style>
+```
+
+也可以使用数组语法
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const isActive = ref<boolean>(false)
+const hasError = ref<boolean>(false)
+</script>
+
+<template>
+  <div v-bind:class="[isActive ? 'active': '', hasError ? 'text-danger' : '']">类名</div>
+</template>
+
+<style lang="scss" scoped>
+.active {
+  display: inline-block;
+}
+.text-danger {
+  color: red
+}
+</style>
+```
+
+##### 动态样式绑定(Dynamic Style Binding)
+
+使用 `v-bind:style` 可以根据条件动态绑定样式
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+const activeColor = ref<string>('red')
+const fontSize = ref<number>(14)
+</script>
+
+<template>
+  <div>
+    <p v-bind:style="'color': activeColor; 'fontSize': fontSize + 'px'">样式信息</p>
+  </div>
+</template>
+```
+
+也可以使用对象语法
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const activeColor = ref<string>('red')
+const fontSize = ref<number>(14)
+</script>
+
+<template>
+  <div :style="{ 'color': activeColor, 'font-size': fontSize + 'px' }">样式信息</div>
+</template>
+```
+
+##### 表单输入绑定(Form input Binding)
+
+使用`v-model` 可以实现表单输入和数据的双向绑定
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const message = ref<string>('')
+</script>
+
+<template>
+<form>
+  <input v-model="message"/>
+</form>
+</template>
+```
+
+##### 事件绑定(Event Binding)
+
+使用 `v-on` 可以将 DOM 事件绑定到 Vue 实例中的方法。
+
+```vue
+<script lang="ts" setup>
+  const doSomething = ():void => {
+    console.log('do something')
+  }
+</script>
+
+<template>
+  <button v-on:click="doSomething">Click me</button>
+</template>
+```
+
+也可以使用缩写形式
+
+```vue
+<script lang="ts" setup>
+  const doSomething = ():void => {
+    console.log('do something')
+  }
+</script>
+
+<template>
+  <button @click="doSomething">Click me</button>
+</template>
+```
+
+### Vue 的路由钩子函数/路由守卫有哪些
+
+##### 全局路由钩子()
+
+``
+
+### Vue-cli 中如何自定义指令
+
+### Vue 中指令
+
+- [vue常用指令](../../frame/vue/vue指令)
+
+### Vue 如何定义一个过滤器
+
+### 对 Vue 中 keep-alive 的理解
+
+- [keepalive](../../frame/vue/keepAlive)
+
+### 如何让组件中的 css 在当前组件生效 (vue中 scoped 功能)
+
+### Vue中的Data为什么是函数
+
+### Vue双向绑定原理
+
+### Vue组件传值
+
+### 如果一个组件在多个项目中使用怎么办
+
+### Vue 插槽
+
+### Vue中的watch
+
+### 计算属性与watch的区别
+
+### MVVM与MVC的区别
+
+### Vue 首屏加载慢的原因，怎么解决的，白屏时间怎么检测，怎么解决白屏问题
+
+### Vue中 Route 与 router 区别
+
+### Vue 路由懒加载（按需加载路由）
+
+### v-for 与 v-if 优先级
+
+### vue 在 created 和 mounted 这两个生命周期中请求数据有什么区别呢？
+
+### 说说你对 proxy 的理解
+
+### Vue3.0 是如何变得更快的？（底层，源码）
+
 ### Vuex
 
 ![Vuex](/svg/Vuex数据流向.svg)
@@ -138,85 +525,8 @@ Vuex有五个属性 *state* *getters* *mutations* *actions* *modules*
   
   为了解决 *store*对象过于臃肿的问题， 将 *store* 分割成 *modules* 模块
 
-### Vue中跳转路由的方式
-
-Vue中路由跳转的方式有两种，分别是 声明式 和 编程式
-
-用 js 方式进行跳转的叫做编程式导航 `this.$router.push()`
-
-用 router-link 进行跳转的叫声明式 router-view 路由出口， 路由模版显示的位置
-
-**路由中name的作用**
-
-在 router-link 中使用 name 导航到对应路由
-
-使用 name 导航的同时，给子路由传递参数
-
-### Vue 跨域解决方案
-
-1. 后台更改`header`
-2. 使用 `http-proxy-middleware` (配置代理服务器的中间件)
-
-### Vue 生命周期
-
-- [vue生命周期](../../frame/vue/vue生命周期)
-
-### DOM 渲染在那个生命周期阶段内完成
-
-### Vue 路由的实现
-
-### Vue 路由模式 hash 和 history，简单讲一下
-
-### Vue 路由传参的两种方式，params 和 query方式与区别
-
-### Vue 数据绑定的几种方式
-
-### Vue 的路由钩子函数/路由守卫有哪些
-
-### Vue 中如何进行动态路由设置？有哪些方式？怎么获取传递过来的数据
-
-### Vue-cli 中如何自定义指令
-
-### Vue 中指令
-
-### Vue 如何定义一个过滤器
-
-### 对 Vue 中 keep-alive 的理解
-
-### 如何让组件中的 css 在当前组件生效
-
-### Vue中的Data为什么是函数
-
-### Vue双向绑定原理
-
-### Vue组件传值
-
-### 如果一个组件在多个项目中使用怎么办
-
-### Vue 插槽
-
-### Vue中的watch
-
-### 计算属性与watch的区别
-
-### MVVM与MVC的区别
-
-### Vue 首屏加载慢的原因，怎么解决的，白屏时间怎么检测，怎么解决白屏问题
-
 ### Vuex 怎么请求异步数据
 
 ### Vuex 中 action 如何提交给 mutation 的
 
-### Vue中 Route 与 router 区别
-
 ### vuex 的优势
-
-### Vue 路由懒加载（按需加载路由）
-
-### v-for 与 v-if 优先级
-
-### vue 在 created 和 mounted 这两个生命周期中请求数据有什么区别呢？
-
-### 说说你对 proxy 的理解
-
-### Vue3.0 是如何变得更快的？（底层，源码）
