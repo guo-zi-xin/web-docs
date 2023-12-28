@@ -44,6 +44,18 @@ MVVM(Model-View-ViewModel)是一种前端设计模式，它将应用程序分为
 4. *状态管理*: 在一些复杂的应用中，随着视图和数据逻辑的增加，可能会涉及到复杂的状态管理问题，如果不恰当地管理好状态，可能会导致应用变得难以理解和维护
 :::
 
+::: details MVVM与MVC的区别
+`MVC`是*Model*-*View*-*Controller*的简写。即模型-视图-控制器。M和V指的意思和MVVM中的M和V意思一样。C即Controller指的是页面业务逻辑，
+使用MVC的目的就是将M和V的代码分离。MVC是单向通信。也就是View跟Model，必须通过Controller来承上启下。
+
+**两者区别**
+
+MVC和MVVM其实区别并不大，都是一种设计思想， MVC和MVVM的区别并不是VM完全取代了C，只是在MVC的基础上增加了一层VM，不过是弱化了C的概念
+
+ViewModel存在目的在于抽离Controller中展示的业务逻辑，而不是替代Controller，其它视图操作业务等还是应该放在Controller中实现，
+也就是说MVVM实现的是业务逻辑组件的重用，使开发更高效，结构更清晰，增加代码的复用性。
+:::
+
 ### Vue中的单项数据流
 
 父级 prop 的更新都会向下流动到子组件中，每次父组件发生更新，子组件所有的 prop 都会刷新为最新的值
@@ -449,11 +461,127 @@ const message = ref<string>('')
 
 ### Vue 的路由钩子函数/路由守卫有哪些
 
-##### 全局路由钩子()
+##### 全局路由钩子(Global Before Guards)
 
-``
+`beforeEach(to. from, next)` 在路由改变前触发，常用于全局的身份验证检查等
 
-### Vue-cli 中如何自定义指令
+```javascript
+const router = createRouter({ ... })
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/login') return next();
+  //获取token
+  const tokenStr = window.sessionStorage.getItem('token')
+  if (!tokenStr) return next('/login')
+  next()
+})
+
+```
+
+##### 路由独享守卫(Per-Route Guards)
+
+`beforeEnter(to, from, next)`：在某个路由独享的守卫。
+
+##### 组件内守卫(In-Component Guards)
+
+`beforeRouteEnter(to, from, next)`：在路由进入的时候，但是在组件渲染之前被调用。
+
+`beforeRouteUpdate(to, from, next)`：在当前路由改变，但是该组件被复用时调用。
+
+`beforeRouteLeave(to, from, next)`：导航离开该组件的对应路由时调用。
+
+接收三个参数：
+
+to: Route 对象，表示要进入的目标路由。
+
+from: Route 对象，表示当前导航正要离开的路由。
+
+next: 一个函数，用于进入下一个钩子。
+
+`beforeResolve(to, from, mext)` 在导航被确认之前，也就是所有组件的`beforeRouterEnter` 被调用之后触发
+
+在这些守卫中，通过调用 next 方法，可以控制路由导航的行为：
+
+调用 `next()` 表示继续导航。
+
+调用 `next(false)` 中止当前的导航。
+
+调用 `next('/')` 或 `next({ path: '/' })` 重定向到一个不同的地址。
+
+调用 `next(error)` 将会把导航终止，并把错误传递给 `router.onError` 注册过的回调。
+
+```javascript
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/home',
+      component: Home
+    },
+    {
+      path: '/dashboard',
+      component: Dashboard
+    },
+    // ...其他路由配置
+  ]
+});
+
+router.beforeEach((to, from, next) => {
+  // 在进入每个路由前进行身份验证等操作
+  if (to.path === '/dashboard' && !auth.isAuthenticated()) {
+    next('/login'); // 未登录时重定向到登录页
+  } else {
+    next(); // 继续导航
+  }
+});
+
+export default router;
+
+```
+
+### Vue 中如何自定义指令
+
+vue中， 除了内置的一些列指令(如`v-model`和 `v-show`)之外， 还可以注册自定义的指令(Custom Directives)
+
+自定义指令主要是为了重用涉及普通元素的底层DOM访问逻辑
+
+##### 组成
+
+一个自定义指令是由一个包含类似组件生命周期钩子的对象来定义，钩子函数会接收到指令所绑定元素作为其参数
+
+```vue
+<script setup lang="ts">
+  // 在模版中启用 v-focus
+  const vFocus = (
+    mounted: (el) => el.focus()
+  )
+</script>
+
+<template>
+  <input v-focus/>
+</template>
+```
+
+在`<script setup>`中，任何以`v`开头的驼峰事命名的变量都可以被用作一个自定义指令，但在没有使用`<script setup>`的情况下，自定义指令需要通过`directive` 选项注册
+
+也可以注册到全局
+
+```javascript
+const app = createApp({})
+
+// 使 v-focus在所有组件中都可用
+app.directive('focus', {
+  // ...
+})
+```
+
+::: info TIP
+只有当所需功能智能通过直接的 DOM 操作来实现时候，才应该使用自定义指令，其他情况下应该尽可能使用`v-bind`等内置指令来声明式地使用模版，这样更高效，也对服务端渲染更加友好
+:::
 
 ### Vue 中指令
 
@@ -461,27 +589,67 @@ const message = ref<string>('')
 
 ### Vue 如何定义一个过滤器
 
+:::danger 注意
+  Vue3中， 过滤器这一概念已经被移除了，vue3变更为组合式API(Composition API)后, 移除了一些vue2中不太推荐使用的特性，包括全局过滤器, 官方建议用方法调用或计算属性替换自定义过滤器
+:::
+
+Vue 允许自定义过滤器，可被用于一些常见的文本格式化，过滤器可以用在两个地方，双花括号插值和 v-bind表达式， 过滤器应该被添加在Javascript表达式的尾部，由`管道`符号`'|'`表示
+
+##### 注册过滤器方式
+
+- **全局注册**
+
+```javascript
+ // Vue.filter() 注册一个自定义过滤器，它接收两个参数：过滤器 ID 和过滤器函数。过滤器函数以值为参数，返回
+ // 转换后的值
+ Vue .filter( 'reverse' , function (value) { 
+   return value.split( '' ).reverse().join( '' )    
+ })
+     
+ // 这样我们就可以在全局使用reverse过滤器了
+ <span v-text = "message | reverse"></span>
+```
+
+- **局部注册**
+
+```javascript
+// 首先在共用文件里写好一个过滤方法，然后引入你的共用文件
+  import util from '@/libs/util.methods'
+
+  // 在你的页面代码里添加过滤器
+  filters: {
+    'filtersName': function (value) {
+      // return你的共用过滤方法
+      return util.YourFilterName(value)
+    }
+}
+```
+
+然后在 HTML 代码里面就可以使用管道符来调用这个过滤器了
+
+```vue
+<template>
+  <div>{{ item.deviceGroupId | filtersName }}</div>
+</template>
+```
+
 ### 对 Vue 中 keep-alive 的理解
 
 - [keepalive](../../frame/vue/keepAlive)
 
-### 如何让组件中的 css 在当前组件生效 (vue中 scoped 功能)
-
-### Vue中的Data为什么是函数
-
 ### Vue双向绑定原理
+
+- [双向绑定](../../frame/vue/双向绑定原理)
 
 ### Vue组件传值
 
 ### 如果一个组件在多个项目中使用怎么办
 
-### Vue 插槽
+### Vue 插槽(slot)
 
-### Vue中的watch
+### Vue watch
 
 ### 计算属性与watch的区别
-
-### MVVM与MVC的区别
 
 ### Vue 首屏加载慢的原因，怎么解决的，白屏时间怎么检测，怎么解决白屏问题
 
@@ -489,11 +657,9 @@ const message = ref<string>('')
 
 ### Vue 路由懒加载（按需加载路由）
 
-### v-for 与 v-if 优先级
+### vue 在 created 和 mounted 这两个生命周期中请求数据的区别
 
-### vue 在 created 和 mounted 这两个生命周期中请求数据有什么区别呢？
-
-### 说说你对 proxy 的理解
+###  proxy
 
 ### Vue3.0 是如何变得更快的？（底层，源码）
 
@@ -526,7 +692,3 @@ Vuex有五个属性 *state* *getters* *mutations* *actions* *modules*
   为了解决 *store*对象过于臃肿的问题， 将 *store* 分割成 *modules* 模块
 
 ### Vuex 怎么请求异步数据
-
-### Vuex 中 action 如何提交给 mutation 的
-
-### vuex 的优势
