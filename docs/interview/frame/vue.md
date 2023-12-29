@@ -643,9 +643,493 @@ Vue 允许自定义过滤器，可被用于一些常见的文本格式化，过�
 
 ### Vue组件传值
 
-### 如果一个组件在多个项目中使用怎么办
+#### 父组件传递给子组件
+
+- `引用组件` - `注册组件` - `使用组件` - `传递数据`
+
+- 通过 自定义属性名="属性值" 的形式传递数据
+
+##### setup 函数版本
+
+**父组件**
+
+```vue
+<script lang="ts">
+  import { reactive, toRefs } from 'vue'; // 引入声明依赖
+  import child from '@components/child.vue'
+
+  export default {
+    name: 'AboutView',
+    // 注册组件
+    componsnet: { child },
+    setup() {
+      const data = reactive({
+        text: '文字',
+        list: [1, 2, 3, 4, 5]
+      })
+
+      return {
+        // 解构输出
+        ...toRefs(data)
+      }
+    }
+  }
+</script>
+
+<template>
+  <div class="box">
+    <!-- 使用组件，通过： 自定义属性名="属性值"的形式传递 -->
+    <child :text="text" :list="list"/>
+  </div>
+</template>
+
+<style scoped lang="scss"></style>
+```
+
+**子组件**
+
+- props接收父组件传递过来的数据， 是一个对象， 但是不要直接去找操作修改props的值
+- type属性定义接收的数据类型
+- default属性设置默认值， 在当前属性没有值传入时调用
+- props也可以定义为 `props:['text', 'list']`
+- 为了开启 对props类型的推导， 必须使用`defineComponent`
+
+```vue
+<script lang="ts">
+  import { defineComponent } from 'vue' // 引入自动提示函数
+
+  export default defineComponent({
+    name: 'child',
+    props: {
+      text: {
+        type: String,
+        default: '默认展示'
+      },
+      list: {
+        type: Array<number>,
+        default: []
+      }
+    },
+
+    // props 是一个对象，包含父组件传递给子组件的所有数据
+    // context： 上下文，包括 attrs、emit、slots
+    setup(props, context) {
+      console.log(props.text, props.list)
+    }
+  })
+</script>
+
+<template>
+  <div class="box">
+    <div>{{ text }}</div>
+    <div v-for="item in list" :key="item">{{ item }}</div>
+  </div>
+</template>
+
+<style scoped lang="scss"></style>
+```
+
+##### setup标签版本
+
+setup标签版本传递数据的方法还是跟函数版本一致，只是写法上有所不同：
+
+**父组件**
+
+```vue
+<script setup lang="ts">
+import { reactive, toRefs } from 'vue' // 引入
+import assembly from '@/components/assembly.vue'
+
+type IReactive = {
+  list: number[],
+  text: string
+}
+
+const data = reactive<IReactive>({
+  text: '文本',
+  list: [1, 2, 3, 4, 5]
+})
+
+const { text, list } = toRefs(data)
+</script>
+
+<template>
+  <div class="box">
+    <assembly :text="text", :list="list"/>
+  </div>
+</template>
+
+<style scoped lang="scss"></style>
+```
+
+**子组件**
+
+- 子组件接受通过`defineProps()` 接收父组件传递的值
+- `type` 属性定义接受的数据类型
+- `default`属性设置默认值，在当前属性没有值传入时调用
+- 可通过`{ }`进行解构
+
+```vue
+<script setup lang="ts">
+  import { defineProps } from 'vue'
+  type IProps = {
+    text: string,
+    list: Array<number>
+  }
+  // 通过定义变量的接收或解构数据进行使用 接收的值可直接在 setup 语法糖中直接使用
+
+// 直接使用变量
+/*   const props = defineProps<IProps>({
+    text: {
+      type: String,
+      default: '默认展示'
+    },
+    list: {
+      type: Array,
+      default: []
+    }
+  }) */
+
+  // 直接解构参数
+
+  const { list, text } = defineProps<IProps>({
+    text: {
+      type: String,
+      default: '默认展示'
+    },
+    list: {
+      type: Array,
+      default: []
+    }
+  })
+
+  console.log(text, list)
+</script>
+
+<template>
+  <div class="box">
+    <div>{{ text }}</div>
+    <div v-for="item in list" :key="item">{{ item }}</div>
+  </div>
+</template>
+
+<style scoped lang="scss"></style>
+```
+
+#### 子组件传递给父组件参数
+
+##### setup函数 子组件传参版本
+
+**子组件传值**
+
+- setup函数中 context 的 emit 用于传递事件给父组件
+- 第一个参数要为传递的参数名，第二个参数为传递的值
+
+```vue
+<script lang="ts">
+  import { reactive, defineComponentt } from 'vue'
+  interface IReactive {
+    text: string
+  }
+  export default defineComponent({
+    name: 'child',
+    setup(props, context) {
+      const data = reactive({
+        text: '文本'
+      })
+    
+      const transferParents = () => {
+        context.emit('transfer', data.text)
+      }
+      return {
+        transferParents,
+      }
+    }
+  })
+</script>
+<template>
+  <div class="nox">
+    <buttom @click="transferParents">点击传值给父组件</buttom>
+  </div>
+</template>
+```
+
+**父组件接收**
+
+- `引入组件` - `注册组件` - `定义事件` - `接收并使用传递的值`
+- 父组件中使用自定义时间接收，自定义事件名称必须与子组件传递的一致(即登号前面名称一致)
+- 等号后面的事件名称可自行定义
+- 事件中通过默认参数接收使用子组件传递的值
+- setup函数中的时间必须`return`输出才能使用
+
+```vue
+<script lang="ts">
+import { reactive, toRefs } from 'vue'
+import child from '@/components/child.vue'
+interface IReactive {
+  content: string
+}
+export default {
+  name: 'AboutView',
+  components: { child },
+  setup() {
+    // ...
+    const data = reactive<IReactive>({
+      content: ''
+    })
+
+    const takeOverChild = (event): void => {
+      // 通过默认参数接收使用子组件的值
+      console.log(event);
+      data.content = event
+    }
+
+    return {
+      ...toRefs(data),
+      takeOverChild
+    }
+  }
+}
+</script>
+<template>
+  <div class="box">
+    <!-- 父组件中使用自定义事件来进行接收，自定义事件名称必须与子组件传递的一致(即等号前面的属性名一致) -->
+    <!-- 等号后面的属性值可以自定义 -->
+    <child @transferparents="takeOverChild"/>
+    <div>{{content}}</div>
+  </div>
+</template>
+```
+
+##### setup标签 子组件传参版本
+
+**子组件**
+
+```vue
+<script setup lang="ts">
+  import { reactive, defineEmits } from 'vue'
+  interface IReactive {
+    text : string
+  }
+  interface IEmits {}
+
+  const emits = defineEmits<IEmits>()
+  const data = reactive<IReactive>({
+    text: '文本'
+  })
+
+  const transferParents = () => {
+    emits('transferParents', data.text)
+  }
+</script>
+
+<template>
+  <div class="box">
+    <button @click="transferParents">点击传值给父组件</button>
+  </div>
+</template>
+```
+
+**父组件接收**
+
+- `引入组件` —— `定义事件` —— `接收并使用传递的值`
+- 父组件中使用自定义事件接收，自定义事件名称必须与子组件传递的一致(即等号前面名称)
+- 等号后面的事件名称可自行定义
+- 事件中通过默认参数接收使用子组件传递的值
+- setup语法糖中组件引入后使用，无需注册
+
+```vue
+<script lang="ts" setup>
+import { reactive, toRefs } from 'vue'
+import assembly from '@/components/assembly.vue'
+interface IReactive {
+  content: string
+}
+
+const data = reactive<IReactive>({
+  content: ''
+})
+
+const takeOverChild = (event): void => {
+  console.log(event);
+  data.content = event
+}
+
+const { text } = toRefs(data)
+</script>
+
+<template>
+  <div class="box">
+    <!-- 父组件中使用自定义事件来进行接收，自定义事件名称必须与子组件传递的一致(即等号前面的属性名一致) -->
+    <!-- 等号后面的属性值可以自定义 -->
+    <child @transferparents="takeOverChild"/>
+    <div>{{content}}</div>
+  </div>
+</template>
+```
 
 ### Vue 插槽(slot)
+
+简单来说就是子组件中的提供给父组件使用的一个`坑位`，用`<slot></slot>`表示， 父组件可以在这个坑位中填充任何模版代码，然后子组件中`<slot></slot>`就会被替换成这些内容：
+
+```vue
+<script lang="ts" setup>
+import child from './Child.vue'
+</script>
+
+<template>
+  <div>
+    <Child>Hello world</Child>
+  </div>
+</template>
+```
+
+**子组件**
+
+```vue
+<template>
+  <div>
+    <p>1</p>
+    <slot/>
+    <p>2</p>
+  </div>
+</template>
+```
+
+子组件中的 `<slot/>` 就是父组件放在子组件中的内容 `Hello world`，当然可以放入任何内容，例如变量：
+
+**父组件**
+
+```vue
+<script setup lang="ts">
+  import { ref } from 'vue'
+  import Child from './Child.vue'
+
+  const msg = ref<string>('Hello world')
+</script>
+<template>
+  <div>
+    <Child>{{ msg }}</Child>
+  </div>
+</template>
+```
+
+这个效果跟上面示例的结果是一样的
+
+::: info TIP
+
+- **插槽**: 插槽在父子组件关系中放置在子组件中，插槽的内容是被在父组件中调用时传递过来的
+
+- **插槽内容**: 插槽内容是在父组件中调用子组件时，具体要传递给子组件的值， 一般是放在子组件标签里面的
+
+:::
+
+##### 默认内容
+
+在父组件中没有提供任何`插槽内容`的时候， 我们是可以为子组件的插槽指定默认内容的， 比如:
+
+**子组件**
+
+```vue
+<template>
+  <div>
+    <slot>我是设置的默认内容</slot>
+  </div>
+</template>
+```
+
+**父组件**
+
+```vue
+<script lang="ts" setup>
+  import Child from './Child.vue'
+</script>
+
+<template>
+  <div>
+    <!-- 如果不传值，那么最终结果就是展示子组件设置的默认内容 -->
+    <Child></Child>
+    <!-- 如果传值， 就是展示传入的内容 -->
+    <Child>Hello world</Child>
+  </div>
+</template>
+```
+
+##### 具名插槽
+
+很多时候一个插槽满足不了需求， 需要多个插槽，于是就有了具名插槽， 比如带有`name`属性的插槽`<slot name="test"/>`, 没有提供`name`的插槽 `<slot/>` 就被隐式地命名为 *default*。
+
+在父组件中，我们可以使用添加了 `v-slot: xxx`(可简写为`#xxx`)指令的`template` 元素， 这个元素会将目标插槽的名字传递下去匹配对应插槽。例如:
+
+**子组件**
+
+```vue
+<template>
+  <div>
+    <div>
+      <slot name="monkey"/>
+    </div>
+    <div>
+      <slot name="orange"/>
+    </div>
+    <div>
+      <slot name="apple"/>
+    </div>
+
+  </div>
+</template>
+```
+
+**父组件**
+
+```vue
+<script setup lang="ts">
+import Child from './Child.vue'
+</script>
+<template>
+  <div>
+    <Child>
+      <!-- #monkey 是 v-slot:monkey的缩写 -->
+      <template #monkey>一只吗喽</template>
+
+      <template #orange>敖润之子</template>
+
+      <template #apple>小小苹果</template>
+    </Child>
+  </div>
+</template>
+```
+
+> 具名插槽的顺序是不限制的，只需要写好模版命好名字，它就会自动去到它所对应的位置
+
+##### 动态插槽
+
+动态插槽就是插槽名变成了变量的形式，我们可以随时修改这个变量从而展示不同的效果。它的写法是`v-slot:[变量名]` 或者缩写为 `#[变量名]`
+
+**父组件**
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+import Child from './Child.vue'
+
+const slotName = ref<string>('monkey')
+const orange = ref<string>('orange')
+const apple = ref<string>('apple')
+</script>
+<template>
+  <div>
+    <Child>
+      <!-- 等同于 #monkey -->
+      <template #[slotName]>你不懂吗喽</template>
+
+      <template #[orange]>西海龙王敖润之子</template>
+
+      <template #[apple]>one more thing</template>
+    </Child>
+  </div>
+</template>
+```
 
 ### Vue watch
 
@@ -690,5 +1174,3 @@ Vuex有五个属性 *state* *getters* *mutations* *actions* *modules*
 - *modules*
   
   为了解决 *store*对象过于臃肿的问题， 将 *store* 分割成 *modules* 模块
-
-### Vuex 怎么请求异步数据

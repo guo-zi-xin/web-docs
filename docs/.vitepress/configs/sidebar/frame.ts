@@ -20,6 +20,10 @@ export const FrameBar = [
         text: 'keepAlive',
         link: '/frame/vue/keepAlive',
       },
+      {
+        text: '双向绑定',
+        link: '/frame/vue/双向绑定',
+      },
     ],
     collapsed: false,
   },
