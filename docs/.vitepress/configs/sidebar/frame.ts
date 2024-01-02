@@ -24,6 +24,10 @@ export const FrameBar = [
         text: '双向绑定',
         link: '/frame/vue/双向绑定',
       },
+      {
+        text: '加载白屏',
+        link: '/frame/vue/首页白屏',
+      },
     ],
     collapsed: false,
   },

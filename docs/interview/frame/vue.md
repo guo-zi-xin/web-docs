@@ -89,9 +89,11 @@ ViewModel存在目的在于抽离Controller中展示的业务逻辑，而不是�
 
 ### `v-text`、`{{}}`、`v-html`区别
 
-##### `{{}}`
+---
 
-模版插值`{{}}` 将数据解析成纯文本，并不能显示输出 html
+##### `{ { } }`
+
+模版插值`{ { } }` 将数据解析成纯文本，并不能显示输出 html
 
 ##### `v-text`
 
@@ -1131,11 +1133,259 @@ const apple = ref<string>('apple')
 </template>
 ```
 
+##### 作用域插槽
+
+插槽也可以像组件传递 props 那样， 在`slot`标签绑定属性从而传递给父组件中的`插槽内容`
+
+**子组件**
+
+```vue
+<template>
+  <div>
+    <slot personName="malou" age="18"></slot>
+  </div>
+</template>
+```
+
+**父组件**
+
+```vue
+<script lang="ts" setup>
+  import Child from './Child.vue'
+</script>
+
+<template>
+  <div>
+    <Child v-slot="slotProps">
+      My Name is {{ slotProps.personName }} and I am {{ slotProps.age }} years old this year
+    </Child>
+  </div>
+</template>
+
+<!-- 也可以通过解构来获取数据 -->
+
+<template>
+  <div>
+    <Child v-slot="{ personName, age }">
+      My Name is {{ personName }} and I am {{ age }} years old this year
+    </Child>
+  </div>
+</template>
+```
+
+:::warning 注意
+作用域插槽不能绑定 `name` 属性，因为绑定了 `name` 成了具名插槽了。 同样具名插槽的`name`属性也不会传递给 `插槽内容`， 这种在父组件作用域中获取到了子组件作用域中的变量，可以认为作用域插槽
+延伸了子组件数据的作用范围，所以这类能够借搜参数的插槽就被称为作用域插槽
+:::
+
+##### 具名作用域插槽
+
+具名作用域插槽接收参数的方式是通过`template`的标签的指令`v-slot`的值获取的
+
+```vue
+<!-- 父组件 -->
+<template>
+  <div>
+    <Child>
+      <template #bigTurnip="bigTurnipProps">
+        {{ bigTurnipProps.message }}
+      </template>
+    </Child>
+  </div>
+</template>
+<script setup>
+import Child from './Child.vue'
+</script>
+
+<!-- 子组件Child.vue -->
+
+<template>
+    <div>
+        <!-- 大萝卜 -->
+        <div>
+            <slot name="bigTurnip" message="我是萝北"></slot>
+        </div>
+    </div>
+</template>
+```
+
 ### Vue watch
+
+vue watch 用于侦听一个或者多个响应式数据源，并在数据源变化时调用所给的回调函数
+
+##### 类型
+
+```typescript
+// 侦听单个来源
+function watch<T>(
+  source: WatchSource<T>,
+  callback: WatchCallback<T>,
+  options?: WatchOptions
+): StopHandle
+
+// 侦听多个值
+function watch<T>(
+  sources: WatchSource<T>[],
+  callback: WatchCallback<T[]>,
+  options?: WatchOptions
+): StopHandle
+
+type WatchCallback<T> = (
+  value: T,
+  oldValue: T
+  onCleanup: (cleanupFn: () => void ) => void
+) => void
+
+type WatchSource<T> = 
+| Ref<T>  // ref
+| (() => T)  // getter
+| T extends object
+? T
+: never //响应式对象
+
+interface Watchoptions extends WatchEffectOptions = {
+  immediate?: boolean // 默认值为false
+  deep?: boolean //米哦认知为false
+  flush?: 'pre' | 'post' | 'sync' // 默认值为pre
+  onTrack?: (event: DebuggerEvent) => void
+  onTrigger?: (event: DebuggerEvent) => void
+}
+```
+
+##### 详细信息
+
+`watch()` 默认是懒侦听的， 即仅在侦听起源发生变化时才执行回调函数
+
+第一个参数是侦听器的源，这个源来自以下几种
+
+- 一个函数，返回一个值
+- 一个ref
+- 一个响应式对象
+- ...或者是由以上类型的值组成的数组
+
+第二个参数是在发生变化时要调用的回调函数，这个回调函数接收三个参数：新值、旧值、以及一个用于注册副作用清理的回调函数， 该回调函数会在副作用下一次重新执行前调用，可以用来清除无效的副作用
+例如等待中的异步请求
+
+当侦听多个来源时，回调函数接收两个数组，分别对应来源数组中的新值和旧值
+
+第三个参数是可选的，是一个对象，支持下面这些选项
+
+- **immediate** : 在侦听器创建时立即触发回调，第一次调用时旧值是 `undefined`
+- **deep**: 如果源是对象，强制深度遍历，以便在深层级变更时触发回调
+- **flush**: 吊证回调函数的刷新时机
+- **onTrack/onTrigger**: 调试侦听器的依赖
+
+##### 示例
+
+- **侦听一个 getter 函数**
+
+```javascript
+const state = reactive({ count: 0 })
+watch(
+  () => state.count,
+  (value,preValue) => {
+    /* ... */
+  }
+)
+```
+
+- **侦听一个ref**
+
+```javascript
+const count = ref(0)
+watch(count, (value, preValue) => {
+  /* ... */
+})
+```
+
+- **侦听多个来源时，回调函数接收两个数组，分别对应来源数组中的新值和旧值**
+
+```javascript
+watch([fooRef, barRef], ([foo, bar], [preFoo, preBar]) => {
+  /* ... */
+})
+```
+
+- **深度遍历**
+
+当使用getter函数作为源时，回调只在此函数的返回值变化时才会触发，如果想让回调在深层级变更时也能触发，你需要使用(`deep: true`) 强制侦听器进入深层级模式，在深层级模式时，如果回调函数
+由于深层级的变更而被触发， 那么新值和旧值将会是同一个对象
+
+```javascript
+const state = reactive({ count: 0 })
+watch(
+  () => state,
+  (newValue, oldValue) => {
+    // newValue === oldValue
+  },
+  {
+    deep: true
+  }
+)
+```
+
+- **当直接侦听一个响应式对象时，侦听器会自动启用深层模式**
+
+```javascript
+const state = reactive({ count: 0 })
+watch(state, () => {
+  /* 深层级变更状态所触发的回调 */
+})
+```
+
+- **调试选项与刷新时机**
+
+```javascript
+watch(source, callback, {
+  flush: 'post',
+  onTrack(event) {
+    debugger
+  }
+  onTrigger(event) {
+    debugger
+  }
+})
+```
+
+- **停止侦听器**
+
+```javascript
+const stop = watch(source, callback)
+
+// 当已不再需要该侦听器时
+stop()
+```
+
+- **副作用清理**
+
+```javascript
+watch(id, async (newId, oldId, onCleanup) => {
+  const { response, cancel } = doAsyncWork(newId)
+  // 当 `id` 变化时候， cancel将被调用
+  // 取消之前的未完成的请求
+  onCleanup(cancel)
+  data.value = await response
+})
+```
 
 ### 计算属性与watch的区别
 
+`watch` 和 `computed` 都是 vue2/vue3中用于监听数据变化的属性
+
+- **功能**: computed 是计算属性，适用于派生值的场景，它会缓存计算结果，只有在依赖的响应式数据变化时才重新计算； watch 是监听一个值的变化而执行对应的回调，
+  适用于需要在数据变化时执行异步或复杂操作的场景
+
+- **是否调用缓存**: computed 函数所依赖的属性不变的时候会调用缓存， watch 每次监听的值发生变化时都会调用回调
+
+- **是否调用return**: computed 必须有， watch 可以没有
+
+- **使用场景**: computed 当一个属性受多个属性影响的时候， 例如购物车商品结算；watch 一条数据影响多条数据的时候， 例如搜索框
+
+- **是否支持异步**: computed 函数不能有异步 watch 可以
+
 ### Vue 首屏加载慢的原因，怎么解决的，白屏时间怎么检测，怎么解决白屏问题
+
+- [首页白屏](../../frame/vue/首页白屏)
 
 ### Vue中 Route 与 router 区别
 
