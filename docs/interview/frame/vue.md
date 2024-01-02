@@ -1389,13 +1389,122 @@ watch(id, async (newId, oldId, onCleanup) => {
 
 ### Vue中 Route 与 router 区别
 
+Vue中 Route 与 Router 依然表示路由相关的概念，但它们功能不尽相同
+
+- **Route(路由)**
+
+  Route 表示应用程序中的一个路由，它包含有关当前路由状态的信息， 例如路径、参数、查询等，在Vue3中，通过 **route** 对象可以访问当前路由的信息
+
+  可以通过`useRoute`函数来获取当前的 `Route`对象
+
+  ```javascript
+  import { useRoute } from 'vue'
+
+  export default {
+    setup() {
+      const route = useRoute()
+
+      // 访问当前路由信息
+      console.log(route.value.path)
+    }
+  }
+  ```
+
+- **路由器(Router)**
+
+Router是 Vue Router的实例， 包含了整个路由器的配置信息，可以理解为全局的路由控制器，它提供了一些方法和属性，比如 `push`、 `replace` 和 `go` 等方法，
+用于改变URL，以及`currentRoute`、`matched` 等属性
+
+通过`useRouter` 函数或来获取路由器实例
+
+```javascript
+import { createRouter, createWebHashHistory, useRouter } from 'vue-router'
+
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: 'contact', component: Contact}
+]
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+})
+
+export default {
+  setup() {
+    const router = useRouter()
+
+    // 在 setup 函数中使用路由器
+    router.push('/about')
+  }
+}
+```
+
+综上所述， `router`是VueRouter的实例，提供了路由控制器的一些方法和属性，用于改变URL和获取路由相关信息。
+
+而`route`是当前激活的路由对象，包含了当前URL解析得到的信息。
+
 ### Vue 路由懒加载（按需加载路由）
 
-### vue 在 created 和 mounted 这两个生命周期中请求数据的区别
+我们可以使用 `defineAsyncComponent` 函数来定义异步组件，该函数接收一个返回值为`Promise`的函数，用于加载组件
 
-###  proxy
+在引入组件时候， 我们可以通过`import` 动态导入组件， 这将返回一个`Promise` 对象， 表示组件的异步加载
+
+```javascript
+import { createRouter, createWebHashHistory, defineAsyncComponent } from 'vue';
+
+const Home = defineAsyncComponent(() => import('./views/Home.vue'));
+const About = defineAsyncComponent(() => import('./views/About.vue'));
+const Contact = defineAsyncComponent(() => import('./views/Contact.vue'));
+
+const routes = [
+  { path: '/', component: Home },
+  { path: '/about', component: About },
+  { path: '/contact', component: Contact },
+];
+
+const router = createRouter({
+  history: createWebHashHistory(),
+  routes,
+});
+
+export default router;
+```
 
 ### Vue3.0 是如何变得更快的？（底层，源码）
+
+Vue3在性能上进行了一系列的优化和改进，主要通过以下几个方面实现了更好的性能
+
+- **Proxy 取代了 Object.defineProperty**
+  
+  Vue3 引入了 Proxy 对象来代替 Vue2 中使用的 Object.defineProperty, Proxy 相对于 Object.defineproperty具有更强大和灵活的功能，它能够监控对象的所有属性，而不仅仅是对象的属性，
+  这使得Vue3能够高效的追踪数据的变化，从而提高响应性能
+
+- **编译优化**
+
+  Vue3 的编译器做了大量的优化工作， 生成的运行时代码更为精简和高效，其中有一个重要的变化是将模版编译为更优化的渲染函数，减少了运行时的开销，新的编译器还引入了静态提升(Static Hoisting)等
+  技术， 使得生成的代码更加紧凑和高效
+
+- **Tree-Shanking的支持**
+  
+  Vue3在设计上更加友好用于 tree-shanking 使得在应用中使用Vue3时能够更好地利用打包模块工具(如webpack)的 tree-shanking 功能，去除无用的代码， 减少包的大小
+
+- **Fragment 和 Teleprot**
+  
+  Vue3 引入了 Fragment 和 Teleport 两个新特性， 它们使得组件的渲染更加高效。
+
+  Fragment 允许组件返回多个根节点， 而 Teleport 允许将组件的内容渲染到DOM树的其他位置， 这两个特性能够减少不必要的DOM操作，提升渲染性能
+
+- **Composition API**
+
+  Composition API 是Vue3中一个重要的新增特性，它提供了更灵活和可复用的组件逻辑复用方式。使用 Composition API能够更好地组织和封装组件逻辑，提高代码的可维护性。
+  同时，它也有助于更好的利用JavaScript 引擎的优化， 使得组件的性能更高效
+
+- **自定义渲染器和渲染优化**
+
+  Vue3 引入了一个新的渲染器API， 使得可以更轻松地构建自定义渲染器、这使得Vue3.0不仅能够在浏览器中运行，还可以在服务器、原生应用等环境中使用。
+  同时，新的渲染器API也带来了更多的渲染优化，使得Vue3 在不同环境下都能够高效地工作
 
 ### Vuex
 
