@@ -33,7 +33,28 @@ export const FrameBar = [
   },
   {
     text: 'React',
-    items: [],
+    items: [
+      {
+        text: '组件通信',
+        link: '/frame/react/组件通信',
+      },
+      {
+        text:'React常用特性',
+        link: '/frame/react/react常用特性'
+      },
+      {
+        text:'SSR相关',
+        link: '/frame/react/SSR相关'
+      },
+      {
+        text:'虚拟DOM',
+        link: '/frame/react/虚拟DOM'
+      },
+      {
+        text:'高阶函数',
+        link: '/frame/react/高阶函数'
+      },
+    ],
     collapsed: false,
   },
   {
