@@ -219,7 +219,7 @@ Redux
 import { useImperativ ...`,l:"frame/react/组件通信.html#父组件调用子组件",a:"父组件调用子组件"},"44.0":{t:"# 虚拟DOM与Diff算法\r",p:"虚拟DOM相当于是在JS和 真实的DOM之间加了一个缓存， 利用DOM Diff算法避免了没有必要的DOM操作， 从而提高性 ...",l:"frame/react/虚拟DOM.html",a:"虚拟dom与diff算法"},"44.1":{t:"结构对比\r",p:`React.createElement和 document.createElement
 虚拟DOM是一个对象， 而真实的DO ...`,l:"frame/react/虚拟DOM.html#结构对比",a:"结构对比"},"44.2":{t:"流程对比\r",p:`传统Web应用， 数据的变化会实时地更新到用户界面中， 于是每次数据微小的变化都会引起DOM的重新渲染
 在虚拟DOM中， 是 ...`,l:"frame/react/虚拟DOM.html#流程对比",a:"流程对比"},"44.3":{t:"什么是虚拟DOM\r",p:`虚拟DOM是一个对象， 这个对象是由真实的DOM转化而来:
-&lt;div className=&quot;Index&qu ...`,l:"frame/react/虚拟DOM.html#什么是虚拟dom",a:"什么是虚拟dom"},"44.4":{t:"虚拟DOM的优势\r",p:"\r",l:"frame/react/虚拟DOM.html#虚拟dom的优势",a:"虚拟dom的优势"},"44.5":{t:"虚拟DOM可以提高效率，开发时不必关注DOM， 只关注业务逻辑。\r",p:"性能提升(牢记浏览器在处理DOM时很慢， 处理JS时很快)， 并且虚拟DOM感受到变化的时候是通过局部更新而非整体，从而减少 ...",l:"frame/react/虚拟DOM.html#虚拟dom可以提高效率-开发时不必关注dom-只关注业务逻辑。",a:"虚拟dom可以提高效率-开发时不必关注dom-只关注业务逻辑。"},"44.6":{t:"超强的兼容性\r",p:`具有浏览器的兼容和跨平台的兼容
+&lt;div className=&quot;Index&qu ...`,l:"frame/react/虚拟DOM.html#什么是虚拟dom",a:"什么是虚拟dom"},"44.4":{t:"虚拟DOM的优势\r",p:"\r",l:"frame/react/虚拟DOM.html#虚拟dom的优势",a:"虚拟dom的优势"},"44.5":{t:"虚拟DOM可以提高效率，开发时不必关注DOM， 只关注业务逻辑\r",p:"性能提升(牢记浏览器在处理DOM时很慢， 处理JS时很快)， 并且虚拟DOM感受到变化的时候是通过局部更新而非整体，从而减少 ...",l:"frame/react/虚拟DOM.html#虚拟dom可以提高效率-开发时不必关注dom-只关注业务逻辑",a:"虚拟dom可以提高效率-开发时不必关注dom-只关注业务逻辑"},"44.6":{t:"超强的兼容性\r",p:`具有浏览器的兼容和跨平台的兼容
 
 
 React基于虚拟DOM实现了一套自己的事件机制，并且模拟了事件冒泡和捕获的过程， 采取 ...`,l:"frame/react/虚拟DOM.html#超强的兼容性",a:"超强的兼容性"},"45.0":{t:"# 高阶函数HOC(High Order Component)\r",p:`在React中， 高阶组件(HOC) 是一个接收组件作为参数并返回一个新组建的函数。 换句话说， 它是一种组件的
