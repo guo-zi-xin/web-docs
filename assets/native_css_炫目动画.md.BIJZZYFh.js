@@ -1,0 +1,47 @@
+import"./chunks/BackgroundDemo.vue_vue_type_style_index_0_scoped_dc272947_lang.w40geAFS.js";import{_ as o,o as a,c as l,p as e,q as t,k as n,I as c,m as r,a as F,R as D}from"./chunks/framework.AonOEUEq.js";const y={},i=s=>(e("data-v-596a42c7"),s=s(),t(),s),C={class:"partial-container"},d=i(()=>n("div",{class:"container"},[n("span",{class:"text"},"我的胃来食")],-1)),B=[d];function _(s,p){return a(),l("div",C,B)}const u=o(y,[["render",_],["__scopeId","data-v-596a42c7"]]),h=n("h1",{id:"炫目动画",tabindex:"-1"},[F("炫目动画 "),n("a",{class:"header-anchor",href:"#炫目动画","aria-label":'Permalink to "炫目动画"'},"​")],-1),A=D(`<h4 id="代码实现" tabindex="-1">代码实现 <a class="header-anchor" href="#代码实现" aria-label="Permalink to &quot;代码实现&quot;">​</a></h4><div class="language-vue"><button title="Copy Code" class="copy"></button><span class="lang">vue</span><pre class="shiki material-theme-palenight vp-code"><code><span class="line"><span style="color:#89DDFF;">  &lt;</span><span style="color:#F07178;">template</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"><span style="color:#89DDFF;">    &lt;</span><span style="color:#F07178;">div</span><span style="color:#C792EA;"> class</span><span style="color:#89DDFF;">=</span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">partial-container</span><span style="color:#89DDFF;">&quot;</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"><span style="color:#89DDFF;">      &lt;</span><span style="color:#F07178;">div</span><span style="color:#C792EA;"> class</span><span style="color:#89DDFF;">=</span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">container</span><span style="color:#89DDFF;">&quot;</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"><span style="color:#89DDFF;">        &lt;</span><span style="color:#F07178;">span</span><span style="color:#C792EA;"> class</span><span style="color:#89DDFF;">=</span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">text</span><span style="color:#89DDFF;">&quot;</span><span style="color:#89DDFF;">&gt;</span><span style="color:#BABED8;">我的胃来食</span><span style="color:#89DDFF;">&lt;/</span><span style="color:#F07178;">span</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"><span style="color:#89DDFF;">      &lt;/</span><span style="color:#F07178;">div</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"><span style="color:#89DDFF;">    &lt;/</span><span style="color:#F07178;">div</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"><span style="color:#89DDFF;">  &lt;/</span><span style="color:#F07178;">template</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;">  &lt;</span><span style="color:#F07178;">style</span><span style="color:#C792EA;"> lang</span><span style="color:#89DDFF;">=</span><span style="color:#89DDFF;">&quot;</span><span style="color:#C3E88D;">scss</span><span style="color:#89DDFF;">&quot;</span><span style="color:#C792EA;"> scoped</span><span style="color:#89DDFF;">&gt;</span></span>
+<span class="line"><span style="color:#89DDFF;">  .</span><span style="color:#FFCB6B;">partial-container</span><span style="color:#89DDFF;"> {</span></span>
+<span class="line"><span style="color:#B2CCD6;">    width</span><span style="color:#89DDFF;">:</span><span style="color:#F78C6C;"> 700px</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    height</span><span style="color:#89DDFF;">:</span><span style="color:#F78C6C;"> 145px</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    background</span><span style="color:#89DDFF;">:</span><span style="color:#89DDFF;"> #</span><span style="color:#BABED8;">000</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    margin</span><span style="color:#89DDFF;">:</span><span style="color:#F78C6C;"> 100px</span><span style="color:#BABED8;"> auto</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#89DDFF;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;">  .</span><span style="color:#FFCB6B;">container</span><span style="color:#89DDFF;"> {</span></span>
+<span class="line"><span style="color:#B2CCD6;">    text-align</span><span style="color:#89DDFF;">:</span><span style="color:#BABED8;"> center</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    height</span><span style="color:#89DDFF;">:</span><span style="color:#F78C6C;"> 100%</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    background-color</span><span style="color:#89DDFF;">:</span><span style="color:#89DDFF;"> #</span><span style="color:#BABED8;">000</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#FFCB6B;">    filter</span><span style="color:#89DDFF;">:</span><span style="color:#82AAFF;"> contrast</span><span style="color:#89DDFF;">(</span><span style="color:#F78C6C;">30</span><span style="color:#89DDFF;">);</span></span>
+<span class="line"><span style="color:#89DDFF;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;">  .</span><span style="color:#FFCB6B;">text</span><span style="color:#89DDFF;"> {</span></span>
+<span class="line"><span style="color:#B2CCD6;">    font-size</span><span style="color:#89DDFF;">:</span><span style="color:#F78C6C;"> 100px</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    display</span><span style="color:#89DDFF;">:</span><span style="color:#BABED8;"> inline-block</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    padding-top</span><span style="color:#89DDFF;">:</span><span style="color:#F78C6C;"> 50px</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    color</span><span style="color:#89DDFF;">:</span><span style="color:#89DDFF;"> #</span><span style="color:#BABED8;">fff</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    letter-spacing</span><span style="color:#89DDFF;">:</span><span style="color:#F78C6C;"> -100px</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#B2CCD6;">    animation</span><span style="color:#89DDFF;">:</span><span style="color:#BABED8;"> showup </span><span style="color:#F78C6C;">2s</span><span style="color:#BABED8;"> linear forwards</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic;">    /* animation-iteration-count 指定动画循环次数 */</span></span>
+<span class="line"><span style="color:#B2CCD6;">    animation-iteration-count</span><span style="color:#89DDFF;">:</span><span style="color:#BABED8;"> infinite</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#676E95;font-style:italic;">    /* animation-direction 使动画来回运动 */</span></span>
+<span class="line"><span style="color:#B2CCD6;">    animation-direction</span><span style="color:#89DDFF;">:</span><span style="color:#BABED8;"> alternate</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#89DDFF;">  }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#89DDFF;font-style:italic;">  @keyframes</span><span style="color:#82AAFF;"> showup</span><span style="color:#89DDFF;"> {</span></span>
+<span class="line"><span style="color:#C792EA;">    0%</span><span style="color:#89DDFF;"> {</span></span>
+<span class="line"><span style="color:#FFCB6B;">      filter</span><span style="color:#89DDFF;">:</span><span style="color:#82AAFF;"> blur</span><span style="color:#89DDFF;">(</span><span style="color:#F78C6C;">10px</span><span style="color:#89DDFF;">);</span></span>
+<span class="line"><span style="color:#89DDFF;">    }</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#C792EA;">    100%</span><span style="color:#89DDFF;"> {</span></span>
+<span class="line"><span style="color:#B2CCD6;">      letter-spacing</span><span style="color:#89DDFF;">:</span><span style="color:#F78C6C;"> 10px</span><span style="color:#89DDFF;">;</span></span>
+<span class="line"><span style="color:#FFCB6B;">      filter</span><span style="color:#89DDFF;">:</span><span style="color:#82AAFF;"> blur</span><span style="color:#89DDFF;">(</span><span style="color:#F78C6C;">2px</span><span style="color:#89DDFF;">);</span></span>
+<span class="line"><span style="color:#89DDFF;">    }</span></span>
+<span class="line"><span style="color:#89DDFF;">  }</span></span>
+<span class="line"><span style="color:#89DDFF;">  &lt;/</span><span style="color:#F07178;">style</span><span style="color:#89DDFF;">&gt;</span></span></code></pre></div>`,2),x=JSON.parse('{"title":"炫目动画","description":"","frontmatter":{},"headers":[],"relativePath":"native/css/炫目动画.md","filePath":"native/css/炫目动画.md","lastUpdated":1700647030000}'),g={name:"native/css/炫目动画.md"},v=Object.assign(g,{setup(s){return(p,f)=>(a(),l("div",null,[h,c(r(u)),A]))}});export{x as __pageData,v as default};
