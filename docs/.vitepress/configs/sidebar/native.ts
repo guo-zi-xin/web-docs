@@ -20,6 +20,7 @@ export const NativeBar = [
         items: [
           { text: '常用的数组的方法', link: '/native/javascript/常用的数组的方法' },
           { text: 'Array.map与Array.forEach的区别', link: '/native/javascript/map与forEach的区别' },
+          { text: 'Array.reduce方法的使用场景', link: '/native/javascript/reduce方法的使用场景' },
         ],
         collapsed: false,
       },
