@@ -114,7 +114,7 @@ const groupBy = (arr, prop) => {
   return arr.reduce((acc, cur) => {
     const key = cur[prop]
     const curGroup = acc[key] ?? []
-    return { ...acc, [key]: [...curGroup, obj] }
+    return { ...acc, [key]: [...curGroup, cur] }
   }, {})
 }
 
