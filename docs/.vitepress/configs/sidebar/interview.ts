@@ -2,6 +2,16 @@ export const InterViewBar = [
   {
     text: '面试相关',
     items: [
+      // {
+      //   text: 'weekly',
+      //   link: '/interview/weeky',
+      //   items: [
+      //     {
+      //       text: '2024-03-05',
+      //       link: '/interview/weeky/240305',
+      //     }
+      //   ]
+      // },
       {
         text: '前端基础',
         link: '/interview/base/index',
@@ -30,10 +40,10 @@ export const InterViewBar = [
           }
         ]
       },
-      {
-        text: '小程序相关',
-        link:'/interview/applet'
-      }
+      // {
+      //   text: '小程序相关',
+      //   link:'/interview/applet'
+      // }
     ]
   },
 ]
