@@ -272,7 +272,7 @@ JS本身事没有 class 类型的， 但是每个函数都具有一个 prototype
 > - 创建一个新对象
 > - 使新对象的 `__proto__`指向原函数的`prototype`
 > - 改变 this 指向(指向新的obj)，并执行该函数，执行结果保存起来作为 result
-> - 判断执行函数的结果是不是 null 或者 undefuned， 如果是则返回之前的新对象，如果不是则返回result
+> - 判断执行函数的结果是不是 null 或者 undefuned， 如果是则返回之前的新对象，如果不是则返回result
 
 > 引申：手写实现一个 new
 

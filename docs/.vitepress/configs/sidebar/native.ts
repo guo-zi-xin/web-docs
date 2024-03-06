@@ -8,7 +8,9 @@ export const NativeBar = [
       { text: 'call bind apply的区别', link: '/native/javascript/call-apply-bind的区别' },
       { text: 'JS中的元素尺寸与布局信息', link: '/native/javascript/JS中的元素尺寸与布局信息' },
       { text: 'JS模块化', link: '/native/javascript/js模块化' },
-      { text: 'moment使用', link: '/native/javascript/moment使用' },
+      { text: '关于this指向', link: '/native/javascript/关于this指向' },
+
+
       { text: '获取当前页面URL信息', link: '/native/javascript/获取当前页面URL信息' },
       { text: 'eslint常见配置', link: '/native/javascript/eslint常见配置' },
       { text: 'JS解析URL参数', link: '/native/javascript/JS解析URL参数' },
@@ -38,6 +40,13 @@ export const NativeBar = [
       { text: 'ES6新特性(二)', link: '/native/javascript/ES6新特性二' },
       { text: 'ES6扩展', link: '/native/javascript/ES6数据类型的扩展' },
       { text: '类的继承', link: '/native/javascript/类的继承' },
+      {
+        text: '常用工具', 
+        items: [
+          { text: 'moment使用', link: '/native/javascript/moment使用' },
+        ],
+        collapsed: false
+      },
     ],
     collapsed: false,
   },
