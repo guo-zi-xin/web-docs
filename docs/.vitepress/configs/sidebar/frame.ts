@@ -28,6 +28,10 @@ export const FrameBar = [
         text: '加载白屏',
         link: '/frame/vue/首页白屏',
       },
+      {
+        text: 'watch和watchEffect的区别',
+        link: '/frame/vue/watch和watchEffect的区别',
+      },
     ],
     collapsed: false,
   },
