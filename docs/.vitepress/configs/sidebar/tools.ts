@@ -23,6 +23,10 @@ export const ToolsBar = [
         text: 'git rebase合并commit',
         link: '/tools/git/git-rebase合并commit',
       },
+      {
+        text: 'git cherry-pick使用',
+        link: '/tools/git/git-cherry-pick',
+      },
     ],
     collapsed: false,
   },
