@@ -87,7 +87,7 @@ return (
 )
 ```
 
-另一方面，不受控制的组件使用refs 或其他方法在内部管理自己的状态。它们独立存储和更新其状态，而不依赖于 props 或回调。 父组件对不受控制的组件的状态的控制较少
+另一方面，不受控制的组件使用refs 或其它方法在内部管理自己的状态。它们独立存储和更新其状态，而不依赖于 props 或回调。 父组件对不受控制的组件的状态的控制较少
 
 ```jsx
 import { useRef } from 'react'
@@ -105,6 +105,218 @@ const App = (): React:FC => {
   )
 } 
 ```
+
+### 基于类的 React 组件和函数式组件有什么区别
+
+基于类的组件和函数组件之间的主要区别在于它们的定义方式以及它们的使用方法
+
+React.Component基于类的组件被定义为ES6类并扩展该类。它们使用render该方法返回定义组件输出的JSX (Javascript XML) 类组件可以通过`this.state`和 `this.setState()` 访问组件生命周期方法和状态管理
+
+```jsx
+class App extends React.Component {
+  state = {
+    value: 0,
+  }
+
+  handleAgeChange = () => {
+    this.setState({
+      value: this.state.value + 1
+    })
+  }
+
+  render() {
+    return (
+      <>
+        <p>Value is {this.state.value}</p>
+        <button onClick={this.handleAgeChange}>
+          Increment value
+        </button>
+      </>
+    )
+  }
+}
+```
+
+另一方面， 功能组件被定义为简单的JavaScript函数。它们将 props 作为参数并直接返回JSX 功能组件无权访问生命周期方法或状态。然而随着 React16.8 中 React Hooks 的引入，功能组件现在可以管理状态并使用其它功能，例如上下文当中的效果展示
+
+```javascript
+import { useState } from 'react'
+
+const App = () => {
+  const [value, setValue] = useState(0)
+
+  const handleAgeChange = () => {
+    setValue(value + 1)
+  }
+
+  return (
+    <>
+      <p>Value is {value}</p>
+      <button onClick={handleAgeChange}>
+        Increment value
+      </button>
+    </>
+  )
+}
+```
+
+一般来说，功能组件被认为更简单，更易于阅读和测试。建议尽可能使用功能组件，除非对基于类的组件有特定需求
+
+### 组建的生命周期方法是什么
+
+生命周期方法是一种挂接到组件生命周期不通阶段的方法，允许你在特定时间执行特定的代码。
+
+|生命周期|功能|
+|:--|:--|
+|`constructor`|这是创建组件时调用的第一个方法。它用于初始化状态和绑定事件处理程序。在功能组件中，可以将钩子 `useState` 用于类似的目的|
+|`render`|此方法负责渲染JSX标记并返回要在屏幕上显示的内容|
+|`componentDidMount`|此方法在组件DOM中呈现后会立即调用。它通常用于初始化任务，例如 API 调用或设置事件侦听器|
+|`componentDidUpdate`|当组件的 props 或状态更改时调用此方法。它允许执行副作用、根据更改更新组件或触发其它API调用|
+|`componentWillUnmount`|此方法在从DOM中删除组件之前调用。它用于清理`componentDidMount`中设置的任何资源，例如删除事件侦听器或取消计时器|
+
+某些生命周期方法(如`componentWillMount`、`componentWillReceiveProps`和 `componentWillupdate`)已经被弃用或替换为替代方法或挂钩
+
+至于`this` 它指的是类组件的当前实例。它允许访问组件中的属性和方法。在功能组件中， 不使用 `this` 因为函数未绑定到特定实例。
+
+### 使用 `useState` 有什么特点
+
+useState 返回一个状态值和一个用于更新它的函数
+
+```javascript
+const [value, setValue] = useState('default')
+```
+
+在初始呈现期间，返回的状态与作为第一个参数传递的值匹配。该函数用于更新状态。它将新的状态值作为参数，并对组件的重新渲染进行排队。该函数还可以接受回调函数作为参数，该函数讲以前的状态值作为参数。
+
+### 使用 `useEffect` 有什么特点
+
+useEffect钩子允许在功能组件中执行副作用
+
+突变、订阅、计时器、日志记录和其它副作用不允许在称为React 渲染阶段的功能组件的主体内出现。这可能会导致用户界面出现令人困惑的错误和不一致
+
+相反，建议使用useEffect。 传递给 useEffect 的函数将在渲染提交到屏幕后执行，或者如果将依赖项数组作为第二个参数传递， 则每次其中一个依赖项更改时都会调用该函数
+
+```javascript
+useEffect(() => {
+  console.log('Loading something')
+}, [])
+
+/**
+ * 当数组中有参数时， 参数更改一次，useEffect执行一次
+ */
+const [value, setValue] = useState('') 
+useEffect(() => {
+  console.log('Loading something')
+}, [value])
+```
+
+### 如何跟踪功能组件的卸载
+
+通常 useEffect 创建需要在组件离开屏幕之前清理或重置的资源，例如订阅或计时器标识符。
+
+为此 传递给useEffect 的函数可以返回一个清理函数，清理功能能在从用户界面中删除组件之前运行，以防止内存泄漏。此外，如果组件多次渲染，则在执行下一个小郭之前， 清除上一个效果。
+
+```javascript
+useEffect(() => {
+  function handleChange(value) {
+    setValue(value)
+  }
+
+  SomeAPI.undoFunction(id, handleChange)
+
+/**
+ * 这里这个return 的函数就是清理副作用的函数
+ */
+  return function cleanup() {
+    SomeAPI.undoFunction(id, handleChange)
+  }
+})
+```
+
+### React 中的道具(props)是什么
+
+Props 是从父级传递给组件的数据。 Props是固定的， 不能被更改
+
+```javascript
+// Parent component
+const Parent = () => {
+  const data = 'Hello World !'
+  
+  return (
+    <div>
+      <Child/>
+    </div>
+  )
+}
+
+// Child Component
+
+const child = ({ data }) => {
+  return <div>{ data }</div>
+}
+
+```
+
+### 什么是State管理器，曾与哪些库相连
+
+状态管理器是帮助管理应用程序状态的工具或库。它提供了一个集中式存储或容器，用于存储和管理可由应用程序中的不同组件访问和更新的数据
+
+状态管理器可以解决几个问题。首先，将数据及其相关逻辑与组件分开是一种很好的做法。其次，当时用本地状态并在组件之间传递它时， 由于组件深度潜逃的可能性， 代码可能会变得复杂。通过拥有全局存储， 我们可以访问和修改来自任何组件的数据。
+
+除了React Context， Redux通常作为状态管理库
+
+### 在哪些状态下可以使用本地状态，何时应该使用全局状态
+
+如果本地状态仅在一个组件中使用，并且没有后计划将其传递给其它区组建，则建议使用本地状态。本地状态也用于表示列表中单个项的组件中。
+
+但是 如果组件分解涉及嵌套组件，并且数据在层次结构中向下传递，则最好使用全局状态。
+
+### Redux 的 reducer 是什么，它需要哪些参数
+
+reducer是一个纯函数，它将状态和动作作为参数。在 reducer 内部， 我们跟踪接收到的动作的类型，并根据它修改状态并返回一个新的状态对象
+
+```javascript
+export default function appReducer(state = initialStale, action) {
+  // Reducer 通常会查看 action 来决定发生了什么
+  switch (action.type) {
+    // 基于不同的action类型做一些不同的事情
+    default: 
+    // 如果这个 reducer 没有匹配的action 类型，或者不关心这个action的改变， 则 返回现有的状态
+    return state
+  }
+}
+```
+
+### 什么是 action , 如何更改Redux的状态
+
+Action是一个简单的 JavaScript 对象， 它必须具有类型字段
+
+```javascript
+{
+  type: 'SOME_TYPE'
+}
+```
+
+也还可以选择天机一些数据作为载荷(payload) 为了更改状态，必须调用函数， 我们将操作传递给该函数
+
+```javascript
+{
+  type: 'SOME_TYPE',
+  payload:'Any Payload'
+}
+```
+
+### Redux 实现了哪种模式
+
+Redux实现了 Flux 模式 这是一种可以预测的应用程序状态管理模式，它通过引入单向数据流和应用程序状态的集中存储来帮助管理应用程序的状态。
+
+### 简述 Flux 思想
+
+Flux 是一种用于数据处理的编程模型，它旨在处理流式数据和大规模数据集。 Flux 提供了一种功能强大且灵活的方式来处理数据流，并允许用户进行数据转换、过滤、聚合和其他操作。 通过Flux，用户可以构建复杂的数据处理管道，处理实时的数据流或者批处理数据，并支持并行处理和分布式计算。
+
+FLux 在数据工程和数据科学领域被广泛应用，特别是在需要处理大量数据和实时数据的场景中具有很高的实用性。
+
+### Redux 和 Mobx 区别
 
 ### React 组件之间的数据传递
 
@@ -128,15 +340,13 @@ const App = (): React:FC => {
 
 ### React 中构建组件的方式
 
-### 简述 flux 思想
-
 ### React 脚手架
 
 ### 应该在 React 组件的何处发起 Ajax 请求
 
-### 何为高阶组件(higher order component)？
+### 何为高阶组件(higher order component)？ v
 
-## 其他
+## 其它
 
 ### Typescript 是什么
 
