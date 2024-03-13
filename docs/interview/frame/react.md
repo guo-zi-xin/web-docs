@@ -316,35 +316,57 @@ Flux 是一种用于数据处理的编程模型，它旨在处理流式数据和
 
 FLux 在数据工程和数据科学领域被广泛应用，特别是在需要处理大量数据和实时数据的场景中具有很高的实用性。
 
-### Redux 和 Mobx 区别
+### Axios Fetch 和 Ajax区别
+
+这三者都是用于发起网络请求的工具或技术，但他们有一些区别：
+
+- Ajax
+
+  - Ajax(Asyncchronous Javascrip and XML) 是一种使用 XMLHttpRequest对象与服务器进行异步通信的技术
+
+  - Ajax可以实现在不重新加载整个页面的情况下更新部分页面内容
+
+  - Ajax是一种基于原生JavaScript的技术， 相对来说比较底层，并且需要开发者处理一些底层逻辑细节
+
+- Fetch
+
+  - Fetch是现代浏览器提供的一种用于发起网络请求的API 使用Promise对象处理异步操作
+
+  - Fetch更加简洁和现代化，提供了更有好的API来处理网络请求
+
+  - Fetch API 相对于Ajax更加强大和灵活。支持流式数据， CORS和其他现代特性
+
+- Axios
+
+  - Axios是一个基于Promise的HTTP客户端，可以用于浏览器和Node.js环境
+
+  - Axios提供了更多的功能和配置选项，如拦截器、取消请求、CSRF防护等
+
+  - Axios兼容更多的浏览器，并提供了更好的错误处理机制。
+
+主要区别在于他们的实现方式、功能和使用方式。 Ajax是一种基于浏览器原生功能的编程技术，而Fetch和Axios是专门的两个库，用于处理Http请求， 并提供了更丰富的功能和更简单的API。
+
+Fetch 是浏览器原生提供的API， 而Axios则是一个第三方库， 可以在浏览器和Node.js中使用。
 
 ### React 组件之间的数据传递
 
 ### diff 算法
 
+### 为什么虚拟 dom 会提高性能
+
 ### 对 React 组件的理解
 
 ### 调用 setState 之后发生了什么
-
-### react 生命周期函数
-
-### 为什么虚拟 dom 会提高性能
 
 ### (组件的)状态(state)和属性(props)之间有何不同
 
 ### shouldComponentUpdate 是做什么的
 
-### react diff 原理
-
-### 何为受控组件
-
 ### React 中构建组件的方式
-
-### React 脚手架
 
 ### 应该在 React 组件的何处发起 Ajax 请求
 
-### 何为高阶组件(higher order component)？ v
+### 何为高阶组件(higher order component)？
 
 ## 其它
 
