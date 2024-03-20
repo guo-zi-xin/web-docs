@@ -13,6 +13,16 @@ export const InterViewBar = [
       //   ]
       // },
       {
+        text: 'weekly',
+        link: '/interview/weeky',
+        items: [
+          {
+            text: '2024-03-20',
+            link: '/interview/weeky/240320',
+          }
+        ]
+      },
+      {
         text: '前端基础',
         link: '/interview/base/index',
         items: [
