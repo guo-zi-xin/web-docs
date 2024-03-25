@@ -1,4 +1,5 @@
 # 让Directive动起来`link()`
+
 在前面几节中，我们都是在学习如何配置Directive。下面，我们将开始学习Directive最灵活的部分，`link()`函数。
 
 `link()`函数的基本使用方法如下：
@@ -61,17 +62,21 @@ Scope
 在这里，我们最主要的是观察最下方的`attrs`部分。我们可以看到，在这个Directive元素中传入的数据，都可以通过`attrs`获取到，这也是我们在`link()`中获取数据的主要方法。
 
 ## `element`
+
 从`element`被转义成json的文本中很难获取任何实质的信息，但是，这里才是整个Directive中的**核心部分**。
 
 ### `element`与jQuery的关系
-在Directive中，我们不免需要对页面元素进行操作。为了提供这项功能，AngularJS几乎原版搬运了jQuery操作元素的功能，他们称之为"jQuery Lite"(jqLite)。
+
+在Directive中，我们不免需要对页面元素进行操作。为了提供这项功能，AngularJS几乎原版搬运了jQuery操作元素的功能，它们称之为"jQuery Lite"(jqLite)。
 
 AngularJS通过jqLite的调用方法`angular.element`，实现了jQuery中的大部分常用功能。也就是，我们可以在获取了`element`参数后，调用jQuery常用的语法，如`bind()`,`addClass()`,`removeClass()`等来直接对元素进行操作，实现我们期望的功能。
 
 同时，如果你希望在AngularJS中直接使用完整的jQuery也是非常容易的。只需要安装jQuery，并在`index.html`中，保证在`angular.js`引入之前引入`jQuery.js`。AngularJS会自动将`angular.element`绑定到jQuery上。也就是，在Directive中,会自动使用jQuery来解析界面元素，我们获取的`element`会自动变为jQuery对象。
 
 ### 在AngularJS中使用jQuery
+
 安装和使用jQuery共有两步：
+
 - 通过`bower`安装jQuery
 
 ```bash
@@ -87,6 +92,7 @@ bower install jquery --save
 ```
 
 ### 实际体验`element`的功能
+
 我们在引入jQuery后，可以通过如下代码查看效果：
 
 > 这里需要注意的是，使用jqLite的方法和以下代码中使用的方法是不一样的，因为jqLite不支持通过标签方式获取子元素。如果您有兴趣学习jqLite的使用方法（并且拥有一定的英文阅读能力），可以在[这里](https://docs.angularjs.org/api/ng/function/angular.element)查看官方文档。

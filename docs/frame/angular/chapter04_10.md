@@ -1,9 +1,11 @@
 # 引入`ng-include`和模板`ng-template`
+
 引入`ng-include`和模板`ng-template`是定义和使用HTML代码碎片的功能。用于将HTML切碎分别存储，并根据需求再去获取对应的代码块，达到加速访问和代码复用的效果。
 
 下面，我们将分别介绍`ng-include`和`ng-template`。
 
 ## 引入`ng-include`
+
 当HTML代码过于复杂，或者期望建立单页应用(Single-page Application - SPA)时，需要将部分HTML打包成独立的文件。这时候，我们在引入这个独立HTML文件时，可以使用`ng-include`功能。
 
 使用方法如下：
@@ -31,12 +33,14 @@
 
 这些用法的效果都是一样的。
 
-### 其他属性
+### 其它属性
+
 `ng-include`还有`onload`和`autoscroll`的属性。
 
 但是我目前不清楚具体的使用方法和效果，如果有读者清楚，可与我联系以便更新上此段内容。
 
 ## 模板`ng-template`
+
 `ng-template`用于将多个HTML片段存放于一个HTML文件中。并且可以根据需求分别调用其中的某一个片段。
 
 `ng-template`的用法如下：
@@ -47,7 +51,7 @@
 </script>
 ```
 
-`ng-template`需要将`<script>`的`type`设置为`text/ng-template`，然后给他配置一个`id`。这个`id`就是这段HTML代码被引用时的名称。
+`ng-template`需要将`<script>`的`type`设置为`text/ng-template`，然后给它配置一个`id`。这个`id`就是这段HTML代码被引用时的名称。
 
 使用`ng-template`代码片段的方法就是上诉的`ng-include`方法，例如：
 

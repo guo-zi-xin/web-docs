@@ -1,4 +1,5 @@
 # 深入学习AngularJS - Directive
+
 在前一章中，我们学习了AngularJS的基本用法。从本章开始，我们将学习"深入"一些的部分。
 
 本章将介绍AngularJS的Directive。
@@ -23,9 +24,11 @@ AngularJS的Directive，从实际用途的理解，可以称之为"自定义HTML
 如果我们预先定义好了针对这些标签的处理方式，那么AngularJS将可以把这些标签自动的转化成HTML显示代码。
 
 ## Directive在系统中的使用
+
 其实，Directive作为AngularJS的基本特性，我们已经在前面大量的学习和使用了它。
 
 在第四章中我们学习的`ng-app`, `ng-controller`, `ng-model`,  ng-if等使用方法。如果您现在再仔细看下它们的使用方法，就会发现它们无一例外的都是Directive！
 
 ## 学习Directive的路程
+
 本章我们将从最基本的自定义Directive开始，逐渐深入的学习Directive的特性和高级使用方法。由于Directive的特性主要针对展示界面的操作，目的是对界面操作的抽象与解耦。因此，可能像我一样对前端经验不太足的读者们，可能会对Directive的学习或者使用价值感到困难。因此，学习Directive可能会多花您一些时间，但是相信我，这些付出是非常有价值的！

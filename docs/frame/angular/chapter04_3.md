@@ -1,4 +1,5 @@
 # 控制器`ng-controller`
+
 控制器`ng-controller`是使用AngularJS的核心功能之一。在前一节我们已经了解了作用域的概念，`ng-controller`则是真正应用作用域来制作功能的核心部分。
 
 应用`ng-controller`和应用`ng-app`类似，下面我们来尝试创建一个控制器吧！
@@ -80,7 +81,7 @@ App.controller("FirstCtrl", function($scope){
 
 `data`命名并不是固定用法，我们也可以使用`$scope.shuju = {m:"hello"}`。（这里只是为了表明变量命名的约束，如果可能，请不要使用拼音命名的变量）。
 
-值得注意的是，`$scope`之下除了可以传入数据外，还可以传入其他函数，比如我们声明一个`onClick`函数传入`$scope`之后，可在HTML页面中调用这个功能，实现比如按钮点击触发功能的效果。
+值得注意的是，`$scope`之下除了可以传入数据外，还可以传入其它函数，比如我们声明一个`onClick`函数传入`$scope`之后，可在HTML页面中调用这个功能，实现比如按钮点击触发功能的效果。
 
 ### HTML中调用`ng-controller`中的数据
 
@@ -91,6 +92,7 @@ App.controller("FirstCtrl", function($scope){
 在`$scope`中传入数据后，通过表达式可以直接调用。
 
 ### 为什么要额外封装一层
+
 在AngularJS中，最简单传入数据的方法其实可以更简单，但是**不推荐这样做**。
 
 最简单的做法

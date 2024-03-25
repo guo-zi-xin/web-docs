@@ -1,4 +1,5 @@
 # 过滤器 `filter`
+
 过滤器是AngularJS的另一项强大的功能，如果能使用好它，能够帮助我们极大的节省工作量。
 
 以下是几个应用`filter`的例子：
@@ -35,6 +36,7 @@ limitTo   | limitTo : limit : begin        | 截取array从begin位置开始的l
 orderBy   | orderBy : expression : reverse | 根据expression的条件对list进行排序，reverse可选，设置为true则反过来排
 
 ## 多个filter同时应用
+
 AngularJS支持多个filter同时应用，比如以下的例子：
 
 ```javascript
@@ -44,6 +46,7 @@ AngularJS支持多个filter同时应用，比如以下的例子：
 ```
 
 ## 创建自己的过滤器
+
 自己创建自定义的过滤器也很简单，我们下面尝试自己制作一个将文字全部翻转过来的过滤器。
 
 在`app.js`中增加如下代码：
@@ -73,6 +76,7 @@ App.filter("reverse", function(){
 如果您期望界面显示的内容进行一些通用的处理，但是又不希望对原本的数据进行改动，那么可以考虑自己制作过滤器！
 
 ## 通过`filter`进行搜索
+
 AngularJS提供了通过filter的搜索功能。当然，这个搜索功能并不是非常常用，因为搜索工作现在一般在服务端完成。如果数据量非常小（几百行以内），可以考虑使用本功能来筛选结果。
 
 示例如下(使用上一节的例子)：

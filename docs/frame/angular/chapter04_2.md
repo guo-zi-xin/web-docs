@@ -7,6 +7,7 @@
 在现在阶段，我们并不会用到`ng-app`的扩展功能，只需要在独立的JavaScript文件中将`ng-app`声明好，再引用入HTML页面即可。
 
 ## 创建一个独立的JavaScript文件，并在HTML中引用
+
 在`./public/js`目录中新建一个`app.js`文件，并填入如下代码：
 
 ```javascript
@@ -34,6 +35,7 @@ var App = angular.module("App", []);
 以上代码有两个问题需要注意：
 
 ### AngularJS的作用域
+
 `ng-app`标签可以放置在`<html>`标签或者`<body>`标签上，也可以放置在HTML页面的任何一个标签上。
 
 这里，我们就需要注意AngularJS对于**作用域**的定义。我们先通过如下的例子来看看作用域的具体表现：
@@ -65,4 +67,5 @@ var App = angular.module("App", []);
 这个特性我们在后面会大量的使用，将网页分为多个部分，并分别交于不同的JavaScript代码进行管理，各个部分之间互相独立，这样即可在网页中实现逻辑复杂的功能。
 
 ## 引入文件的顺序
+
 引入JavaScript文件的顺序是有差异的，如果我们将上面代码的`angular.js`和`app.js`文件呼唤，那么网页将不能正常的展示。并且我们可在Chrome的"开发者工具"中看到报错信息。

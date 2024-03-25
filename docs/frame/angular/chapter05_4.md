@@ -1,4 +1,5 @@
 # 使用`templateUrl`获取模板
+
 有些时候，Directive中的模板`template`会变得很大，如果仍然放置在定义中，那么可能会造成阅读和修改不方便的情况。
 
 针对这种情况，我们可以将`template`替换为`templateUrl`，通过引入外部文件的形式来调用布局。

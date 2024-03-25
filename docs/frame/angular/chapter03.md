@@ -28,7 +28,7 @@ angular#1.5.0-rc.0 public\components\angular
 
 这行命令告诉`bower`在这个项目中安装`angular#1.5.0-rc.0`，也即是AngularJS的1.5.0-rc.0版本（当前的最新版本）。
 
-**`--save`标志** 这个额外的标志，是告诉`bower`把我们的安装记录放置入`bower.json`文件。这样，我们以后可以直接通过`bower`对此项目使用的AngularJS或其他库进行更新。
+**`--save`标志** 这个额外的标志，是告诉`bower`把我们的安装记录放置入`bower.json`文件。这样，我们以后可以直接通过`bower`对此项目使用的AngularJS或其它库进行更新。
 
 此时，当我们打开`bower.json`，我们会发现文档中的内容变多了，如下所示：
 

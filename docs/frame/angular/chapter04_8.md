@@ -1,8 +1,11 @@
 # 样式选择器 `ng-class`/`ng-style`
+
 ## `ng-class`
+
 通过`ng-class`，我们可以对界面元素的css样式进行控制。下面，让我们通过示例来看看功能如何实现：
 
-> 此示例来源于官网的[ngClass介绍界面](),我进行了一些加工。
+> 此示例来源于官网的 ngClass介绍界面
+,我进行了一些加工。
 
 首先，我们先创建一个`style.css`文件。
 
@@ -102,6 +105,7 @@ App.controller("FirstCtrl", function ($scope) {
 ![图4-15 ngClass运行效果](./pic/0415_ngclass.png)
 
 ### 动态化的样式输入
+
 在上方的示例中，我们是针对提前设定好的样式进行是否生效的判断。除了这种使用方式，ng-class还支持直接传入字符串的方式进行样式调整。
 
 比如如下示例：
@@ -126,6 +130,7 @@ App.controller("FirstCtrl", function ($scope) {
 ![图4-16 ngClass运行效果（使用文本作为样式）](./pic/0416_ngclass.png)
 
 ### 结合两种模式的应用示例
+
 这两种模式也可以结合使用，示例如下：
 
 ```html
@@ -137,6 +142,7 @@ App.controller("FirstCtrl", function ($scope) {
 > 此示例就不进行具体的运行效果展示了，请读者自行测试效果。
 
 ### CSS动画效果应用
+
 我们先在_style.css_中加入css的动画效果代码：
 
 ```css
@@ -167,6 +173,7 @@ App.controller("FirstCtrl", function ($scope) {
 由于动画效果无法通过截图表示，还请读者自行测试。
 
 ## `ng-style`
+
 `ng-style`提供的功能比`ng-class`要少一些，只支持样式的传入。我们可以使用以下两种模式：
 
 ```html

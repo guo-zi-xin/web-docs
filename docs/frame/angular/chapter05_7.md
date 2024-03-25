@@ -1,4 +1,5 @@
 # Directive之间互相通讯
+
 本节是Directive的高级使用方法之一，通过赋予Directive之间互相通讯的功能，我们可以将部件的抽象化提升到一个更高的层次。
 
 本节将通过官方网站中一个较复杂的[例子](https://docs.angularjs.org/guide/directive)来讲解具体的使用方法，通过Directive的配置，将HTML中的代码自动抽取为一个Tab列表，点击Tab列表中的标题，则可自动的显示Tab中包含的内容。
@@ -29,7 +30,7 @@ App.directive("gqTabContainer", function () {
                 pane.selected = true;
             };
 
-            //初始化页面时，供其他Directive调用的注册函数
+            //初始化页面时，供其它Directive调用的注册函数
             this.addPane = function (pane) {
                 if (panes.length === 0) {
                     $scope.select(pane);
@@ -114,6 +115,7 @@ App.directive('gqTabContent', function () {
 ```
 
 运行效果：
+
 - 当点击"标签1"或"标签2"时，下方会自动展示对应的内容。
 
   ![图5-16 Directive之间通讯](./pic/0516.png)

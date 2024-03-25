@@ -1,4 +1,5 @@
 # 制作一个自定义的Directive
+
 下面我们将制作我们的第一个自定义Directive。让我们对`app.js`和`index.html`进行一些修改：
 
 ```javascript
@@ -45,6 +46,7 @@ App.controller("FirstCtrl", function ($scope) {
 ![图5-1 Directive运行效果](./pic/0501_first_directive.png)
 
 ## 代码分析
+
 以下这段代码用于声明一个Directive：
 
 ```javascript
@@ -82,6 +84,7 @@ return {
 这个对象中有两个元素，`restrict`和`template`。
 
 ### `template`
+
 `template`相对比较容易理解，在运行网页时，HTML对应的标签，将被替换成对应的内容。我们这里看看替换后实际的HTML代码如何：
 
 ![图5-2 Directive生效后的html代码](./pic/0502.png)
@@ -89,6 +92,7 @@ return {
 可以看到，AngularJS在`<people></people>`中间加入了template中的内容。
 
 #### 用替换而不是插入的方式应用Directive
+
 如果在配置Directive时，加入`replace : true`（与`restrict`和`template`同级别），则可以让AngularJS用替换的模式应用Directive。
 
 ```javascript
@@ -104,6 +108,7 @@ App.directive("people", function(){
 具体的效果，是会去除掉`<people> </people>`这对标签。
 
 ### `restrict`
+
 `restrict`是告诉AngularJS，这个Directive应该如何使用。
 
 下面这个表格，总结了restrict可能有的值，具体的每种应用方案，我们将在下一节详解。
