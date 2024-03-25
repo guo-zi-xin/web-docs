@@ -10,7 +10,7 @@
 
   - 压缩、减少体积
   - 多个文件合并， 减少HTTP请求数
-  - 其他文件编译成JavasSript
+  - 其它文件编译成JavasSript
 
 ### Source Map功能
 
@@ -44,7 +44,7 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
 
   - 错误追踪：文件名、源码行和列位置
 
-  - 包含eval关键字的配置项不产生.map文件（eval依靠sourceURL定位原始代码，其他都是.map定位）
+  - 包含eval关键字的配置项不产生.map文件（eval依靠sourceURL定位原始代码，其它都是.map定位）
 
 - `source-map`（性能最低）
 
@@ -74,7 +74,8 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
   - `eval` 处理后输出结果
 
   ```javascript
-  eval("var a = 1,\n    b;\nb = a;\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/index.js\n// module id = 0\n// module chunks = 0\n\n//# sourceURL=webpack:///./src/index.js?");
+  eval("var a = 1,\n    b;\nb = a;\n\n//////////////////\n// WEBPACK FOOTER\n// ./src/index.js\n// module id = 0\n
+  // module chunks = 0\n\n//# sourceURL=webpack:///./src/index.js?");
   ```
 
   | 关键字 | 特点| 解决问题 |
@@ -178,7 +179,7 @@ js脚本现在变得很复杂，大部份源码需要转换才能放在浏览器
 
 - **生产环境**
 
-  - 一般情况下，我们并不希望其他人都可以在浏览器直接看到我们未编译的源码
+  - 一般情况下，我们并不希望其它人都可以在浏览器直接看到我们未编译的源码
   - 所以我们不应该直接提供SourceMap给浏览器。但我们又需要sourceMap来定位我们的错误信息，
   - 一方面`webpack`会生成`sourcemap`文件以提供给错误收集工具， 比如sentry， 另一方面又不会给bundle文件提供注释，以避免浏览器使用，
 

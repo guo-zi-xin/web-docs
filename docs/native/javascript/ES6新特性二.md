@@ -82,7 +82,7 @@ target.a // 'b'
 var object = { proxy: new Proxy(target, handler) } 
 ```
 
-Proxy 实例也可以作为其他对象的原型对象
+Proxy 实例也可以作为其它对象的原型对象
 
 ```javascript
 var proxy = new Proxy({}, {
@@ -136,21 +136,24 @@ fproxy.foo === "Hello, foo" // true  访问fproxy上的属性， proxy拦截后�
 
 |操作|功能|返回值|
 |:--|:--|:--|
-|`get(target, propKey, receiver)`|拦截对象属性的读取，比如 `proxy.foo`或 `proxy['foo']`|-｜
+|`get(target, propKey, receiver)`|拦截对象属性的读取，比如 `proxy.foo`或 `proxy['foo']`|-|
 |`set(target, propKey, value, receiver)`|拦截对象属性的设置，比如 `proxy.foo = v` 或 `proxy['foo'] = v`|boolean|
 |`has(target,propKey)`|拦截`propKey in proxy`的操作|boolean|
 |`deleteProperty(target, propKey)`| 拦截 `delete proxy[propKey]`的操作|boolean|
-|`ownKeys(target)`|拦截 `Object.getOwnPropertyNames(proxy)`、`Object.getOwnPropertySymbols(proxy)`、`Object.keys(proxy)`、
-`for...in`循环， 该方法返回目标对象所有自身的属性的属性名， 而`Object.keys()`的返回结果仅包括目标对象自身的可遍历属性|Array|
+|`ownKeys(target)`|[1]|Array|
 |`getOwnPropertyDescriptor(target, propKey)`|拦截`Object.getOwnPropertyDescriptor(proxy, propKey)`|属性的描述对象|
-|`defineProperty(target, propKey, propDesc)`|拦截 `Object.defineProperty(proxy, propKey, propDesc)`、
-`Object.defineProperties(proxy, propDescs)`|boolean|
+|`defineProperty(target, propKey, propDesc)`|[2]|boolean|
 |`preventExtensions(target)`|拦截`Object.preventExtensions(proxy)`|boolean|
 |`getPrototypeOf(target)`|拦截`Object.getPrototypeOf(proxy)`|object|
 |`isExtensible(target)`|拦截`Object.isExtensible(proxy)`|boolean|
 |`setPrototypeOf(target, proto)`|拦截`Object.setPrototypeOf(proxy, proto)`, 如果目标对象是函数，那么还有两种额外操作可拦截|boolean|
 |`apply(target, object, args)`|拦截 Proxy 实例作为函数调用的操作，比如`proxy(...args)`、`proxy.call(object, ...args)`、`proxy.apply(...)`|-|
 |`construct(target, args)`|拦截 Proxy 实例作为构造函数调用的操作, 比如new proxy(...args)|-|
+
+[1]: 拦截 `Object.getOwnPropertyNames(proxy)`、`Object.getOwnPropertySymbols(proxy)`、`Object.keys(proxy)`、
+`for...in`循环， 该方法返回目标对象所有自身的属性的属性名， 而`Object.keys()`的返回结果仅包括目标对象自身的可遍历属性
+
+[2]: 拦截 `Object.defineProperty(proxy, propKey, propDesc)`、`Object.defineProperties(proxy, propDescs)`
 
 #### Proxy 实例的方法(常用)
 
@@ -261,7 +264,7 @@ let validator = {
       }
     }
 
-    // 对满足条件的 age 属性以及其他属性， 直接保存
+    // 对满足条件的 age 属性以及其它属性， 直接保存
     obj[prop] = value
     return true
   }
@@ -717,9 +720,9 @@ console.log(map.size) // 1
 
 #### WeekMap
 
-WeakMap 也是一种键值对的集合，但是**只接受对象**作为键，不接受其他类型的数据
+WeakMap 也是一种键值对的集合，但是**只接受对象**作为键，不接受其它类型的数据
 
-WeakMap中的键是弱引用的，这意味着如果键对象都没有其他引用， 会被垃圾回收机制回收，并且对应的键值对也会对 WeakMap 中自动移除
+WeakMap中的键是弱引用的，这意味着如果键对象都没有其它引用， 会被垃圾回收机制回收，并且对应的键值对也会对 WeakMap 中自动移除
 
 ##### 应用
 
@@ -738,7 +741,7 @@ WeakMap中的键是弱引用的，这意味着如果键对象都没有其他引�
 
 #### Set
 
-Set 是一种不重复值的集合， 类似于数组，但是他的值是唯一的， 不会重复。 Set可以存储任意类型的值，报苦熬原始类型和对象
+Set 是一种不重复值的集合， 类似于数组，但是它的值是唯一的， 不会重复。 Set可以存储任意类型的值，报苦熬原始类型和对象
 
 ##### Set 方法
 
@@ -774,7 +777,7 @@ console.log(set.size) // 2
 
 #### WeakSet
 
-WeakSet 是一种弱引用集合，它只能存储对象类型的值，并且这些对象是弱引用的，这意味着如果一个对象在 WeakSet 中没有任何其他引用， 那么这个对象将会被垃圾回收机制回收，
+WeakSet 是一种弱引用集合，它只能存储对象类型的值，并且这些对象是弱引用的，这意味着如果一个对象在 WeakSet 中没有任何其它引用， 那么这个对象将会被垃圾回收机制回收，
 由于 WeakSet 的成员是弱引用， 因此无法迭代， 也无法获取其中的大小或者清空它
 
 ##### WeakSet应用
@@ -960,7 +963,7 @@ iterator.next() // { value: 5, done: false }
 iterator.next() // { value: undefined, done: true }
 ```
 
-- **其他场合**
+- **其它场合**
 
 由于数组的遍历会调用遍历器接口，所以任何接受数组作为参数的场合，其实都调用了遍历器接口
 

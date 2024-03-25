@@ -80,9 +80,9 @@ console.log(parsedCookies);
 
 ## 写入document.cookie
 
-我们可以写入`document.cookie`。但这不是一个数据属性， 他是一个[访问器][2]。对其的赋值操作会被特殊处理。
+我们可以写入`document.cookie`。但这不是一个数据属性， 它是一个[访问器][2]。对其的赋值操作会被特殊处理。
 
-**对于`document.cookie`的写入操作只会更新其中提到的cookie，而不会涉及其他cookie。**
+**对于`document.cookie`的写入操作只会更新其中提到的cookie，而不会涉及其它cookie。**
 
 例如： 此调用设置了一个名为`user`并且值为`John`的cookie
 
@@ -91,9 +91,9 @@ document.cookie = "user=John"; // 只会更新名称为 user 的 cookie
 alert(document.cookie); // 展示所有 cookie
 ```
 
-如果你运行了上面这段代码， 你会看到多个cookie。这是因为`document.cookie`操作不是重写整个所有的cookie， 他只设置代码中提到的cookie `user`。
+如果你运行了上面这段代码， 你会看到多个cookie。这是因为`document.cookie`操作不是重写整个所有的cookie， 它只设置代码中提到的cookie `user`。
 
-从技术上讲，cookie的名称和值可以是任意字符。 为了保持有效的格式， 他们应该使用内建的`encodeURIComponent`函数对其进行转义：
+从技术上讲，cookie的名称和值可以是任意字符。 为了保持有效的格式， 它们应该使用内建的`encodeURIComponent`函数对其进行转义：
 
 ```javascript
 // 特殊字符（空格）， 需要编码
@@ -119,7 +119,7 @@ Cookie有几个选项，其中很多都很重要，应该设置它
 
 - `path=/mypath`
 
-url路径前缀必须是绝对路径。他使得该路径下的页面可以访问该cookie。默认为当前路径。
+url路径前缀必须是绝对路径。它使得该路径下的页面可以访问该cookie。默认为当前路径。
 如果一个cookie带有`path=/mypath`设置， 那么该cookie在`admin`和`/admin/something`下都是可见的， 但是在`/home`或`/adminpage`下不可见。
 通常， 我们应该将`path`设置为根目录： `path=/`, 以使cookie对此网站所有页面可见。
 
@@ -159,7 +159,7 @@ console.log(document.cookie) // 有cookie user=John
 
 ### expires  max-age
 
-默认情况下， 如果一个cookie没有设置这两个参数中的任何一个， 那么在关闭浏览器后，他就会消失。此类cookie被称为“session cookie”。
+默认情况下， 如果一个cookie没有设置这两个参数中的任何一个， 那么在关闭浏览器后，它就会消失。此类cookie被称为“session cookie”。
 
 为了让cookie在关闭浏览器后仍然存在， 我们可以设置`expires`或 `max-age`选项中的一个。
 
@@ -184,7 +184,7 @@ document.cookie='user=John;expries'+ date;
 // cookie 会在一小时后失效
 document.cookie='user=John;max-age=3600';
 
-// 删除cookie（让他立即过期）
+// 删除cookie（让它立即过期）
 document.cookie = 'user=John;max-age=0'
 ```
 

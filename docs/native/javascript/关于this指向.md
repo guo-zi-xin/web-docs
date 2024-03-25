@@ -70,7 +70,7 @@ console.log(student.fn() === student) // 返回true
 
 ```typescript
 /**
- * 这里嵌套了两层对象， 此时this的指向应该是最后一个调用他的对象
+ * 这里嵌套了两层对象， 此时this的指向应该是最后一个调用它的对象
  */
 const person = {
   name: 'Lucas',
@@ -373,7 +373,7 @@ console.log(bar.call(obj2)) // 输出为123， 因为箭头函数的this无法�
 
 ::: warning 注意
 
-如果把上述代码中的变量a的声明换成const 则 输出结果会被改变 因为 **`const`声明的变量是不会被放在全局作用域中， 他有自己的块级作用域**
+如果把上述代码中的变量a的声明换成const 则 输出结果会被改变 因为 **`const`声明的变量是不会被放在全局作用域中， 它有自己的块级作用域**
 
 ```typescript
 var a = 123

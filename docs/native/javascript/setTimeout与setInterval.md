@@ -38,7 +38,7 @@
 
 ### 精度问题
 
-尽管`setTimeout`与`setInterval`是Javascript中常用的定时器函数，但他们在执行上存在一些精度方面的问题。
+尽管`setTimeout`与`setInterval`是Javascript中常用的定时器函数，但它们在执行上存在一些精度方面的问题。
 
 - **Javascript是单线程执行：** Javascript是单线程执行的，意味着所有任务都在同一个执行队列中，如果队列中已有任务，那么定时任务的执行可能会受到延迟。
 - **最小延迟时间：** 浏览器和Node.js环境通常将`setTimeout`和`setinterval`的最小延迟时间设定为4毫秒(具体取决于浏览器或者环境)
@@ -108,4 +108,4 @@ requestAnimationFrame(animate);
 
 - `requestAnimationFrame`通常比`setTimeout`和`setinterval`更精准， 因为它与浏览器的重绘同步
 - `requestAnimationFrame`可以更好的利用浏览器的优化，避免不必要的绘制
-- `requestAnimationFrame`更适合与动画， 因为他能够自动适应浏览器的刷新率，并在每一帧中执行
+- `requestAnimationFrame`更适合与动画， 因为它能够自动适应浏览器的刷新率，并在每一帧中执行

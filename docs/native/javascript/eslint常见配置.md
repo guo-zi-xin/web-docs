@@ -90,7 +90,7 @@
     // 强制方法必须返回值，TypeScript强类型，不配置  
     "consistent-return": 0,  
     // 用于指统一在回调函数中指向this的变量名，箭头函数中的this已经可以指向外层调用者，应该没卵用了  
-    // e.g [0,"that"] 指定只能 var that = this. that不能指向其他任何值，this也不能赋值给that以外的其他值  
+    // e.g [0,"that"] 指定只能 var that = this. that不能指向其它任何值，this也不能赋值给that以外的其它值  
     "consistent-this": 0,  
     // 强制在子类构造函数中用super()调用父类构造函数，TypeScrip的编译器也会提示  
     "constructor-super": 0,  

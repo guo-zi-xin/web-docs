@@ -13,7 +13,7 @@ export function MarkdownTransform(): Plugin {
       // code = code.replace(/https?:\/\/.*github\.io\//g, '/')
       /**
        * 2023-11-27
-       * 由于github.io域名被墙，所以改为使用自定义域名， 并且针对于个人的项目地址，避免其他github.io域名被替换的情况
+       * 由于github.io域名被墙，所以改为使用自定义域名， 并且针对于个人的项目地址，避免其它github.io域名被替换的情况
        */
       code = code.replace(/https?:\/\/.*github\.io\/web-docs\//g, '/')
       const [_name, i] = id.split('/').slice(-2)

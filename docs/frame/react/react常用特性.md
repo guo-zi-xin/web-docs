@@ -51,7 +51,7 @@ UI=(data)
 
 `componentWillUnmount`
 
-在16.8版本引入Hooks之后， 它提供了一种新的方式来使用状态和其他 React 特性而无需编写类组件。 Hooks并没有完全取代生命周期的方法， 但是可以在函数组件中完成类似的功能。 常用的hooks有： `useState`、`useEffect`、`useContext`等
+在16.8版本引入Hooks之后， 它提供了一种新的方式来使用状态和其它 React 特性而无需编写类组件。 Hooks并没有完全取代生命周期的方法， 但是可以在函数组件中完成类似的功能。 常用的hooks有： `useState`、`useEffect`、`useContext`等
 
 ### React Hooks与 React Class的区别
 
@@ -108,7 +108,7 @@ ReactDOM.render(
 
 ### JSX与JS的区别
 
-*JSX* 是React的语法糖，他允许在html中写js并且不能被浏览器识别， 需要通过webpack、babel之类的变异工具转换为js文件执行
+*JSX* 是React的语法糖，它允许在html中写js并且不能被浏览器识别， 需要通过webpack、babel之类的变异工具转换为js文件执行
 
 *JS*可以被打包工具直接编译不需要额外的转换， *JSX*需要`babel`编译转换为浏览器识别语言
 
