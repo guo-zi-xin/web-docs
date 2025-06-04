@@ -3,7 +3,7 @@ import type { HeadConfig } from 'vitepress'
 const base = process.env.APP_BASE_PATH || '/web-docs/'
 
 export const head: HeadConfig[] = [
-  ['link', { rel: 'icon', href: `${base}image/blog-logo.svg`, type:'image/svg+xml'}],
+  ['link', { rel: 'icon', href: `${base}image/blog-logo.png`, type:'image/svg+xml'}],
   ['link', { rel: 'icon', href: `${base}image/blog-logo.png`, type: 'image/png'}],
   ['meta', { name: 'referrer', content: 'no-referrer-when-downgrade' }],
   ['meta', { name: 'theme-color', content: '#3eaf7c' }],

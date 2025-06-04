@@ -12,7 +12,7 @@ export const ToolsBar = [
       { text: 'git stash常用命令', link: '/tools/git/git-stash的用法总结' },
       {
         text: 'git-pull与git-fetch的区别',
-        link: '/tools/git/git pull 与git fetch区别',
+        link: '/tools/git/git-pull与git-fetch区别',
       },
       { text: 'git rebase', link: '/tools/git/git-rebase' },
       {
@@ -33,7 +33,7 @@ export const ToolsBar = [
 
   // Build
   {
-    text: '打包构建',
+    text: '打包构建 📦',
     items: [
       {
         text: '什么是SourceMap',
@@ -67,4 +67,21 @@ export const ToolsBar = [
     ],
     collapsed: false,
   },
+  // 环信即时通讯工具
+  {
+    text: "环信即时通讯工具IM 🔗",
+    items: [
+      {
+        text: "环信即时通讯IM工具",
+        link: "/tools/easemob/index",
+      },
+      {
+        text: "环信即时通讯工具项目接入",
+        link: "/tools/easemob/access",
+      },
+    ],
+    collapsed: false,
+  },
+  
+
 ]

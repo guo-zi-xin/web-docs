@@ -70,7 +70,7 @@ $number-of-items: 10;
   100% {
     transform: translateY(-1000px) rotate(720deg);
     opacity: 0;
-    border-radius: 50%;
+    border-radius: 100%;
   }
 }
 </style>

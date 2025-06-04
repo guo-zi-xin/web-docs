@@ -40,7 +40,7 @@ export default defineConfig({
   themeConfig: {
     i18nRouting: false,
     siteTitle: '我的胃来食',
-    logo: '/image/logo.jpg',
+    logo: '/image/blog-logo.png',
     nav,
     sidebar: {
       // 先前导言
