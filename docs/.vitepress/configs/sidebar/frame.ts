@@ -190,5 +190,23 @@ export const FrameBar = [
       }
     ],
     collapsed: true,
+  },
+    /* UniApp */
+  {
+    text: 'UniApp相关',
+    items: [
+      {
+        text: 'uni-app打包流程',
+        link: '/frame/uniapp/uniapp打包流程'
+      },
+      {
+        text: 'uni-app推送',
+        link: '/frame/uniapp/uniapp推送'
+      },
+      {
+        text: 'uni-app接入AI(流式数据)',
+        link: '/frame/uniapp/uniapp接入Ai'
+      },
+    ]
   }
 ]
