@@ -8,8 +8,8 @@ export const nav: DefaultTheme.Config['nav'] = [
     text: '前端',
     items: [
       {
-        text: '原生',
-        link: '/native/javascript/index',
+        text: '基础',
+        link: '/native/base/index',
       },
       {
         text: '工具',

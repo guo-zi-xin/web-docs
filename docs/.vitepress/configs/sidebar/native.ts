@@ -3,8 +3,11 @@ export const NativeBar = [
   {
     text: 'Javascript基础',
     items: [
-      { text: 'Javascript 数据类型', link: '/native/base/basic.md'},
+      { text: '数据类型', link: '/native/base/basic.md'},
       { text: '变量的提升', link: '/native/base/变量的提升' },
+      { text: '关于this指向', link: '/native/base/this指向' },
+      { text: '异步编程', link: '/native/base/异步编程' },
+
     ],
     collapsed: false,
   },
@@ -16,13 +19,11 @@ export const NativeBar = [
       { text: 'call bind apply的区别', link: '/native/javascript/call-apply-bind的区别' },
       { text: 'JS中的元素尺寸与布局信息', link: '/native/javascript/JS中的元素尺寸与布局信息' },
       { text: 'JS模块化', link: '/native/javascript/js模块化' },
-      { text: '关于this指向', link: '/native/javascript/关于this指向' },
       { text: '获取当前页面URL信息', link: '/native/javascript/获取当前页面URL信息' },
       { text: 'eslint常见配置', link: '/native/javascript/eslint常见配置' },
       { text: 'JS解析URL参数', link: '/native/javascript/JS解析URL参数' },
       { text: 'JS下载文件', link: '/native/javascript/JS下载文件' },
       { text: 'cookie参数', link: '/native/javascript/cookie参数' },
-      { text: '前端数据类型', link: '/native/javascript/前端数据类型' },
       {
         text: '数组相关',
         items: [

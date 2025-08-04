@@ -7,22 +7,18 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
-    'Bi:fileEarmarkWordFill': typeof import('~icons/bi/file-earmark-word-fill')['default']
     'Bi:github': typeof import('~icons/bi/github')['default']
     CustomLink: typeof import('./theme/components/CustomLink.vue')['default']
     'Devicon:java': typeof import('~icons/devicon/java')['default']
     'Devicon:nodejsWordmark': typeof import('~icons/devicon/nodejs-wordmark')['default']
     'EmojioneMonotone:letterU': typeof import('~icons/emojione-monotone/letter-u')['default']
-    'EosIcons:modifiedDate': typeof import('~icons/eos-icons/modified-date')['default']
     'Fe:youtube': typeof import('~icons/fe/youtube')['default']
     'IconPark:addWeb': typeof import('~icons/icon-park/add-web')['default']
     'Logos:momentjs': typeof import('~icons/logos/momentjs')['default']
     'Logos:reactQueryIcon': typeof import('~icons/logos/react-query-icon')['default']
-    'Octicon:feedPerson16': typeof import('~icons/octicon/feed-person16')['default']
-    'Ooui:clock': typeof import('~icons/ooui/clock')['default']
+    MyLayout: typeof import('./theme/components/MyLayout.vue')['default']
     PageInfo: typeof import('./theme/components/PageInfo.vue')['default']
     'Ph:planetFill': typeof import('~icons/ph/planet-fill')['default']
-    'RadixIcons:update': typeof import('~icons/radix-icons/update')['default']
     'SimpleIcons:csdn': typeof import('~icons/simple-icons/csdn')['default']
     'SkillIcons:reactDark': typeof import('~icons/skill-icons/react-dark')['default']
     'SkillIcons:stackoverflowDark': typeof import('~icons/skill-icons/stackoverflow-dark')['default']

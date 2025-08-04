@@ -1,4 +1,18 @@
+/*vitepress 基本样式*/
 @use './vitepress.scss';
+/*动态彩虹色样式*/
 @use './rainbow.scss';
+/*图片放大样式*/
 @use './medium-zoom.scss';
+/*全局颜色样式*/ 
 @use './var.scss';
+/*亮暗主题切换样式*/
+@use './custom-block.scss';
+/*导航栏毛玻璃样式*/
+@use './blur.scss';
+/*标记相关样式*/
+@use './marker.scss';
+/* 代码块相关样式*/
+// @use './vp-code.scss'
+/*代码组相关样式*/
+// @use './vp-code-group.scss'
