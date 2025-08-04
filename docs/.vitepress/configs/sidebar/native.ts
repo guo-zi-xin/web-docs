@@ -1,16 +1,22 @@
 export const NativeBar = [
+  // Javascript基础
+  {
+    text: 'Javascript基础',
+    items: [
+      { text: 'Javascript 数据类型', link: '/native/base/basic.md'},
+      { text: '变量的提升', link: '/native/base/变量的提升' },
+    ],
+    collapsed: false,
+  },
   // JavaScript
   {
     text: 'JavaScript',
     items: [
-      { text: '变量的提升', link: '/native/javascript/变量的提升' },
       { text: '回流与重绘', link: '/native/javascript/回流与重绘' },
       { text: 'call bind apply的区别', link: '/native/javascript/call-apply-bind的区别' },
       { text: 'JS中的元素尺寸与布局信息', link: '/native/javascript/JS中的元素尺寸与布局信息' },
       { text: 'JS模块化', link: '/native/javascript/js模块化' },
       { text: '关于this指向', link: '/native/javascript/关于this指向' },
-
-
       { text: '获取当前页面URL信息', link: '/native/javascript/获取当前页面URL信息' },
       { text: 'eslint常见配置', link: '/native/javascript/eslint常见配置' },
       { text: 'JS解析URL参数', link: '/native/javascript/JS解析URL参数' },
@@ -41,7 +47,7 @@ export const NativeBar = [
       { text: 'ES6扩展', link: '/native/javascript/ES6数据类型的扩展' },
       { text: '类的继承', link: '/native/javascript/类的继承' },
       {
-        text: '常用工具', 
+        text: '常用工具',
         items: [
           { text: 'moment使用', link: '/native/javascript/moment使用' },
         ],
@@ -82,7 +88,7 @@ export const NativeBar = [
       { text: 'TypeScript泛型', link: '/native/typescript/泛型' },
       { text: 'TypeScript枚举', link: '/native/typescript/枚举' },
       { text: 'TypeScript高级类型', link: '/native/typescript/高级类型' },
-      { text: 'Typescript常用类型工具', link: '/native/typescript/常用类型工具' }, 
+      { text: 'Typescript常用类型工具', link: '/native/typescript/常用类型工具' },
     ],
     collapsed: false,
   },
