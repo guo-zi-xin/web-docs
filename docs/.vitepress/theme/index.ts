@@ -28,10 +28,6 @@ const theme: Theme = {
     }
     if (inBrowser) {
       router.onAfterRouteChange = (to) => {
-        // 卜算子插件
-        setTimeout(() => {
-          busuanzi.fetch()
-        }, 200)
       }
     }
   },
