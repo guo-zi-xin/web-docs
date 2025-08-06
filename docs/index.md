@@ -27,3 +27,9 @@ features:
     title: 持续更新
     details: 希望可以保持持续更新
 ---
+
+<!-- 首页下划线 -->
+<HomeUnderline />
+
+<!-- 五彩纸屑 -->
+<Confetti />
