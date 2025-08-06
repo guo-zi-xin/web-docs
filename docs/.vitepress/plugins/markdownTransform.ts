@@ -44,7 +44,10 @@ export function MarkdownTransform(): Plugin {
       code = replacer(code, footer, 'FOOTER', 'tail')
       const { readTime, words } = getReadingTime(code)
       code = code
-        .replace(/(#\s.+?\n)/, `$1\n\n<PageInfo readTime="${readTime}" words="${words}"/>\n`)
+       .replace(
+          /^(#\s.+\r?\n)(?!\s*<PageInfo\b)/m,  // 确保后面没有已存在的 PageInfo
+          `$1\n<PageInfo readTime="${readTime}" words="${words}"/>\n\n`
+        )
 
       return code
     },

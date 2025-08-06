@@ -7,8 +7,27 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    'Bi:github': typeof import('~icons/bi/github')['default']
     CustomLink: typeof import('./theme/components/CustomLink.vue')['default']
+    'Devicon:java': typeof import('~icons/devicon/java')['default']
+    'Devicon:nodejsWordmark': typeof import('~icons/devicon/nodejs-wordmark')['default']
+    'EmojioneMonotone:letterU': typeof import('~icons/emojione-monotone/letter-u')['default']
+    'Fe:youtube': typeof import('~icons/fe/youtube')['default']
+    'IconPark:addWeb': typeof import('~icons/icon-park/add-web')['default']
+    'Logos:momentjs': typeof import('~icons/logos/momentjs')['default']
+    'Logos:reactQueryIcon': typeof import('~icons/logos/react-query-icon')['default']
     MyLayout: typeof import('./theme/components/MyLayout.vue')['default']
     PageInfo: typeof import('./theme/components/PageInfo.vue')['default']
+    'Ph:planetFill': typeof import('~icons/ph/planet-fill')['default']
+    'SimpleIcons:csdn': typeof import('~icons/simple-icons/csdn')['default']
+    'SkillIcons:reactDark': typeof import('~icons/skill-icons/react-dark')['default']
+    'SkillIcons:stackoverflowDark': typeof import('~icons/skill-icons/stackoverflow-dark')['default']
+    'SkillIcons:typescript': typeof import('~icons/skill-icons/typescript')['default']
+    'SkillIcons:vercelDark': typeof import('~icons/skill-icons/vercel-dark')['default']
+    'Tabler:brandBilibili': typeof import('~icons/tabler/brand-bilibili')['default']
+    'Tabler:brandJuejin': typeof import('~icons/tabler/brand-juejin')['default']
+    'Teenyicons:nextjsSolid': typeof import('~icons/teenyicons/nextjs-solid')['default']
+    'Uiw:weixin': typeof import('~icons/uiw/weixin')['default']
+    'VscodeIcons:fileTypeBun': typeof import('~icons/vscode-icons/file-type-bun')['default']
   }
 }
