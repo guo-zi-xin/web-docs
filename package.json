@@ -41,10 +41,12 @@
     "unplugin-vue-components": "^0.25.2",
     "vite": "^5.0.2",
     "vitepress": "2.0.0-alpha.5",
+    "vitepress-plugin-group-icons": "^1.6.1",
     "vitepress-plugin-search": "1.0.4-alpha.22",
     "vue": "^3.3.7"
   },
   "dependencies": {
+    "canvas-confetti": "^1.9.3",
     "markdown-it-mathjax3": "^4.3.2",
     "sass-migrator": "^2.2.1"
   }

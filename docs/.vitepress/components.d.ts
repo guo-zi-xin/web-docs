@@ -8,6 +8,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     'Bi:github': typeof import('~icons/bi/github')['default']
+    Confetti: typeof import('./theme/components/Confetti.vue')['default']
     CustomLink: typeof import('./theme/components/CustomLink.vue')['default']
     'Devicon:java': typeof import('~icons/devicon/java')['default']
     'Devicon:nodejsWordmark': typeof import('~icons/devicon/nodejs-wordmark')['default']
