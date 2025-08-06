@@ -22,7 +22,6 @@
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "boxen": "^7.1.1",
-    "busuanzi.pure.js": "^1.0.3",
     "cross-env": "^7.0.3",
     "dayjs": "^1.11.10",
     "flexsearch": "^0.7.43",

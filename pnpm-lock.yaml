@@ -37,9 +37,6 @@ devDependencies:
   boxen:
     specifier: ^7.1.1
     version: 7.1.1
-  busuanzi.pure.js:
-    specifier: ^1.0.3
-    version: 1.0.3
   cross-env:
     specifier: ^7.0.3
     version: 7.0.3
@@ -2258,10 +2255,6 @@ packages:
       electron-to-chromium: 1.5.192
       node-releases: 2.0.19
       update-browserslist-db: 1.1.3(browserslist@4.25.1)
-    dev: true
-
-  /busuanzi.pure.js@1.0.3:
-    resolution: {integrity: sha512-tPULdyx+8NNb9geZYDpktKmHAYx9f2LEOBaHyWCaM7iPEMIa/43KgYAUluuU7YG9UFSOFpj4dO7Nj2Vlu3V9Rg==}
     dev: true
 
   /cac@6.7.14:

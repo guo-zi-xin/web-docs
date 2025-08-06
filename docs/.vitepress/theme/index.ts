@@ -1,12 +1,10 @@
 import mediumZoom from 'medium-zoom'
 import DefaultTheme from 'vitepress/theme'
-// @ts-ignore
 import MyLayout from "./components/MyLayout.vue";
 import { inBrowser, useData, useRoute } from 'vitepress'
 import type { EnhanceAppContext, Theme } from 'vitepress'
 import { h, onMounted, watch, nextTick } from 'vue'
-// @ts-ignore
-import busuanzi from 'busuanzi.pure.js'
+
 
 import './styles/index.scss'
 import 'uno.css'
