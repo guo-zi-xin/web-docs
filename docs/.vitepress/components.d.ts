@@ -20,7 +20,6 @@ declare module 'vue' {
     'IconPark:addWeb': typeof import('~icons/icon-park/add-web')['default']
     'Logos:momentjs': typeof import('~icons/logos/momentjs')['default']
     'Logos:reactQueryIcon': typeof import('~icons/logos/react-query-icon')['default']
-    MouseFollower: typeof import('./theme/components/MouseFollower.vue')['default']
     MyLayout: typeof import('./theme/components/MyLayout.vue')['default']
     'Octicon:feedPerson16': typeof import('~icons/octicon/feed-person16')['default']
     'Ooui:clock': typeof import('~icons/ooui/clock')['default']
