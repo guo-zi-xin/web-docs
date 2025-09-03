@@ -1,3 +1,3 @@
 # JavaScript 基础
 
-![JavaScript](/svg/javascript.svg)
+![JavaScript](/image/native/JavascriptBanner.png)
