@@ -6,31 +6,31 @@ export const FrameBar = [
     items: [
       {
         text: 'Vue指令',
-        link: '/frame/vue/vue指令',
+        link: '/frame/vue/vue-directive',
       },
       {
         text: 'Vue生命周期',
-        link: '/frame/vue/vue生命周期',
+        link: '/frame/vue/vue-lifecycle',
       },
       {
         text: 'NextTick',
-        link: '/frame/vue/nextTick',
+        link: '/frame/vue/next-tick',
       },
       {
         text: 'keepAlive',
-        link: '/frame/vue/keepAlive',
+        link: '/frame/vue/keep-alive',
       },
       {
         text: '双向绑定',
-        link: '/frame/vue/双向绑定',
+        link: '/frame/vue/two-way-binding',
       },
       {
         text: '加载白屏',
-        link: '/frame/vue/首页白屏',
+        link: '/frame/vue/white-screen',
       },
       {
         text: 'watch和watchEffect的区别',
-        link: '/frame/vue/watch和watchEffect的区别',
+        link: '/frame/vue/watch-vs-watcheffect',
       },
     ],
     collapsed: false,
@@ -40,23 +40,27 @@ export const FrameBar = [
     items: [
       {
         text: '组件通信',
-        link: '/frame/react/组件通信',
+        link: '/frame/react/component-communication',
       },
       {
         text:'React常用特性',
-        link: '/frame/react/react常用特性'
+        link: '/frame/react/react-features'
       },
       {
         text:'SSR相关',
-        link: '/frame/react/SSR相关'
+        link: '/frame/react/SSR'
       },
       {
         text:'虚拟DOM',
-        link: '/frame/react/虚拟DOM'
+        link: '/frame/react/virtual-dom'
       },
       {
         text:'高阶函数',
-        link: '/frame/react/高阶函数'
+        link: '/frame/react/higher-order-fn'
+      },
+          {
+        text: 'useState',
+        link: '/frame/react/useState'
       },
       {
         text: 'useReducer',
@@ -64,7 +68,7 @@ export const FrameBar = [
       },
       {
         text: 'useEffect与useLayoutEffect',
-        link: '/frame/react/useEffect和useLayoutEffect的区别'
+        link: '/frame/react/useeffect-vs-uselayouteffect'
       }
     ],
     collapsed: false,
@@ -197,15 +201,15 @@ export const FrameBar = [
     items: [
       {
         text: 'uni-app打包流程',
-        link: '/frame/uniapp/uniapp打包流程'
+        link: '/frame/uniapp/uniapp-build'
       },
       {
         text: 'uni-app推送',
-        link: '/frame/uniapp/uniapp推送'
+        link: '/frame/uniapp/uniapp-push'
       },
       {
         text: 'uni-app接入AI(流式数据)',
-        link: '/frame/uniapp/uniapp接入Ai'
+        link: '/frame/uniapp/uniapp-ai-stream'
       },
     ]
   }
