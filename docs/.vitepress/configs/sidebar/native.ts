@@ -61,14 +61,13 @@ export const NativeBar = [
   {
     text: 'CSS',
     items: [
-      { text: 'CSS权重规则', link: '/native/css/css权重规则' },
-      { text: 'css一些加载样式', link: '/native/css/css一些加载样式' },
-      { text: 'css跳动方块', link: '/native/css/css跳动方块' },
-      { text: 'box-shadow一些示例', link: '/native/css/css-box-shdow' },
-      // { text: '3D数字动画', link: '/native/css/3D数字动画' },
-      { text: '炫目动画', link: '/native/css/炫目动画' },
-      { text: 'css背景动画', link: '/native/css/css背景动画' },
-
+      { text: 'CSS权重规则', link: '/native/css/css-specificity' },
+      { text: 'css一些加载样式', link: '/native/css/css-loading-styles' },
+      { text: 'css跳动方块', link: '/native/css/css-bounce-box' },
+      { text: 'box-shadow一些示例', link: '/native/css/css-box-shadow' },
+      // { text: '3D数字动画', link: '/native/css/animate-3d' },
+      { text: '炫目动画', link: '/native/css/css-fancy-animate' },
+      { text: 'css背景动画', link: '/native/css/css-bg-animate' },
     ],
     collapsed: false,
   },
@@ -76,7 +75,7 @@ export const NativeBar = [
   // Node
   {
     text: 'Node',
-    items: [{ text: 'Node简介', link: '/native/node/node简介' }],
+    items: [{ text: 'Node简介', link: '/native/node/intro' }],
     collapsed: false,
   },
 
@@ -84,11 +83,11 @@ export const NativeBar = [
   {
     text: 'Typescript',
     items: [
-      { text: 'TypeScript推荐文档', link: '/native/typescript/推荐文档' },
-      { text: 'TypeScript泛型', link: '/native/typescript/泛型' },
-      { text: 'TypeScript枚举', link: '/native/typescript/枚举' },
-      { text: 'TypeScript高级类型', link: '/native/typescript/高级类型' },
-      { text: 'Typescript常用类型工具', link: '/native/typescript/常用类型工具' },
+      { text: 'TypeScript推荐文档', link: '/native/typescript/docs' },
+      { text: 'TypeScript泛型', link: '/native/typescript/generic' },
+      { text: 'TypeScript枚举', link: '/native/typescript/enum' },
+      { text: 'TypeScript高级类型', link: '/native/typescript/advanced-type' },
+      { text: 'Typescript常用类型工具', link: '/native/typescript/type-utils' },
     ],
     collapsed: false,
   },
@@ -99,7 +98,7 @@ export const NativeBar = [
     items: [
       {
         text: '微信小程序人脸识别问题',
-        link: '/native/weapp/微信小程序人脸识别问题',
+        link: '/native/weapp/face-recognition',
       },
     ],
     collapsed: false,
