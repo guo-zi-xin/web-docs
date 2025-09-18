@@ -6,7 +6,7 @@ export const StructureBar = [
     items: [
       {
         text: '链表',
-        link: '/structure/链表',
+        link: '/structure/linked-list',
       }
     ],
     collapsed: false,
