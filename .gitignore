@@ -1,11 +1,11 @@
 .DS_Store
 /**/**/node_modules
-/**/**/dist
 /**/**/.cache
 /**/**/.vitepress/cache
 /**/**/.temp
-.dist
-dist
+dist/
+**/dist/
+
 
 
 

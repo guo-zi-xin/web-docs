@@ -559,7 +559,7 @@ TCP三次握手：[TCP三次握手与四次挥手](../../native/javascript/TCP�
 
 [TCP三次握手与四次挥手](../../native/javascript/TCP三次握手与四次挥手)
 
-[^1]: ../../native/javascript/TCP四层五层与OSI七层模型区别
+[^1]: ../../native/javascript/tcp-osi-model
 
 ### 如何画一条0.5px的线
 
