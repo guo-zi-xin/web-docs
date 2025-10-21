@@ -109,9 +109,9 @@ Path = /docs  // /docs/web 下的资源会带Cookie首部
 
 控制Cookie是否在跨站请求中发送，可以设置为 Strict、Lax 或 None
 
-## LocalStorage
+## Storage
 
-### LocalStorage用法
+### Storage用法
 
 ```javascript
 localStorage.setItem("username", "name"); // "name"
@@ -124,10 +124,184 @@ localStorage.setItem("user", JSON.stringify(user));
 sessionStorage.setItem("user", JSON.stringify(user));
 ```
 
-### LocalStorage特点
+### Storage特点
 
 #### 生命周期
 
  持久化的本地存储，除非手动删除数据， 否则数据不会过期； sessionStorage 会话级存储， 浏览器或者标签页关闭后会清空
 
 #### 存储共享
+
+  存储的信息在同一域下是共享的，只要页面的 协议、域名、端口一致（即相同的 origin），Storage 就会天然共享。
+
+#### 小存储容量
+
+  Storage 存储的大小是比较小的， 大概是 <span style="color: red">5M</span> 左右， 不同浏览器厂商大小不同 本质上是对字符串的读取，如果存储内容比较多的话会消耗内存空间，会导致页面比较卡
+
+::: details 手写LocalStorage时效性封装
+
+```javascript
+class LocalStorageWithExpiry {
+  constructor(prefix = 'ls_') {
+    this.prefix = prefix
+  }
+
+  /*
+   * 获取带前缀的完整键名
+   */
+  getKey (key) {
+    return `${this.prefix}${key}`
+  }
+
+  /**
+   * 存储数据 (支持设置过期时间，单位:秒)
+   */
+  setItem(key, value, expiresInSeconds = null) {
+    try {
+      const fullKey = this.getKey(key);
+
+      const item = {
+        value,
+        expiresAt: expiresInSeconds !== null ? Date.now() + (expiresInSeconds * 1000) : null
+      };
+      localStorage.setItem(fullKey, JSON.stringify(item));
+      return true;
+    } catch (error) {
+      console.error('Failed to set localStorage item:', error);
+      return false
+    }
+  }
+
+  /**
+   * 获取数据
+   */
+  getItem(key) {
+    try {
+      const fullKey = this.getKey(key);
+      const itemStr = localStorage.getItem(fullKey);
+
+      if (!itemStr) return null;
+
+      const item = JSON.parse(itemStr)
+      // 检查是否过期
+      if (item.expiresAt !== null && Date.now() > item.expiresAt) {
+        localStorage.removeItem(fullKey);
+        return null;
+      }
+      return item.value;
+    } catch (error) {
+      console.error('Failed to get localStorage item:', error);
+      return null;
+    }
+  }
+
+  /**
+   * 移除数据
+   */
+  removeItem(key) {
+    try {
+      const fullKey = this.getKey(key);
+      localStorage.removeItem(fullKey);
+      return true;
+    } catch (error) {
+      console.error('Failed to remove localStorage item:', error);
+      return false
+    }
+  }
+
+  /**
+   * 清空所有带此前缀的存储
+   */
+  clearAll() {
+    try {
+      const keysToRemove = [];
+
+      // 收集所有需要删除的键
+      for (let k = 0; k < localStorage.length; k++) {
+        const key = localStorage.key(k);
+        if(key.startWith(this.prefix)) {
+          keysToRemove.push(key)
+        }
+      }
+
+      // 删除收集的键
+      keysToRemove.forEach(key => localStorage.removeItem(key));
+      return true
+    } catch (error) {
+      console.error('Failed to clear loacalStorage items:', error);
+      return false
+    }
+  }
+}
+
+// 使用示例
+const storage = new LocalStorageWithExpiry();
+
+// 存储一个5秒后国旗的数据
+storage.setItem('user', { name: 'John' }, 5);
+
+// 获取数据
+console.log(storage.getItem('user')); // 5秒内会返回 { name: 'John' }, 5秒后返回 null
+
+// 存储一个永不过期的数据
+storage.setItem('config', { theme: 'dark' });
+
+// 移除特定数据
+storage.removeItem('config');
+
+// 清空所有通过该实例存储的数据
+storage.clearAll();
+```
+
+:::
+
+## IndexDB
+
+IndexDB 是一种低级API， 用于客户端存储大量结构化的数据(包括JSON、 文件/blobs)。该API使用索引来实现对该数据的高性能搜索
+
+### 使用方法
+
+```javascript
+// idb-keyval 的库帮忙处理
+import { get, set } from 'idb-keyval'
+set('hello', 'world')
+get('hello').then(value => {
+  console.log(value)
+})
+```
+
+## Cookie、LocalStorage, sessionStorage区别
+
+#### 存储大小
+
+- **cookie** : 4KB
+
+- **LocalStorage**: 5MB
+
+- **SessionStorage**: 5MB
+
+#### 有效时间
+
+- **cookie** : 过期时间之内一直有效(Expires, Max-Age)
+
+- **LocalStorage**: 持久有效
+
+- **SessionStorage**: 浏览器窗口关闭会自动删除
+
+#### 交互方式
+
+- **cookie** : cookie 的数据会自动传送到服务器， 服务端也可以写cookie到客户端
+
+- **LocalStorage**: 只能本地保存
+
+- **SessionStorage**: 只能本地保存
+
+#### 应用场景
+
+- **cookie** : 标记用户与跟踪用户行为的情况， 推荐使用cookie
+
+- **LocalStorage**: 长期保存在本地的数据(令牌), 推荐使用localStorage
+
+- **SessionStorage**: 敏感账号一次性登录， 推荐使用 SessionStorage
+
+- **indexDB** : 存储大量数据的情况、 在线文档(富文本编辑器)保存编辑历史的情况， 推荐使用indexDB
