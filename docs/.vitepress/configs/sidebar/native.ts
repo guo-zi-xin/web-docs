@@ -11,6 +11,7 @@ export const NativeBar = [
       { text: 'call bind apply的区别', link: '/native/base/call-apply-bind' },
       { text: '原型与原型链', link: '/native/base/prototype-chain' },
       { text: '本地存储', link: '/native/base/local-storage' },
+      { text: 'JS精度', link: '/native/base/js-precision'}
     ],
     collapsed: false,
   },
