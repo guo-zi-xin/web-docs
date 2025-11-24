@@ -16,6 +16,7 @@ import {
   StructureBar,
   FrameBar,
   InterViewBar,
+  EncapsulationBar,
 } from './configs'
 
 const links: { url: string; lastmod: PageData['lastUpdated'] }[] = []
@@ -53,6 +54,8 @@ export default defineConfig({
       '/algorithm/': AlgorithmBar,
       // 数据结构
       '/structure/': StructureBar,
+      // 公共方法
+      '/encapsulation/': EncapsulationBar,
       // 框架
       '/frame/': FrameBar,
       // 面试

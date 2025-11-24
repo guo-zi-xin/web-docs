@@ -29,6 +29,10 @@ export const nav: DefaultTheme.Config['nav'] = [
         link: '/algorithm/index',
       },
       {
+        text: '公共方法',
+        link: '/encapsulation/index'
+      },
+      {
         text: '数据结构',
         link: '/structure/index',
       },

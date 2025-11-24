@@ -11,7 +11,9 @@ export const NativeBar = [
       { text: 'call bind apply的区别', link: '/native/base/call-apply-bind' },
       { text: '原型与原型链', link: '/native/base/prototype-chain' },
       { text: '本地存储', link: '/native/base/local-storage' },
-      { text: 'JS精度', link: '/native/base/js-precision'}
+      { text: 'JS精度', link: '/native/base/js-precision'},
+      { text: 'JS模块化', link: '/native/base/module' },
+
     ],
     collapsed: false,
   },
@@ -20,7 +22,6 @@ export const NativeBar = [
     text: 'JavaScript',
     items: [
       { text: 'JS中的元素尺寸与布局信息', link: '/native/javascript/element-size-layout' },
-      { text: 'JS模块化', link: '/native/javascript/module' },
       { text: '获取当前页面URL信息', link: '/native/javascript/page-url' },
       { text: 'eslint常见配置', link: '/native/javascript/eslint-config' },
       { text: 'JS解析URL参数', link: '/native/javascript/parse-url' },
