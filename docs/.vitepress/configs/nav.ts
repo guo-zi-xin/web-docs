@@ -38,4 +38,8 @@ export const nav: DefaultTheme.Config['nav'] = [
       },
     ]
   },
+  {
+    text: 'AI相关',
+    link: '/ai/index',
+  },
 ]

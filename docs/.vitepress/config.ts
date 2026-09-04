@@ -9,6 +9,7 @@ import algolia from './algolia';
 import {
   nav,
   head,
+  AIBar,
   AlgorithmBar,
   NativeBar,
   ToolsBar,
@@ -44,6 +45,8 @@ export default defineConfig({
     logo: '/image/blog-logo.png',
     nav,
     sidebar: {
+      // AI 相关
+      '/ai/': AIBar,
       // 先前导言
       '/guide/': GuideBar,
       // 原生

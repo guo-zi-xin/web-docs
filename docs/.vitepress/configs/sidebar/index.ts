@@ -1,3 +1,4 @@
+export * from './ai'
 export * from './guide'
 export * from './native'
 export * from './tools'
